@@ -1,0 +1,127 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+  
+.container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+  
+.ladoEsquerdo {
+    flex: 0 0 80%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  
+.ladoDireito {
+    flex: 0 0 20%; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #05294f; 
+}
+  
+.img {
+    width: 100%;
+    height: 100%;
+}
+  
+.img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+  
+.login {
+    justify-content: center;
+    align-items: center;
+    height: 350px;
+    width: 100%;
+    max-width: 400px;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+  
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+  
+input {
+    margin-bottom: 15px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+  
+input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+  
+.btnEntrar {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-left: 60px;
+    width: 130px;
+}
+  
+button {
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+  
+button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+  
+label {
+    margin-top: 10px;
+    text-align: center;
+    color: #555;
+}
+
+.esqueceuSenha {
+    margin: 15px;
+    color: red;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+  
+.esqueceuSenha:hover {
+    color: darkred;
+}
+
+.semConta {
+    margin: 15px;
+    color: red;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+  
+.semConta:hover {
+    color: darkred;
+}
