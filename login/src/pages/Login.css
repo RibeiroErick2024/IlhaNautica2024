@@ -1,127 +1,91 @@
-html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    font-family: Arial, sans-serif;
-}
-  
 .container {
-    display: flex;
-    height: 100vh;
-    width: 100vw;
-}
+    width: 450px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    padding: 40px;
+  }
   
-.ladoEsquerdo {
-    flex: 0 0 80%;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-  
-.ladoDireito {
-    flex: 0 0 20%; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #05294f; 
-}
-  
-.img {
-    width: 100%;
-    height: 100%;
-}
-  
-.img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-  
-.login {
-    justify-content: center;
-    align-items: center;
-    height: 350px;
-    width: 100%;
-    max-width: 400px;
-    background-color: #ffffff;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-}
-  
-h1 {
+  .container h1 {
     text-align: center;
-    color: #333;
-    margin-bottom: 20px;
-}
+    font-size: 30px;
+    color: #0f0f0f;
+  }
   
-input {
-    margin-bottom: 15px;
-    padding: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-    transition: border-color 0.3s;
-}
-  
-input:focus {
-    border-color: #007bff;
-    outline: none;
-}
-  
-.btnEntrar {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-    margin-left: 60px;
-    width: 130px;
-}
-  
-button {
-    align-items: center;
-    justify-content: center;
+  .container .input-field {
+    position: relative;
+    width: 100%;
     height: 50px;
-    background-color: #007bff;
-    color: white;
+    margin: 30px auto;
+  }
+  
+  .input-field input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 40px;
+    font-size: 16px;
+    color: #fff;
+    padding: 20px 45px 20px 25px;
+  }
+  
+  .input-field input::placeholder {
+    color: #0f0f0f;
+  }
+  
+ 
+  
+  .container .recall-forget {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14.5px;
+    margin: -15px 0 15px;
+  }
+  
+  .recall-forget label input {
+    accent-color: #050505;
+    margin-right: 4px;
+  }
+  
+  .recall-forget a {
+    color: #0c0c0c;
+    text-decoration: none;
+  }
+  
+  .recall-forget a:hover {
+    text-decoration: underline;
+  }
+  
+  .container button {
+    width: 100%;
+    height: 45px;
+    background: #fff;
     border: none;
-    border-radius: 5px;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     font-size: 16px;
-    transition: background-color 0.3s, transform 0.3s;
-}
+    color: #333;
+    font-weight: 700;
+    text-shadow: none;
+  }
   
-button:hover {
-    background-color: #0056b3;
-    transform: scale(1.05);
-}
-  
-label {
-    margin-top: 10px;
+  .container .signup-link {
+    font-size: 14.5px;
     text-align: center;
-    color: #555;
-}
-
-.esqueceuSenha {
-    margin: 15px;
-    color: red;
-    cursor: pointer;
-    transition: color 0.3s;
-}
+    margin: 20px 0 15px;
+  }
   
-.esqueceuSenha:hover {
-    color: darkred;
-}
-
-.semConta {
-    margin: 15px;
-    color: red;
-    cursor: pointer;
-    transition: color 0.3s;
-}
+  .signup-link p a {
+    color: #0a0a0a;
+    text-decoration: none;
+    font-weight: 600;
+  }
   
-.semConta:hover {
-    color: darkred;
-}
+  .signup-link p a:hover {
+    text-decoration: underline;
+  }
