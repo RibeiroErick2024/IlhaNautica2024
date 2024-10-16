@@ -5,11 +5,12 @@ import './CadastroDescricao.css'
 function CadastroDescricao() {
     return (
         <div>
-
         <div className='container'>
-            <div className='title'>
+            <div className='inputTitulo'>
                 <h2>Seu barco</h2>
+                <hr className='linhaHr'/>
             </div>
+               
             <div className='inputContainer'>
             <div className='descricaoContainer'>
                 <div className='inputTitulo'>
@@ -38,6 +39,7 @@ function CadastroDescricao() {
                     <h2>
                         Fotos
                     </h2>
+                    <hr className='linhaHr'/>
                 </div>
 
             </div>

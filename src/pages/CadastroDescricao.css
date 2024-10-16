@@ -10,23 +10,34 @@ padding: 0;
 }
 
 
-.title{
+.inputTitulo{
  
 font-family: 'Inter';
 font-style: normal;
 font-weight: 400;
 font-size: 32px;
 line-height: 39px;
-display: flex;
-align-items: center;
+/* display: flex; */
+/* align-items: center; */
 color: #000000;
-height: 10;
+height: 12%;
 width: 100%;
+/* margin-left: 15vh; */
 
+}
+.inputTitulo h2{
+ 
+    margin-left: 15vh;
+    
+    }
+
+.linhaHr{
+    border-top: 4px solid red;
+    margin-left: 15vh;
 }
 
 .inputContainer{
-    height: 45vh;
+    height: 45%;
     width: 100%;
     background-color: blue;
 }
@@ -35,26 +46,19 @@ width: 100%;
     margin-right: 15%;
 }
 
-.inputTitulo{
-font-family: 'Inter';
-font-style: normal;
-font-weight: 400;
-font-size: 25px;
-line-height: 39px;
-display: flex;
-align-items: center;
-
-color: #000000;
-
-
-}
 .descriçaoInput input, .regrasInput input{
-    height: 12vh;
+    height: 8vh;
     width: 100%;
+    font-size: 17px;
+    border-radius: 13px;
 }
 
 .fotosContainer{
     
     height: 35%;
     width: 100%;
+}
+
+.fotosTitulo{
+    margin-left: 15vh;
 }
