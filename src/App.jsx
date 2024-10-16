@@ -1,10 +1,15 @@
 import "./App.css";
-import Login from "./pages/Login";
+import PerfilEmbarcacao from "./pages/perfilembarcacao/PerfilEmbarcacao";
+import CadastroEmbarcacoes from "./pages/cadastro/CadastroEmbarcacoes";
+// import Login from "./pages/Login";
 
 function App() {
   return (
     <div className="App">
-      <Login />
+     {/* <PerfilEmbarcacao />  */}
+      <CadastroEmbarcacoes />
+      {/* <Login /> */}
+
     </div>
   );
 }
