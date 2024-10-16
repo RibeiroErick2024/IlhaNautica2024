@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+:root {
+    --font-Titulo: 'Lato', sans-serif;
+}
+
+.header-container {
+    width: 100vw; 
+    height: 8vh;
+    max-height: 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+h1 {
+    font-family: var(--font-Titulo);
+    color: black;
+    font-size: 5vh;
+    margin: 0;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.logo-container {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.iconMenu-container {
+    position: relative;
+    width: 5%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 10px;
+    right: 20px;
+}
+
+.iconMenu-container img {
+    height: 50%;
+    transition: transform 200ms;
+}
+
+.iconMenu-container img:hover {
+    transform: scale(1.05);
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+    width: 200px;
+    border-radius: 10px;
+}
+
+.dropdown-menu a {
+    padding: 8px 16px; 
+    text-decoration: none !important; 
+    color: rgb(0, 0, 0); 
+    text-align: center; 
+    font-family: var(--font-Titulo);
+    font-weight: normal; /* Garante que a fonte não seja bold */
+    border-radius: 0; /* Remove qualquer borda arredondada */
+    outline: none; /* Remove contornos ao focar */
+}
+
+.dropdown-menu a:hover {
+    background-color: #f0f0f0; 
+}
