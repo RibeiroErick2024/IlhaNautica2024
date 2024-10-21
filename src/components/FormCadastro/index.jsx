@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Eye, EyeOff, Mail, User } from "lucide-react";
 
 
-const Cadastro = () => {
+const FormCadastro = () => {
   const [nomeCompleto, setNomeCompleto] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
@@ -31,9 +31,9 @@ const Cadastro = () => {
             value={nomeCompleto}
             onChange={(e) => setNomeCompleto(e.target.value)}
           />
-          <User size={22} className="icon"/>
+          <User size={22} className="icon" />
         </div>
-       
+
         <div className="input-field">
           <input
             type="text"
@@ -42,7 +42,7 @@ const Cadastro = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-           <Mail size={22} className="icon"/>
+          <Mail size={22} className="icon" />
         </div>
         <div className="input-field">
           <input
@@ -52,12 +52,12 @@ const Cadastro = () => {
             value={senha}
             onChange={(e) => setSenha(e.target.value)}
           />
-               <div className="iconeSenha" onClick={toggleSenhaVisibilidade}>
+          <div className="iconeSenha" onClick={toggleSenhaVisibilidade}>
 
-                  {mostrarSenha ? (
-                    <EyeOff size={22} />) : (<Eye size={22} />)
-                  }
-                </div>
+            {mostrarSenha ? (
+              <EyeOff size={22} />) : (<Eye size={22} />)
+            }
+          </div>
         </div>
         <div className="input-field">
           <input
@@ -67,21 +67,21 @@ const Cadastro = () => {
             value={confirmarSenha}
             onChange={(e) => setConfirmarSenha(e.target.value)}
           />
-               <div className="iconeSenha" onClick={toggleSenhaVisibilidade}>
+          <div className="iconeSenha" onClick={toggleSenhaVisibilidade}>
 
-                  {mostrarSenha ? (
-                    <EyeOff size={22} />) : (<Eye size={22} />)
-                  }
-                </div>
+            {mostrarSenha ? (
+              <EyeOff size={22} />) : (<Eye size={22} />)
+            }
+          </div>
         </div>
 
-    
-        
-       
+
+
+
         <button type="submit">Cadastro</button>
         <div className="signup-link">
           <p>
-          Já tem uma conta? <a href="/">Clique aqui</a>{" "}
+            Já tem uma conta? <a href="/">Clique aqui</a>{" "}
           </p>
         </div>
       </form>
@@ -89,4 +89,4 @@ const Cadastro = () => {
   );
 };
 
-export default Cadastro;
+export default FormCadastro;
