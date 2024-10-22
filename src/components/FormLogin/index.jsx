@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./index.css";
 import { Eye, EyeOff, Mail } from "lucide-react";
-import { useNavigate } from "react-router-dom"; // Importando useNavigate
+import { useNavigate } from "react-router-dom"; 
 
 
 const FormLogin = ({ onToggleForm }) => {
@@ -9,8 +9,7 @@ const FormLogin = ({ onToggleForm }) => {
   const [usuario, setUsuario] = useState("");
   const [senha, setSenha] = useState("");
   const [mostrarSenha, setMostrarSenha] = useState(false);
-  const navigate = useNavigate(); // Hook para navegação
-
+  const navigate = useNavigate(); 
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("Dados de Login:", { usuario, senha });
@@ -26,8 +25,13 @@ const FormLogin = ({ onToggleForm }) => {
     onToggleForm();
   }
   const handleRecuperacaoClick = (event) => {
-    event.preventDefault(); // Impede o comportamento padrão do link
+    event.preventDefault(); 
     navigate("/recuperacaoSenha"); // Navega para a página de recuperação de senha
+  };
+
+  const handleHomeClick = (event) => {
+    event.preventDefault(); 
+    navigate("/home"); 
   };
 
   return (
@@ -69,14 +73,14 @@ const FormLogin = ({ onToggleForm }) => {
 
 
         <div className="recall-forget">
-          {/* Usando a função handleRecuperacaoClick para navegar programaticamente */}
+          
           <a href="#" onClick={handleRecuperacaoClick}>
             Esqueceu sua senha?
           </a>
         </div>
 
 
-        <button type="submit">Login</button>
+        <button  onClick={handleHomeClick} type="submit">Login</button>
         <div className="signup-link">
           <p>Não tem uma conta?{" "}<a href="#" onClick={handleRegistrarClick}>Registrar</a>
           </p>

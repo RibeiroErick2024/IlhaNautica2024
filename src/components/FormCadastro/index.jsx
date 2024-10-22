@@ -1,28 +1,39 @@
 import React, { useState } from 'react';
 import { Eye, EyeOff, Mail, User } from "lucide-react";
-
+import { useNavigate } from "react-router-dom";
 
 const FormCadastro = () => {
   const [nomeCompleto, setNomeCompleto] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [confirmarSenha, setConfirmarSenha] = useState("");
+  const [error, setError] = useState("");
   const [mostrarSenha, setMostrarSenha] = useState(false);
+  const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
+  const enviar = (event) => {
     event.preventDefault();
-    console.log("Dados de Cadastro:", { nomeCompleto, email, senha, confirmarSenha });
+
+    if (senha !== confirmarSenha) {
+      setError('As senhas são diferentes.');
+      return;
+    }
+
+    setError('');
+    console.log('Formulário enviado com sucesso!', { nomeCompleto, email, senha });
+    navigate("/home");   // Redireciona para a página "home" após o cadastro
   };
 
-  //Controla visibilidade da senha
-  const toggleSenhaVisibilidade = () => {
+  // Controla a visibilidade da senha
+  const visibilidadeSenha = () => {
     setMostrarSenha(!mostrarSenha);
   };
 
   return (
     <div className="container">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={enviar}>
         <h1>CADASTRAR</h1>
+
         <div className="input-field">
           <input
             type="text"
@@ -36,7 +47,7 @@ const FormCadastro = () => {
 
         <div className="input-field">
           <input
-            type="text"
+            type="email"
             placeholder="E-mail"
             required
             value={email}
@@ -44,44 +55,41 @@ const FormCadastro = () => {
           />
           <Mail size={22} className="icon" />
         </div>
+
         <div className="input-field">
           <input
-            type="password"
+            type={mostrarSenha ? "text" : "password"}
             placeholder="Senha"
             required
             value={senha}
             onChange={(e) => setSenha(e.target.value)}
           />
-          <div className="iconeSenha" onClick={toggleSenhaVisibilidade}>
-
-            {mostrarSenha ? (
-              <EyeOff size={22} />) : (<Eye size={22} />)
-            }
+          <div className="iconeSenha" onClick={visibilidadeSenha}>
+            {mostrarSenha ? <EyeOff size={22} /> : <Eye size={22} />}
           </div>
         </div>
+
         <div className="input-field">
           <input
-            type="password"
-            placeholder="ConfirmarSenha"
+            type={mostrarSenha ? "text" : "password"}
+            placeholder="Confirmar Senha"
             required
             value={confirmarSenha}
             onChange={(e) => setConfirmarSenha(e.target.value)}
           />
-          <div className="iconeSenha" onClick={toggleSenhaVisibilidade}>
-
-            {mostrarSenha ? (
-              <EyeOff size={22} />) : (<Eye size={22} />)
-            }
+          <div className="iconeSenha" onClick={visibilidadeSenha}>
+            {mostrarSenha ? <EyeOff size={22} /> : <Eye size={22} />}
           </div>
         </div>
 
-
-
+        {/* exibe msg de erro */}
+        {error && <p style={{ color: 'red' }}>{error}</p>}
 
         <button type="submit">Cadastro</button>
+
         <div className="signup-link">
           <p>
-            Já tem uma conta? <a href="/">Clique aqui</a>{" "}
+            Já tem uma conta? <a href="/">Clique aqui</a>
           </p>
         </div>
       </form>

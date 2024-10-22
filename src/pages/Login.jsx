@@ -2,8 +2,6 @@
 import React, { useState } from "react";
 import FormLogin from "../components/FormLogin";
 import FormCadastro from "../components/FormCadastro";
-import RecuperacaoSenha from "../components/FormRecuperacaoSenha";
-
 import "./Login.css";
 
 const Login = () => {
@@ -14,15 +12,17 @@ const Login = () => {
     setIsLogin(!isLogin);
   };
 
+
   return (
     <div className="imgFundo">
-
+      
       {isLogin ? (
         <FormLogin onToggleForm={toggleForm} />
       ) : (
         <FormCadastro />
       )}
 
+  
 
     </div>
   );
