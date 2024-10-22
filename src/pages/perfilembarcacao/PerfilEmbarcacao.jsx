@@ -1,5 +1,7 @@
 import { useState } from "react";
-
+import { TbSpeedboat } from "react-icons/tb";
+import { RiSailboatLine } from "react-icons/ri";
+import { GiSpeedBoat } from "react-icons/gi";
 import "./PerfilEmbarcacao.css"
 
 const PerfilEmbarcacao = () => {
@@ -20,7 +22,24 @@ const PerfilEmbarcacao = () => {
   };
 
   return (
-    <div className="container">
+   <div >
+
+    <div className="icones">
+
+   
+   <TbSpeedboat />
+   <RiSailboatLine />
+   <GiSpeedBoat />
+   
+   </div>
+
+   <div className="container">
+
+
+
+      
+
+
       <form onSubmit={handleSubmit}>
         <h1>Perfil Embarcação</h1>
         <div className="form-section">
@@ -32,7 +51,8 @@ const PerfilEmbarcacao = () => {
             value={usernome}
             onChange={(e) => setUserNome(e.target.value)}
           />
-          
+       
+     
         </div>
         <div className="input-field">
           <input
@@ -105,6 +125,7 @@ const PerfilEmbarcacao = () => {
        
         
       </form>
+    </div>
     </div>
   );
 };

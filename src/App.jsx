@@ -6,8 +6,8 @@ import CadastroEmbarcacoes from "./pages/cadastro/CadastroEmbarcacoes";
 function App() {
   return (
     <div className="App">
-     {/* <PerfilEmbarcacao />  */}
-      <CadastroEmbarcacoes />
+      <PerfilEmbarcacao />  
+      {/* <CadastroEmbarcacoes /> */}
       {/* <Login /> */}
 
     </div>
