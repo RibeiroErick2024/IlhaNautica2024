@@ -6,14 +6,14 @@ function CadastroDescricao() {
     return (
         <div>
         <div className='container'>
-            <div className='inputTitulo'>
+            <div className='tituloDesc'>
                 <h2>Seu barco</h2>
                 <hr className='linhaHr'/>
             </div>
                
             <div className='inputContainer'>
             <div className='descricaoContainer'>
-                <div className='inputTitulo'>
+                <div className='textoDesc'>
                     <h4>
                         Descreva sua embarcação
                     </h4>
@@ -23,9 +23,9 @@ function CadastroDescricao() {
                 </div>
             </div>
             <div className='regrasContainer'>
-                <div className='inputTitulo'> 
+                <div className='textoDesc'> 
                 <h4>   
-                    Descreva sua embarcação
+                    Descreva suas regras
                     </h4>
                     </div>
                 <div className='regrasInput'>
@@ -35,7 +35,7 @@ function CadastroDescricao() {
             </div>
          
             <div className='fotosContainer'>
-                <div className='fotosTitulo'>
+                <div className='tituloDesc'>
                     <h2>
                         Fotos
                     </h2>
