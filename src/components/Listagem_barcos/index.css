@@ -1,0 +1,5 @@
+.listagem-container{
+    display: flex;
+    min-width: calc(100vw - 220px);
+    background-color: rgb(67, 131, 228);
+}

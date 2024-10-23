@@ -2,3 +2,11 @@
     width: 100dvw;
     min-height: 100dvh;
 }
+
+.conteudo-container{
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    min-height: calc(100vh - 8vh);
+    background-color: rgb(255, 255, 255);
+}
