@@ -24,7 +24,7 @@ function CadastroDescricao() {
     const handleUploadClick = () => {
         // 👇 We redirect the click event onto the hidden input element
         esconderInputFile.current?.click();
-      };
+    };
 
 
     // Upload multiple photos
@@ -49,11 +49,15 @@ function CadastroDescricao() {
                             <h4>Descreva sua embarcação</h4>
                         </div>
                         <div className='descriçaoInput'>
-                            <input
+                            <textarea
+                                className='descriçaoInput'
                                 value={inputDescricao}
                                 onChange={e => setInputDescricao(e.target.value)}
                                 type="text"
-                                placeholder='AAAAAAAAAAAAAA'
+                                aria-multiline={true}
+                                rows="7" cols="100"
+                             
+                                placeholder='Um barco lindo de 1000m²'
                             />
                         </div>
                     </div>
@@ -62,11 +66,13 @@ function CadastroDescricao() {
                             <h4>Descreva suas regras</h4>
                         </div>
                         <div className='regrasInput'>
-                            <input
+                            <textarea
                                 value={inputRegras}
                                 onChange={e => setInputRegras(e.target.value)}
                                 type="text"
-                                placeholder='AAAAAAAAAAAAAA'
+                                aria-multiline={true}
+                                rows="4" cols="50"
+                                placeholder='Descreva as regras da embarção'
                             />
                         </div>
                     </div>
@@ -83,18 +89,25 @@ function CadastroDescricao() {
                             ref={esconderInputFile}
                             style={{ display: 'none' }}
                             onChange={handleMultipleChange} />
+
+                        <div className='imagesList'>
+                            <button className='btnSelecionar'
+                                onClick={handleUploadClick}>
+                                "Click to select"
+                            </button>
+                           <div className='imagesList'>
+                            {previews.map((preview, index) => (
+                                <img className='imageSelecionada' key={index} src={preview} />
+                            ))}
+                           </div>
+                        </div>
+
                     </div>
                     <div>
 
-                    <button className='btnSelecionar' 
-                    onClick={handleUploadClick}>
-                         "Click to select"
-                    </button>
 
                     </div>
-                    {previews.map((preview, index) => (
-                        <img className='imageSelecionada' key={index} src={preview} alt={`Uploaded content ${index}`} />
-                    ))}
+
                 </div>
             </div>
         </div>
