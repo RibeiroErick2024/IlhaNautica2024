@@ -83,3 +83,22 @@ margin: 0;
     width: 100%;
 }
 
+.imageSelecionada{
+    width: 200px;
+    height: 200px;
+    border: 2px solid green;
+}
+
+.btnSelecionar button{
+    width: 200px;
+    height: 200px;
+    border: 10px solid pink;
+    background-color: grey;
+
+}
+button {
+    width: 200px;
+    height: 200px;
+    border: 10px solid pink;
+    background-color: grey;
+}

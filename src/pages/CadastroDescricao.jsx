@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './CadastroDescricao.css';
 
 function CadastroDescricao() {
@@ -7,8 +7,10 @@ function CadastroDescricao() {
     const [fotosSelecionadas, setFotosSelecionadas] = useState([]);
     const [previews, setPreviews] = useState([]);
 
-    useEffect(() => {      
-        
+    //Para esconder o input file de origem
+    const esconderInputFile = useRef(null);
+    useEffect(() => {
+
         // URL representando o arquivo (foto)
         const newPreviews = fotosSelecionadas.map(file => URL.createObjectURL(file));
         setPreviews(newPreviews);
@@ -18,6 +20,12 @@ function CadastroDescricao() {
             newPreviews.forEach(url => URL.revokeObjectURL(url));
         };
     }, [fotosSelecionadas]);
+
+    const handleUploadClick = () => {
+        // 👇 We redirect the click event onto the hidden input element
+        esconderInputFile.current?.click();
+      };
+
 
     // Upload multiple photos
     function handleMultipleChange(event) {
@@ -41,8 +49,8 @@ function CadastroDescricao() {
                             <h4>Descreva sua embarcação</h4>
                         </div>
                         <div className='descriçaoInput'>
-                            <input 
-                                value={inputDescricao} 
+                            <input
+                                value={inputDescricao}
                                 onChange={e => setInputDescricao(e.target.value)}
                                 type="text"
                                 placeholder='AAAAAAAAAAAAAA'
@@ -54,8 +62,8 @@ function CadastroDescricao() {
                             <h4>Descreva suas regras</h4>
                         </div>
                         <div className='regrasInput'>
-                            <input 
-                                value={inputRegras} 
+                            <input
+                                value={inputRegras}
                                 onChange={e => setInputRegras(e.target.value)}
                                 type="text"
                                 placeholder='AAAAAAAAAAAAAA'
@@ -70,10 +78,22 @@ function CadastroDescricao() {
                         <hr className='linhaHr' />
                     </div>
                     <div className='inputFotos'>
-                        <input type="file" multiple onChange={handleMultipleChange} />
+                        <input type="file"
+                            multiple
+                            ref={esconderInputFile}
+                            style={{ display: 'none' }}
+                            onChange={handleMultipleChange} />
+                    </div>
+                    <div>
+
+                    <button className='btnSelecionar' 
+                    onClick={handleUploadClick}>
+                         "Click to select"
+                    </button>
+
                     </div>
                     {previews.map((preview, index) => (
-                        <img key={index} src={preview} alt={`Uploaded content ${index}`} />
+                        <img className='imageSelecionada' key={index} src={preview} alt={`Uploaded content ${index}`} />
                     ))}
                 </div>
             </div>
