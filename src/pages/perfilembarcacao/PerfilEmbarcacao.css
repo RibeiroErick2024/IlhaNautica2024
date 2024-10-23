@@ -1,19 +1,30 @@
+.teste{
+  width: 100%;
+}
+
 .container {
-  width: 450px;
-  /* background: rgba(90, 92, 92, 0.267); */
-  backdrop-filter: blur(10px);
-  border: 2px solid rgba(7, 7, 7, 0.2);
-  border-radius: 10px;
+  
   padding: 40px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 
 }
 
 .icones {
   display: flex;
+  border: 2 px solid #971281;
+  margin-bottom: 10px;
+  border-radius: 40px;
   font-size: 50px;
   justify-content: space-around;
+}
+
+hr {
+  border: none;
+  height: 2px;
+  background-color: black;
+  margin: 10px;
+  width: 100%;
 }
 
 
@@ -30,10 +41,10 @@
   height: 100%;
   background: transparent;
   outline: none;
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  border-radius: 40px;
+  border: 2px solid #007CE2;
+  border-radius: 10px;
   font-size: 16px;
-  color: #fff;
+ 
   padding: 20px 45px 20px 25px;
 }
 
