@@ -1,16 +1,16 @@
 import { useState } from "react";
 
-import "./PerfilEmbarcacao.css"
+import "./PerfilMarinheiro.css"
 
-function PerfilEmbarcacao(){
+function PerfilMarinheiro(){
 
   const [usernome, setUserNome] = useState("");
-  const [usermodelo, setUserModelo] = useState("");
-  const [userano, setUserAno] = useState("");
-  const [usercapacidade, setUserCapacidade] = useState("");
-  const [useranimaispermitidos, setUserAnimaisPermitidos] = useState("");
-  const [userlocalizacao, setUserLocallizacao] = useState("");
-  const [userroteiros, setUserRoteiros] = useState("");
+  const [usersobrenome, setUserSobreNome] = useState("");
+  const [usersenha, setUserSenha] = useState("");
+  const [usercpf, setUserCPF] = useState("");
+  const [usergenero, setUserGenero] = useState("");
+  const [userEmail, setUserTipo] = useState("");
+  const [usertelefone, setUserTelefone] = useState("");
   const handleSubmit = (event) => {
 
     event.preventDefault();
@@ -22,14 +22,14 @@ function PerfilEmbarcacao(){
   return (
     <div>
 
-    <div className="container-perfil-embarcacao" >
+    <div className="container-perfil-marinheiro" >
 
       <div className="titulo-primeiro-embarcacao">
         <h1 >Seu Barco</h1>
         <hr />
       </div>
 
-      <div className="icones-embarcacao">
+      <div className="icones-marinheiro">
 
         <button>
           <svg width="150" height="50" viewBox="0 0 51 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -60,12 +60,12 @@ function PerfilEmbarcacao(){
 
       </div>
 
-      <div className="container-embarcacao">
+      <div className="container-marinheiro">
         
         <form onSubmit={handleSubmit}>
-          <h1 className="titulo-embarcacao">Perfil Embarcação</h1>
-          <div className="form-section-embarcacao">
-            <div className="input-embarcacao">
+          <h1 className="titulo-marinheiro">Perfil Embarcação</h1>
+          <div className="form-section-marinheiro">
+            <div className="input-marinheiro">
               <input
                 type="text"
                 placeholder="Nome"
@@ -76,68 +76,68 @@ function PerfilEmbarcacao(){
 
 
             </div>
-            <div className="input-embarcacao">
+            <div className="input-marinheiro">
               <input
                 type="text"
                 placeholder="Modelo"
                 required
-                value={usermodelo}
-                onChange={(e) => setUserModelo(e.target.value)}
+                value={usersobrenome}
+                onChange={(e) => setUserSobreNome(e.target.value)}
               />
 
             </div>
 
-            <div className="input-embarcacao">
+            <div className="input-marinheiro">
               <input
                 type="text"
                 placeholder="Ano"
                 required
-                value={userano}
-                onChange={(e) => setUserAno(e.target.value)}
+                value={usersenha}
+                onChange={(e) => setUserSenha(e.target.value)}
               />
 
             </div>
-            <div className="input-embarcacao">
+            <div className="input-marinheiro">
               <input
                 type="text"
                 placeholder="Capacidade"
                 required
-                value={usercapacidade}
-                onChange={(e) => setUserCapacidade(e.target.value)}
+                value={usercpf}
+                onChange={(e) => setUserCPF(e.target.value)}
               />
 
             </div>
           </div>
 
-          <div className="form-section-embarcacao">
+          <div className="form-section-marinheiro">
 
-            <div className="input-embarcacao">
+            <div className="input-marinheiro">
               <input
                 type="text"
                 placeholder="Animais Permitidos"
                 required
-                value={useranimaispermitidos}
-                onChange={(e) => setUserAnimaisPermitidos(e.target.value)}
+                value={usergenero}
+                onChange={(e) => setUserGenero(e.target.value)}
               />
 
             </div>
-            <div className="input-embarcacao">
+            <div className="input-marinheiro">
               <input
                 type="text"
                 placeholder="Localização"
                 required
-                value={userlocalizacao}
-                onChange={(e) => setUserLocallizacao(e.target.value)}
+                value={userEmail}
+                onChange={(e) => setUserTipo(e.target.value)}
               />
 
             </div>
-            <div className="input-embarcacao">
+            <div className="input-marinheiro">
               <input
                 type="text"
                 placeholder="Roteiros"
                 required
-                value={userroteiros}
-                onChange={(e) => setUserRoteiros(e.target.value)}
+                value={usertelefone}
+                onChange={(e) => setUserTelefone(e.target.value)}
               />
 
             </div>
@@ -149,7 +149,7 @@ function PerfilEmbarcacao(){
         </form>
 
         <div>
-          <button className="btn-salvar-embarcacao">
+          <button className="btn-salvar-marinheiro">
             Salvar
           </button>
         </div>
@@ -159,4 +159,4 @@ function PerfilEmbarcacao(){
   );
 };
 
-export default PerfilEmbarcacao;
+export default PerfilMarinheiro;
