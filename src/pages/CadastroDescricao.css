@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Gruppo&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-
+*{
+    font-family: "Montserrat", sans-serif;
+}
 html {
     margin: 0;
     padding: 0;
@@ -10,12 +12,15 @@ html {
 }
 .container{
 /* top: 80px; */
-width: 100%;
+width: 90%;
 height: 95vh;
 display: flex;
 flex-direction: column;
-background-color: rgb(230, 235, 230);
+background-color: white;
 padding: 0;
+padding-left: 5%;
+padding-right: 5%;
+
 
 }
 .mainTitulo{
@@ -45,15 +50,15 @@ margin: 0;
 font-family: "Montserrat", sans-serif;
 
 }
-.mainTitulo, .fotosContainer{
+/* .mainTitulo, .fotosContainer, .inputContainer{
  
     margin-left: 5%;
     margin-right: 5%;
     padding:  0;
-    }
+    } */
 
 .linhaHr{
-    border-top: 4px solid black;
+    border-top: 4px solid rgba(19,141,147,255);
  
 }
 
@@ -74,10 +79,16 @@ font-family: "Montserrat", sans-serif;
     justify-content: space-around;
 }
 .descricaoContainer, .regrasContainer{
-    margin-left: 20%;
-    margin-right: 15%;
+    padding-left:15%;
+    /* padding-right: 15%; */
     
 }
+
+
+textarea {
+    resize: none;
+  }
+
 
 .descriçaoInput textarea, .regrasInput textarea{
     height: 12vh;
@@ -85,11 +96,12 @@ font-family: "Montserrat", sans-serif;
     font-size: 20px;
     border-radius: 13px;
     font-family: "Montserrat", sans-serif;
+    border: 1px solid rgba(19,141,147,255);
 }
 
 .fotosContainer{
     
-    height: 55%;
+    height: 45%;
     /* width: 100%; */
     display: flex;
     flex-direction: column;
@@ -112,18 +124,41 @@ font-family: "Montserrat", sans-serif;
 .imageSelecionada{
     width: 250px;
     height: 250px;
-    border: 2px solid green;
+    border: 2px solid rgba(19,141,147,255);
     border-radius: 30px;
 }
 
 .btnSelecionar {
     width: 250px;
     height: 250px;
-    border: 10px solid pink;
-    background-color: grey;
+    border: 3px solid rgba(19,141,147,255);
+    background-color: transparent;
     border-radius: 30px;
 }
 
-textarea {
-    resize: none;
+
+  .toastContainer{
+    font-size: 28px;
+    width: 100%;
+    height: 20vh;
+
+  }
+
+  .btnContainer{
+    width: 100%;
+    height: 5%;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+  }
+  .btnAnuncie {
+    align-self:flex-end;
+    justify-content: flex-end;
+    font-size: 20px; 
+    height: 100%;
+    width: 15%;
+    color: white;
+    background-color: rgba(19,141,147,255);
+    border-radius: 10px;
+
   }

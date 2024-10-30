@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './CadastroDescricao.css';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function CadastroDescricao() {
     const [inputDescricao, setInputDescricao] = useState("");
@@ -28,9 +30,15 @@ function CadastroDescricao() {
     };
 
 
-    // Upload multiple photos
+    // Upload multiplas fotos
     function handleMultipleChange(event) {
         const fotos = Array.from(event.target.files);
+
+        if (fotos.length > 5) {
+            toast("Você pode selecionar no máximo 5 fotos.");
+            // alert("Você pode selecionar no máximo 5 fotos.");
+            return;
+        }
         setFotosSelecionadas(fotos);
     }
 
@@ -39,24 +47,24 @@ function CadastroDescricao() {
         const url = 'http://localhost:8080/';
         const formData = new FormData();
         fotosSelecionadas.forEach((file, index) => {
-          formData.append(`foto${index}`, file);
+            formData.append(`foto${index}`, file);
         });
-    
+
         const config = {
-          headers: {
-            'content-type': 'multipart/form-data',
-          },
+            headers: {
+                'content-type': 'multipart/form-data',
+            },
         };
-    
+
         axios.post(url, formData, config)
-          .then((response) => {
-            console.log(response.data);
-            // setUploadedFiles(response.data.files);
-          })
-          .catch((error) => {
-            console.error("Error ao fazer upload de fotos: ", error);
-          });
-      }
+            .then((response) => {
+                console.log(response.data);
+                // setUploadedFiles(response.data.files);
+            })
+            .catch((error) => {
+                console.error("Error ao fazer upload de fotos: ", error);
+            });
+    }
 
     return (
         <div>
@@ -105,6 +113,20 @@ function CadastroDescricao() {
                     </div>
 
                     <div className='fotosContainer'>
+                        <ToastContainer
+                            className={"toastContainer"}
+                            position="top-center"
+                            autoClose={5000}
+                            hideProgressBar={true}
+                            newestOnTop={false}
+                            closeOnClick
+                            rtl={false}
+                            pauseOnFocusLoss
+                            draggable
+                            pauseOnHover
+                            theme="light"
+                            transition:Bounce
+                        />
                         <div className='tituloDesc'>
                             <h2>Fotos</h2>
                             <hr className='linhaHr' />
@@ -120,7 +142,7 @@ function CadastroDescricao() {
                             <div className='imagesList'>
                                 <button className='btnSelecionar'
                                     onClick={handleUploadClick}>
-                                    "Click to select"
+                                    Click para selecionar
                                 </button>
                                 <div className='imagesList'>
                                     {previews.map((preview, index) => (
@@ -138,7 +160,9 @@ function CadastroDescricao() {
                         </div>
 
                     </div>
-                    {/* <button type="submit" className="btnAnuncie">Anuncie</button> */}
+                    <div className="btnContainer">
+                        <button type="submit" className="btnAnuncie">Anuncie</button>
+                    </div>
                 </form>
             </div>
         </div>
