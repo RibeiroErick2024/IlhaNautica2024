@@ -1,0 +1,65 @@
+/* html{
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width:100%
+} */
+
+
+.container-perfil-embarcacao{
+  width: 1000px;
+  height: 90%;
+  background-color: green;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+
+.icones-embarcacao {
+  margin-top: 25px;
+  height: 150px;
+  display: flex;
+  gap: 150px;
+  margin-left: 380px;
+  
+}
+
+.container-embarcacao {
+  padding: 40px;
+}
+
+.titulo-primeiro-embarcacao
+{
+  color: black;
+  /* padding: 15px; */
+
+}
+.titulo-embarcacao {
+  margin-top: 25px;
+  margin-left: 305px;
+  color: black;
+  padding-bottom: 100px;
+}
+
+.input-embarcacao input {
+  border: 2px solid #007CE2;
+  border-radius: 10px;
+  font-size: 16px;
+  padding: 20px 85px 20px 55px;
+}
+
+.form-section-embarcacao {
+  gap: 40px;
+  display: flex;
+  padding: 65px;
+}
+
+.btn-salvar-embarcacao {
+  width: 150px;
+  height: 40px;
+  background-color: #007CE2;
+  color: aliceblue;
+  border-radius: 10px;
+  margin-left: 1400px;
+  font-size: 25px;
+}

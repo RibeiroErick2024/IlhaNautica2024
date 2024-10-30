@@ -68,7 +68,7 @@ function CadastroDescricao() {
 
     return (
         <div>
-            <div className='container'>
+            <div className='containerDescricao'>
                 <form onSubmit={handleSubmit}>
                     <div className='mainTitulo'>
                         <div className='tituloDesc'>
