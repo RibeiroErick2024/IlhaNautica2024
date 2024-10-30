@@ -24,7 +24,7 @@ function CadastroEmbarcacoes(){
     <div className="container-cadastro-embarcacoes">
       <form onSubmit={handleSubmit}>
         <h1>Cadastro Embarcação</h1>
-        <div className="form-section">
+        <div className=" .form-section-embarcacoes">
         <div className="input-field">
           <input
             type="text"

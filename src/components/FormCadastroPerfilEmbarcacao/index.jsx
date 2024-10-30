@@ -1,9 +1,9 @@
 import { useState } from "react";
 
 
-import "./PerfilEmbarcacao.css"
+import "./index.css"
 
-function PerfilEmbarcacao(){
+const PerfilEmbarcacao = () => {
 
   const [usernome, setUserNome] = useState("");
   const [usermodelo, setUserModelo] = useState("");

@@ -1,7 +1,7 @@
 
 import React, { useState } from "react";
-import FormLogin from "../../components/FormLogin";
-import FormCadastro from "../../components/FormCadastro";
+import FormLogin from "/src/components/FormLogin/index.jsx";
+import FormCadastro from "/src/components/FormCadastro/index.jsx";
 import "./Login.css";
 
 const Login = () => {
