@@ -2,7 +2,7 @@
     width: 450px;
     background: rgba(90, 92, 92, 0.267);
     backdrop-filter: blur(10px);
-    border: 2px solid rgba(21, 21, 21, 0.468);
+    border: 2px solid rgba(37, 35, 35, 0.468);
     border-radius: 10px;
     padding: 40px;
   }
@@ -17,7 +17,7 @@
     position: relative;
     width: 100%;
     height: 50px;
-    margin: 30px auto;
+    margin: 50px auto;
   }
   
   .input-field input {
@@ -33,7 +33,7 @@
   }
   
   .input-field input::placeholder {
-    color: #f7f7f7de;
+    color: #f7f7f7ff;
   }
 
   .input-field .icon {
@@ -51,7 +51,8 @@
     display: flex;
     justify-content: space-between;
     font-size: 14.5px;
-    margin: -15px 0 15px;
+    margin: 50px 0 15px;
+    margin-left: 10px;
   }
   
   .recall-forget label input {
@@ -113,3 +114,9 @@
     cursor: pointer;
     
   }
+  .error-message {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 0.25em;
+  }
+  
