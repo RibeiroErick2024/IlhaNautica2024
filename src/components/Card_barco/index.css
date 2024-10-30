@@ -1,3 +1,33 @@
-card-barco{
-    
+.card-barco {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 350px;
+    padding: auto;
+    background-color: rgb(255, 255, 255);
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
 }
+
+.card-barco:hover {
+    transform: scale(1.05);
+}
+
+.imgBarco-container{
+    display: flex;
+    width: 100%;
+    height: 50%;
+    border-radius: 8px 8px 0 0 ;
+}
+
+.imgBarco-container img {
+    width: 100%; /* Para que a imagem se ajuste ao contêiner */
+    height: auto; /* Mantém a proporção da imagem */
+    object-fit: cover; /* Cobre todo o espaço disponível sem distorcer */
+    border-radius: 8px 8px 0 0 ;
+}
+
+    
