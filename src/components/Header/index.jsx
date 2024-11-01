@@ -38,9 +38,9 @@ function Header() {
                 />
                 {isMenuOpen && (
                     <div className="dropdown-menu">
-                        <a href="/">Perfil</a>
-                        <a href="/about">Anuncie seu barco</a>
-                        <a href="/contact">Sobre nós</a>
+                        <a href="/">Login</a>
+                        <a href="/anuncie">Anuncie seu barco</a>
+                        <a href="/sobre">Sobre nós</a>
                     </div>
                 )}
             </div>

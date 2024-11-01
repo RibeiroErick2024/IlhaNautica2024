@@ -1,0 +1,41 @@
+.galeria-container {
+    width: 60%;
+    height: 450px; /* Altura total da galeria */
+    margin-top: 100px; /* Margem superior */
+    display: flex; /* Utiliza flexbox para alinhar os elementos */
+    gap: 5px;
+}
+
+.div-img-grande {
+    display: flex;
+    width: 40%; /* Largura da imagem grande */
+    height: 100%; /* Altura total da galeria */
+}
+
+.foto-grande {
+    width: 100%; /* A imagem grande ocupa toda a largura */
+    height: auto; /* Mantém a proporção da imagem */
+    background-color: rgb(84, 118, 211);
+}
+
+.div-img-pequena {
+    display: grid; /* Utiliza grid para organizar as imagens pequenas */
+    width: 60%; /* Largura da área para as imagens pequenas */
+    height: 100%; /* Altura total da galeria */
+    gap: 5px; /* Espaço entre as imagens pequenas */
+    grid-template-columns: repeat(2, 1fr); /* Define 2 colunas iguais */
+    grid-template-rows: repeat(2, 1fr); /* Define 2 linhas iguais */
+}
+
+.fotos {
+    display: flex;
+    width: 100%; /* A largura da div fotos ocupa 100% do espaço */
+    height: 100%; /* A altura da div fotos ocupa 100% do espaço */
+    background-color: rgb(26, 107, 182); /* Cor de fundo para as fotos pequenas */
+}
+
+.foto-pequena {
+    width: 100%; /* A imagem pequena ocupa toda a largura do contêiner */
+    height: 100%; /* A imagem pequena ocupa toda a altura do contêiner */
+    object-fit: cover; /* Garante que a imagem cubra o espaço sem distorção */
+}
