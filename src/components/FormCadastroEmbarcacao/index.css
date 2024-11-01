@@ -1,0 +1,111 @@
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  font-family: "Montserrat", sans-serif;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+
+.container-cadastro-embarcacoes {
+    width: 100%;
+    /* background: green; */
+    backdrop-filter: blur(10px);
+    /* border: 2px solid rgba(7, 7, 7, 0.2); */
+    border-radius: 10px;
+    /* padding: 40px; */
+    display: flex;
+    flex-wrap: wrap; /* Permite que as seções se organizem em linhas */
+    justify-content: space-between;
+    gap: 20px;
+    height: 55vh;
+  }
+  
+  
+.container-cadastro-embarcacoes h1 {
+      text-align: center;
+      font-size: 30px;
+      color: black;
+    }
+  .form-section-embarcacoes{
+    width: 100%;
+    display: flex;
+    margin: 0 15vw;
+    height: 100%;
+  }
+
+  .input-field  {
+    width: 100%;
+    height: 100%;
+    /* background: red; */
+    outline: none;
+    /* border: 2px solid rgba(255, 255, 255, 0.2); */
+    font-size: 16px;
+    color: #fff;
+    display: flex;
+    flex-flow: row wrap;
+    /* row-gap: 5vh; */
+    column-gap: 1vw;
+    justify-content: space-evenly;
+    align-items: center;
+
+  }
+
+ 
+  
+  .input-field input {
+    width: 25vw;
+    height: 7.5vh;
+    /* background: rebeccapurple; */
+    outline: none;
+    border: 1px solid rgba(19,141,147,255);
+    border-radius: 40px;
+    font-size: 16px;
+    color: black;
+    padding: 20px 45px 20px 25px;
+  }
+  
+  .input-field input::placeholder {
+    color: black;
+  }
+  
+ 
+  
+  .container-cadastro-embarcacoes .recall-forget {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14.5px;
+    margin: -15px 0 15px;
+  }
+  
+  .recall-forget label input {
+    accent-color: #050505;
+    margin-right: 4px;
+  }
+  
+  .recall-forget a {
+    color: #f4efef;
+    text-decoration: none;
+  }
+  
+  .recall-forget a:hover {
+    text-decoration: underline;
+  }
+  
+  .container-cadastro-embarcacoes .signup-link {
+    font-size: 14.5px;
+    text-align: center;
+    margin: 20px 0 15px;
+  }
+  
+  .signup-link p a {
+    color: #f4efef;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  
+  .signup-link p a:hover {
+    text-decoration: underline;
+  }
