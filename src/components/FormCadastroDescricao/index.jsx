@@ -127,17 +127,17 @@ function CadastroDescricao() {
         <div>
             <div className='containerDescricao'>
                 <form onSubmit={handleSubmit}>
-                    <div className='mainTitulo'>
+                    {/* <div className='mainTitulo'>
                         <div className='tituloDesc'>
                             <h2>Seu barco</h2>
                             <hr className='linhaHr' />
                         </div>
-                    </div>
+                    </div> */}
 
                     <div className='inputContainer'>
                         <div className='descricaoContainer'>
                             <div className='textoDesc'>
-                                <h4>Descreva sua embarcação</h4>
+                                <h3>Descreva sua embarcação</h3>
                             </div>
                             <div className='descriçaoInput'>
                                 <textarea
@@ -154,7 +154,7 @@ function CadastroDescricao() {
                         </div>
                         <div className='regrasContainer'>
                             <div className='textoDesc'>
-                                <h4>Descreva suas regras</h4>
+                                <h3>Descreva suas regras</h3>
                             </div>
                             <div className='regrasInput'>
                                 <textarea
@@ -210,7 +210,7 @@ function CadastroDescricao() {
                                     {/* {imageSrc.map((src, index) => (
                                         <img key={index} src={src} alt={`Imagem ${index}`} />
                                     ))} */}
-                                    {imageSrc && <img src={imageSrc} alt="Imagem carregada" />}
+                                    {/* {imageSrc && <img src={imageSrc} alt="Imagem carregada" />} */}
 
                                 </div>
                             </div>
