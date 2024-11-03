@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 
-function CadastroDescricao() {
+function DescricaoEmbarcacao() {
     const [inputDescricao, setInputDescricao] = useState("");
     const [inputRegras, setInputRegras] = useState("");
     const [fotosSelecionadas, setFotosSelecionadas] = useState([]);
@@ -231,4 +231,4 @@ function CadastroDescricao() {
     );
 }
 
-export default CadastroDescricao;
+export default DescricaoEmbarcacao;

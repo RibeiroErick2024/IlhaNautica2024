@@ -46,14 +46,16 @@ html {
   border-radius: 13px;
   background-color: rgba(245, 245, 245, 0.79);
 }
-.btn-icone :hover{
-/* transform: scale(2); */
-scale: 2;
+.btn-icone:hover{
+transform: scale(2);
+/* scale: 1.1; */
 }
-.icones-svg img{
+.icones-svg {
   width: 70px;
   height: 70px;
-  
+  width: 100%; /* Ajusta a largura para 100% do botão */
+  height: auto; /* Mantém a proporção do SVG */
+  max-width: 70px;
 
 }
 

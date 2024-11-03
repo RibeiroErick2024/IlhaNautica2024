@@ -2,8 +2,8 @@ import { useState } from "react";
 
 import "./index.css";
 import CadastroEmbarcacoes from "../../components/FormCadastroEmbarcacao";
-import CadastroDescricao from "../../components/FormCadastroDescricao";
-import PerfilEmbarcacao from "../../components/FormCadastroPerfilEmbarcacao";
+import PerfilEmbarcacao from "../../components/FormPerfilEmbarcacao";
+import DescricaoEmbarcacao from "../../components/FormDescricao";
 
 function CadastroLocador({titulo}) {
   
@@ -54,7 +54,7 @@ function CadastroLocador({titulo}) {
         <div className="forms-cadastro">
         <PerfilEmbarcacao />
         <CadastroEmbarcacoes titulo="Cadastro Embarcação"/>
-        <CadastroDescricao />
+        <DescricaoEmbarcacao />
         </div>
       </div>
     </>
