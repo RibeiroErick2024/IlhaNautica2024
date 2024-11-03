@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import menuIcon from '../../assets/menu.svg'; // Certifique-se de que o caminho está correto
 import './index.css'; // Supondo que você tenha um arquivo CSS para estilos
 
-function Header() {
+function HeaderPrincipal() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const menuRef = useRef(null);
 
@@ -48,4 +48,4 @@ function Header() {
     );
 }
 
-export default Header;
+export default HeaderPrincipal;

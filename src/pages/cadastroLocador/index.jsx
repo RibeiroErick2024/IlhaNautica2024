@@ -4,6 +4,7 @@ import "./index.css";
 import CadastroEmbarcacoes from "../../components/FormCadastroEmbarcacao";
 import PerfilEmbarcacao from "../../components/FormPerfilEmbarcacao";
 import DescricaoEmbarcacao from "../../components/FormDescricao";
+import HeaderPrincipal from "../../components/Header";
 
 function CadastroLocador({titulo}) {
   
@@ -14,6 +15,7 @@ function CadastroLocador({titulo}) {
 
   return (
     <>
+    {/* <HeaderPrincipal /> */}
       <div className="container-cadastro">
         <div className="titulo-cadastro">
           <h2>Seu Barco </h2>

@@ -59,4 +59,32 @@ transform: scale(2);
 
 }
 
+.responsive-svg {
+  width: 50px; /* Default size */
+  height: auto; /* Maintain aspect ratio */
+}
+
+@media (max-width: 2000px) {
+  .responsive-svg {
+      width: 500px; /* Size for larger screens */
+  }
+}
+
+@media (max-width: 1290px) {
+  .responsive-svg {
+      width: 240px; /* Adjusted size for medium screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .responsive-svg {
+      width: 130px; /* Smaller size for tablets */
+  }
+}
+
+@media (max-width: 375px) {
+  .responsive-svg {
+      width: 20px; /* Size for mobile devices */
+  }
+}
 
