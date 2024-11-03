@@ -2,6 +2,8 @@ import { useState } from "react";
 
 import "./index.css";
 import CadastroEmbarcacoes from "../../components/FormCadastroEmbarcacao";
+import CadastroDescricao from "../../components/FormCadastroDescricao";
+import PerfilEmbarcacao from "../../components/FormCadastroPerfilEmbarcacao";
 
 function CadastroLocador({titulo}) {
   
@@ -14,7 +16,7 @@ function CadastroLocador({titulo}) {
     <>
       <div className="container-cadastro">
         <div className="titulo-cadastro">
-          <h2>Seu Barco{titulo} </h2>
+          <h2>Seu Barco </h2>
           <hr className="linhaHr" />
         </div>
 
@@ -50,7 +52,9 @@ function CadastroLocador({titulo}) {
         </div>
 
         <div className="forms-cadastro">
-          <CadastroEmbarcacoes titulo="Cadastro Embarcação"/>
+        <PerfilEmbarcacao />
+        <CadastroEmbarcacoes titulo="Cadastro Embarcação"/>
+        <CadastroDescricao />
         </div>
       </div>
     </>

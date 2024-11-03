@@ -1,9 +1,8 @@
 import { useState } from "react";
 
-import "./index.css"
+import "./index.css";
 
-function CadastroEmbarcacoes(){
- 
+function CadastroEmbarcacoes() {
   const [userfabricante, setUserFabricante] = useState("");
   const [usernomeembarcacao, setNomeEmbarcacao] = useState("");
   const [usercomprimento, setComprimento] = useState("");
@@ -13,89 +12,81 @@ function CadastroEmbarcacoes(){
   const [usercapacidade, setCapacidade] = useState("");
   const [userpotencia, setPotencial] = useState("");
   const handleSubmit = (event) => {
-    
     event.preventDefault();
-
-    
-    
   };
 
   return (
-     <div className="container-cadastro-embarcacoes">
-      <form onSubmit={handleSubmit}className="form-section-embarcacoes">
-       
-          <div className="input-field">
-            <input
-              type="text"
-              placeholder="Fabricante"
-              required
-              value={userfabricante}
-              onChange={(e) => setUserFabricante(e.target.value)} />
+    <div className="container-cadastro-embarcacoes">
+      <h1 className="titulo-embarcacao">Embarcação</h1>
+      <form onSubmit={handleSubmit} className="form-section-embarcacoes">
+        <div className="input-field">
+          <input
+            type="text"
+            placeholder="Fabricante"
+            required
+            value={userfabricante}
+            onChange={(e) => setUserFabricante(e.target.value)}
+          />
 
+          <input
+            type="text"
+            placeholder="Nome da Embarcação"
+            required
+            value={usernomeembarcacao}
+            onChange={(e) => setNomeEmbarcacao(e.target.value)}
+          />
 
+          <input
+            type="text"
+            placeholder="Comprimento"
+            required
+            value={usercomprimento}
+            onChange={(e) => setComprimento(e.target.value)}
+          />
 
-            <input
-              type="text"
-              placeholder="Nome da Embarcação"
-              required
-              value={usernomeembarcacao}
-              onChange={(e) => setNomeEmbarcacao(e.target.value)} />
+          <input
+            type="text"
+            placeholder="Número de Cabines"
+            required
+            value={usernumerocabines}
+            onChange={(e) => setNumerodeCabines(e.target.value)}
+          />
 
+          <input
+            type="text"
+            placeholder="Modelo"
+            required
+            value={usermodelo}
+            onChange={(e) => setModulos(e.target.value)}
+          />
 
-            <input
-              type="text"
-              placeholder="Comprimento"
-              required
-              value={usercomprimento}
-              onChange={(e) => setComprimento(e.target.value)} />
+          <input
+            type="text"
+            placeholder="Ano de Fabricação"
+            required
+            value={userfabricacao}
+            onChange={(e) => setAnoFabricacao(e.target.value)}
+          />
 
+          <input
+            type="text"
+            placeholder="Capacidade"
+            required
+            value={usercapacidade}
+            onChange={(e) => setCapacidade(e.target.value)}
+          />
 
-            <input
-              type="text"
-              placeholder="Número de Cabines"
-              required
-              value={usernumerocabines}
-              onChange={(e) => setNumerodeCabines(e.target.value)} />
-
-
-            <input
-              type="text"
-              placeholder="Modelo"
-              required
-              value={usermodelo}
-              onChange={(e) => setModulos(e.target.value)} />
-
-
-            <input
-              type="text"
-              placeholder="Ano de Fabricação"
-              required
-              value={userfabricacao}
-              onChange={(e) => setAnoFabricacao(e.target.value)} />
-
-
-            <input
-              type="text"
-              placeholder="Capacidade"
-              required
-              value={usercapacidade}
-              onChange={(e) => setCapacidade(e.target.value)} />
-
-
-            <input
-              type="text"
-              placeholder="Potencia HP"
-              required
-              value={userpotencia}
-              onChange={(e) => setPotencial(e.target.value)} />
-
-          </div>
-    
-
-
+          <input
+            type="text"
+            placeholder="Potencia HP"
+            required
+            value={userpotencia}
+            onChange={(e) => setPotencial(e.target.value)}
+          />
+        </div>
       </form>
     </div>
   );
-};
+}
 
 export default CadastroEmbarcacoes;
