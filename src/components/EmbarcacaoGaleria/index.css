@@ -1,7 +1,17 @@
-.galeria-container {
+
+.container-fotos{
     width: 60%;
+    height: 500px; /* Altura total da galeria */
+    display: flex; /* Utiliza flexbox para alinhar os elementos */
+    margin-top: 100px;
+    flex-direction: column;
+    background-color: rgb(255, 255, 255);
+    gap: 7px;
+}
+
+.galeria-container {
+    width: 100%;
     height: 450px; /* Altura total da galeria */
-    margin-top: 100px; /* Margem superior */
     display: flex; /* Utiliza flexbox para alinhar os elementos */
     gap: 5px;
 }
@@ -38,4 +48,13 @@
     width: 100%; /* A imagem pequena ocupa toda a largura do contêiner */
     height: 100%; /* A imagem pequena ocupa toda a altura do contêiner */
     object-fit: cover; /* Garante que a imagem cubra o espaço sem distorção */
+}
+
+
+.div-fabricante-modelo-embarcacao {
+    margin-bottom: 5px;
+}
+
+.div-usuario-embarcacao{
+    margin-top: 15px;
 }
