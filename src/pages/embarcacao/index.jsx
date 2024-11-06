@@ -2,6 +2,7 @@ import React from 'react'
 import './index.css'
 import Header from '../../components/Header'
 import EmbarcacaoGaleria from '../../components/EmbarcacaoGaleria';
+import CaracteristicasEmbarcacao from '../../components/CaracteristicasEmbarcacao';
 function Embarcacao() {
   const fotosEmbarcacao = [
     'https://images.unsplash.com/photo-1548890016-d70b9be7a22f',
@@ -15,6 +16,9 @@ function Embarcacao() {
     <div className='embarcacao-container'>
       <Header />
       <EmbarcacaoGaleria fotos={fotosEmbarcacao}/>
+      <div className="caracteristicas-container">
+        <CaracteristicasEmbarcacao/>
+      </div>
     </div>
   )
 }

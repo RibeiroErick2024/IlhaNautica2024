@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Gruppo&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    font-family: "Montserrat", sans-serif;
+}
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: "Montserrat", sans-serif;
+}
+.containerDescricao{
+/* top: 80px; */
+width: 100%;
+height: 65vh;
+display: flex;
+flex-direction: column;
+background-color: white;
+padding: 0;
+padding-left: 5%;
+padding-right: 5%;
+
+
+}
+.mainTitulo{
+    margin-top: 5%;
+    height: 5%;
+    /* margin-bottom: 3%; */
+}
+/* .tituloDesc {
+    height: 5%;
+
+} */
+
+.tituloDesc h2{
+ 
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 28px;
+/* line-height: 39px; */
+/* display: flex; */
+/* align-items: center; */
+color: #000000;
+/* height: 12%; */
+width: 100%;
+/* margin-left: 15vh; */
+margin: 0;
+font-family: "Montserrat", sans-serif;
+
+}
+/* .mainTitulo, .fotosContainer, .inputContainer{
+ 
+    margin-left: 5%;
+    margin-right: 5%;
+    padding:  0;
+    } */
+
+.linhaHr{
+    border-top: 4px solid rgba(19,141,147,255);
+ 
+}
+
+.textoDesc h3{
+    font-size: 1.5rem;
+    margin: 0;
+    padding-bottom: 1.2vh;
+    font-weight: 500;
+    font-family: "Montserrat", sans-serif;
+    color: #000000;
+    letter-spacing: 0.5px;
+}
+
+.inputContainer{
+    height: 35vh;
+    width: 100%;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.descricaoContainer, .regrasContainer{
+    /* padding-left:15%; */
+    /* padding-right: 15%; */
+  width: 100%;
+  padding: 0 12vw;
+    
+}
+
+
+textarea {
+    resize: none;
+  }
+
+
+.descriçaoInput textarea, .regrasInput textarea{
+    height: 12vh;
+    width: 100%;
+    font-size: 1rem;
+    border-radius: 13px;
+    font-family: "Montserrat", sans-serif;
+    border: 1px solid rgba(19,141,147,255);
+    padding: 0.9rem;
+    letter-spacing: 0.5px;
+    color: black;
+    font-weight: 300;
+    
+
+}
+.descriçaoInput textarea ::placeholder, .regrasInput textarea ::placeholder{
+   color: rgb(51, 50, 50);
+   padding-left: 0.5rem;
+
+}
+
+.fotosContainer{
+    
+    height: 30vh;
+    /* width: 100%; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 3vh;
+}
+
+.fotosContainer .tituloDesc{
+    height: 10%;
+    margin-bottom: 3vh;
+}
+
+.inputFotos{
+    width: 100%;
+    height: 80%;
+    padding-top: 2%;
+    display: flex;
+    
+}
+.imagesList{
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    width: 84%;
+    height: 100%;
+}
+.imageSelecionada{
+    width: 250px;
+    height: 250px;
+    width: 22.5%;
+    height: 100%;
+    border: 2px solid rgba(19,141,147,255);
+    border-radius: 30px;
+}
+
+.btnSelecionar {
+    width: 250px;
+    height: 250px;
+    width: 16%;
+    height: 100%;
+    border: 3px solid rgba(19,141,147,255);
+    background-color: transparent;
+    border-radius: 30px;
+}
+
+
+  .toastContainer{
+    font-size: 28px;
+    width: 100%;
+    height: 20vh;
+
+  }
+
+  .btnContainer{
+    width: 100%;
+    height: 5%;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+  }
+  .btnAnuncie {
+    align-self:flex-end;
+    justify-content: flex-end;
+    font-size: 20px; 
+    height: 100%;
+    width: 15%;
+    color: white;
+    background-color: rgba(19,141,147,255);
+    border-radius: 10px;
+
+  }

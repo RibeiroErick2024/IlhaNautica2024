@@ -1,0 +1,7 @@
+.caracteristica-container{
+    display: flex;
+    width: 30%;
+    height: 80%;
+    background-color: rgb(219, 219, 219);
+   
+}

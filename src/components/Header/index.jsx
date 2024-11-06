@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import menuIcon from '../../assets/menu.svg'; // Certifique-se de que o caminho está correto
 import './index.css'; // Supondo que você tenha um arquivo CSS para estilos
 
-function Header() {
+function HeaderPrincipal() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const menuRef = useRef(null);
 
@@ -38,9 +38,9 @@ function Header() {
                 />
                 {isMenuOpen && (
                     <div className="dropdown-menu">
-                        <a href="/">Login</a>
-                        <a href="/anuncie">Anuncie seu barco</a>
-                        <a href="/sobre">Sobre nós</a>
+                        <a href="/">Perfil</a>
+                        <a href="/about">Anuncie seu barco</a>
+                        <a href="/contact">Sobre nós</a>
                     </div>
                 )}
             </div>
@@ -48,4 +48,4 @@ function Header() {
     );
 }
 
-export default Header;
+export default HeaderPrincipal;
