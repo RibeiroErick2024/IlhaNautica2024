@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
+import { useForm, Controller } from "react-hook-form";
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField, Select, MenuItem, InputLabel, FormControl } from "@mui/material";
 import "./index.css";
-import { useForm } from "react-hook-form";
-import { useState } from "react";
-import Select from "react-select";
-import Stepper from "awesome-react-stepper";
+
+import { ColorButtonCancelar, ColorButtonSalvar,  ContainerTextFieldInput,  SelectInput,  TextFieldInput, Titulo, ContainerModal } from "./styles.jsx";
 
 function CadastroComplete() {
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   const {
     register,
@@ -13,71 +16,19 @@ function CadastroComplete() {
     watch,
     setError,
     clearErrors,
+    control,
     formState: { errors },
   } = useForm();
+  // Configuração do react-hook-form para gerenciamento de formulário e validação
+  // const { control, handleSubmit, formState: { errors }, setValue } = useForm();
 
-  const handleInputChange = (fieldName) => {
-    clearErrors(fieldName);
+  // Função chamada no envio do formulário
+  const onSubmit = (data) => {
+    console.log(data);  // Exibe os dados preenchidos no console
+    handleClose();      // Fecha o modal após o envio
   };
 
-  const onSubmit = () => {
-    navigate("/home");
-  };
-
-
-  return (
-    <div className="container-cadastro-complete">
-      <div className="container-modal">
-        <div className="step">
-          <Stepper
-          
-            strokeColor="white"
-            fillStroke="#1DE59F"
-            activeColor="#1DE59F"
-            activeProgressBorder="4px solid white"
-            allowClickControl="false"
-            showProgressBar='true'
-            stroke={20}
-            submitBtn={<button className="btnAvancar">Salvar</button>}
-            continueBtn={<button  className="btnAvancar">Avançar</button>}
-            backBtn={<button  className="btnAvancar">Voltar</button>}
-            // onSubmit={(step) => alert(`Thank you!!! Final Step -> ${step}`)}
-          >
-            <div className="stepperSubDiv">
-              <StepUmComplete />
-            </div>
-            <div className="stepperSubDiv">
-            <StepUmComplete />
-            </div>
-            <div className="stepperSubDiv">
-            <StepUmComplete />
-            </div>
-          </Stepper>
-        </div>
-      </div>
-    </div>
-  );
-}
-function StepUmComplete() {
-  const [Genero, setGenero] = useState("");
-
-  const {
-    register,
-    handleSubmit,
-    watch,
-    setError,
-    clearErrors,
-    formState: { errors },
-  } = useForm();
-
-  const handleInputChange = (fieldName) => {
-    clearErrors(fieldName);
-  };
-
-  const onSubmit = () => {
-    navigate("/home");
-  };
-  const options = [
+  const opcoes = [
     { value: "masculino", label: "Masculino" },
     { value: "feminino", label: "Feminino" },
     { value: "nao-binario", label: "Não-binário" },
@@ -88,94 +39,127 @@ function StepUmComplete() {
   ];
 
   return (
-    <>
-        <div className="titulo">
-          <h3>Termine seu cadastro</h3>
-        </div>
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          className="form-section-cadastro-complete"
-        >
-          <div className="input-field">
-            <input
-              type="text"
-              placeholder="Nome Completo"
-              {...register("nomeCompleto", {
-                required: "O nome completo é obrigatório.",
-                minLength: {
-                  value: 6,
-                  message: "O nome deve ter pelo menos 6 caracteres.",
-                },
-              })}
-              onChange={() => handleInputChange("nomeCompleto")}
+    <div>
+      <Button onClick={handleOpen}>Abrir modal</Button>
+
+      <ContainerModal open={open} onClose={handleClose}>
+        <Titulo>Complete seu Cadastro</Titulo>
+        <ContainerTextFieldInput>
+          <form onSubmit={handleSubmit(onSubmit)} >
+            <TextFieldInput
+              fullWidth
+              label="Nome Completo"
+              variant="outlined"
+              margin="dense"
+              {...register("nomeCompleto", { required: "Nome Completo é obrigatório", minLength: 6 })}
+              error={!!errors.nomeCompleto}
+              helperText={errors.nomeCompleto?.message}
             />
-            {errors.nomeCompleto && (
-              <p style={{ color: "red", marginLeft: "10px", marginTop: "8px" }}>
-                {errors.nomeCompleto.message}
-              </p>
-            )}
-
-            <input
-              type="date"
-              placeholder="Data de nascimento"
-              onChange={() => handleInputChange("email")}
+            <TextFieldInput
+              fullWidth
+              type="number"
+              label="Data de Nascimento"
+              variant="outlined"
+              margin="dense"
+              {...register("dataNascimento", { required: "Data de Nascimento é obrigatória" })}
+              error={!!errors.dataNascimento}
+              helperText={errors.dataNascimento?.message}
             />
-            <input type="text" placeholder="CPF | CPNJ" />
-            {/* <input type="text" placeholder="Gênero" /> */}
-            <div className="input-field-select">
-              <Select
-                options={options}
-                // className="input-field-select"
-                placeholder="Selecione o Gênero"
-                required
-                styles={{
-                  option: (base) => ({
-                    ...base,
 
-                    // border: `1px dotted grey`,
-                    height: "40px",
-                    // lineHeight: "30px",
-                    fontSize: "1.5vw",
-                    // padding: "1vh 1vh",
-                    fontFamily: '"Montserrat", sans-serif',
-                    color: "black",
-                  }),
+            {/* Campo de seleção de Gênero */}
+            <FormControl fullWidth margin="dense" error={!!errors.genero}>
+              <InputLabel>Gênero</InputLabel>
+              <Controller
+                name="genero"
+                control={control}
+                rules={{ required: "Gênero é obrigatório" }}
+                render={({ field }) => (
 
-                  control: (base) => ({
-                    ...base,
-
-                    width: "100%",
-                    height: "6.5vh",
-                    border: "1px solid rgba(19,141,147,255)",
-                    fontFamily: '"Montserrat", sans-serif',
-                    fontSize: "1.3vw",
-                    color: "black",
-                    paddingLeft: "2.5%",
-                    /* padding: 20px 45px 20px 25px; */
-                    /* background-color: #1DE59F; */
-                  }),
-                }}
-                theme={(theme) => ({
-                  ...theme,
-                  border: "1px dotted grey",
-                  borderRadius: "40px",
-                  colors: {
-                    ...theme.colors,
-                    primary25: "#1DE59F",
-                    primary: "#8debcad2",
-                  },
-                })}
+                  <SelectInput {...field} label="Gênero" className="input-field-select">
+                    {/* {opcoes.map((opcoe) => (
+                      <MenuItem
+                        key={opcoe}
+                        value={opcoe}
+                        style={getStyles(opcoe, theme)}
+                      >
+                        {opcoe}
+                      </MenuItem>
+                    ))} */}
+                    <MenuItem selected className="MenuItem" value="masculino">Masculino</MenuItem>
+                    <MenuItem value="feminino">Feminino</MenuItem>
+                    <MenuItem value="nao-binario">Não-binário</MenuItem>
+                    <MenuItem value="transgenero">Transgênero</MenuItem>
+                    <MenuItem value="genero_fluido">Gênero Fluido</MenuItem>
+                    <MenuItem value="outro">Outro</MenuItem>
+                    <MenuItem value="prefiro_nao_dizer">Prefiro não dizer</MenuItem>
+                  </SelectInput>
+                )}
               />
-            </div>
-                       <input type="tel" placeholder="Telefone" />
-          </div>
-          {/* <div className="btnContainer">
-            <button type="submit" className="btnAvancar">
-              Avançar
-            </button>
-          </div> */}
-        </form>  
-    </>
+              {errors.genero && <p style={{ color: 'red' }}>{errors.genero.message}</p>}
+            </FormControl>
+            <TextFieldInput
+              fullWidth
+              label="CEP"
+              variant="outlined"
+              margin="dense"
+              {...register("zipCode", { required: "CEP é obrigatório" })}
+              error={!!errors.zipCode}
+              helperText={errors.zipCode?.message}
+            />
+            <TextFieldInput
+              fullWidth
+              label="Rua"
+              variant="outlined"
+              margin="dense"
+              {...register("street", { required: "Rua é obrigatória" })}
+              error={!!errors.street}
+              helperText={errors.street?.message}
+            />
+            <TextFieldInput
+              fullWidth
+              type="number"
+              label="Número"
+              variant="outlined"
+              margin="dense"
+              {...register("number", { required: "Número é obrigatório" })}
+              error={!!errors.number}
+              helperText={errors.number?.message}
+            />
+            <TextFieldInput
+              fullWidth
+              label="Cidade"
+              variant="outlined"
+              margin="dense"
+              {...register("city", { required: "Cidade é obrigatória" })}
+              error={!!errors.city}
+              helperText={errors.city?.message}
+            />
+            <TextFieldInput
+              fullWidth
+              label="Bairro"
+              variant="outlined"
+              margin="dense"
+              {...register("neighborhood", { required: "Bairro é obrigatório" })}
+              error={!!errors.neighborhood}
+              helperText={errors.neighborhood?.message}
+            />
+            <TextFieldInput
+              fullWidth
+              label="País"
+              variant="outlined"
+              margin="dense"
+              {...register("country", { required: "País é obrigatório" })}
+              error={!!errors.country}
+              helperText={errors.country?.message}
+            />
+            <DialogActions>
+              <ColorButtonCancelar onClick={handleClose}>Cancelar</ColorButtonCancelar>
+              <ColorButtonSalvar type="submit" variant="contained" color="primary"  >Salvar</ColorButtonSalvar>
+            </DialogActions>
+          </form>
+        </ContainerTextFieldInput>
+      </ContainerModal>
+    </div>
   );
 }
 
