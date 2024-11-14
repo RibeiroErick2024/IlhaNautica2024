@@ -21,7 +21,7 @@ function EmbarcacaoGaleria({ fotos }) {
       </div>
 
       <div className="div-usuario-embarcacao">
-        <h2>é us guri</h2>
+        <h3>é us guri</h3>
       </div>
     </div>
   );
