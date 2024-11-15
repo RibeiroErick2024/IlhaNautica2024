@@ -14,9 +14,11 @@ import FormDescricao from "../components/FormDescricao";
 
 const router = createBrowserRouter([
     {path: "/", element: <Login />},
-    {path: "/cadastroLocador", element: <CadastroLocador/>},
+     {path: "/cadastroLocador", element: <CadastroLocador/>},//correto
     {path: "/cadastroD", element: <FormDescricao/>},
     {path: "/cadastroEmbarcacoes", element: <CadastroEmbarcacoes/>},
+
+   
     { path: "/recuperacaoSenha", element: <RecuperacaoSenha /> },
     { path: "/home", element: <Home /> },
 

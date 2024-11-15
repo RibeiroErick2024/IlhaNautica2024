@@ -5,13 +5,23 @@ import CadastroEmbarcacoes from "../../components/FormCadastroEmbarcacao";
 import PerfilEmbarcacao from "../../components/FormPerfilEmbarcacao";
 import DescricaoEmbarcacao from "../../components/FormDescricao";
 import HeaderPrincipal from "../../components/Header";
+import PerfilMarinheiro from "../../components/FormPerfilMarinheiro"
+import CadastroEmbarcacaoContinua from "../../components/FormCadastroEmbarcacaoContinua"
+import { useNavigate } from "react-router-dom";
+
+
 
 function CadastroLocador({titulo}) {
-  
+  const navigate = useNavigate();
+
   const handleSubmit = (event) => {
     event.preventDefault();
   };
-
+  
+  //teste 
+  const handleClick = () => {
+    navigate("/home"); 
+  };
 
   return (
     <>
@@ -23,39 +33,42 @@ function CadastroLocador({titulo}) {
         </div>
 
         <div className="icones-embarcacao">
-          <button type="button" className="btn-icone">
+          <button type="button" className="btn-icone" onClick={handleClick}>
             <img
               className="icon-svg"
-              src="./src/assets/jetski.svg"
+              src="./images/Drag Boat.png"
               alt="Icone Jet-ski"
             />
           </button>
           <button className="btn-icone">
             <img
               className="icon-svg"
-              src="./src/assets/iate.svg"
+              src="./images/Yacht.png"
               alt="Icone Iate"
             />
           </button>
           <button className="btn-icone">
             <img
               className="icon-svg"
-              src="./src/assets/lancha.svg"
+              src="./images/Boat Launch.png"
               alt="Icone Lancha"
             />
           </button>
           <button className="btn-icone">
             <img
               className="icon-svg"
-              src="./src/assets/veleiro.svg"
+              src="./images/Sailboat.png"
               alt="Icone Veleiro"
             />
           </button>
         </div>
 
         <div className="forms-cadastro">
+        
         <PerfilEmbarcacao />
+        <CadastroEmbarcacaoContinua />
         <CadastroEmbarcacoes titulo="Cadastro Embarcação"/>
+        <PerfilMarinheiro />
         <DescricaoEmbarcacao />
         </div>
       </div>
