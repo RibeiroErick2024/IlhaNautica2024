@@ -12,6 +12,7 @@ function ListagemBarcos() {
     const limit = 10;
     const observer = useRef();
 
+    
     // Função para buscar barcos na API do Unsplash
     const fetchBarcos = async () => {
         setLoading(true);

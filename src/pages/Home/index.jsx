@@ -10,7 +10,7 @@ function Home() {
         <Header/>
       <div className='conteudo-container'>
         <Filtros/>
-        <ListagemBarcos/>
+        <Card_barco/>
       </div>
     </div>
   )
