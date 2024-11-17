@@ -40,13 +40,13 @@ const FormLogin = ({ onToggleForm }) => {
       const response = await api.post("/auth/login", loginData);
 
       console.log("Login realizado com sucesso:", response);
-      login(response.data.token, response.data.idUsuario); // Aqui você faz login com o token retornado
-      navigate("/home"); // Redireciona para a página inicial
+      login(response.data.token, response.data.idUsuario); 
+      navigate("/home");
     } catch (error) {
       console.log("Erro de login:", error);
 
       if (error.response) {
-        // Se a resposta do servidor contiver erro
+
         if (error.response.status === 401) {
           if (error.response.data.message === "Usuário inválido.") {
             setError("email", { type: "manual", message: "Usuário inválido." });
@@ -54,7 +54,7 @@ const FormLogin = ({ onToggleForm }) => {
             setError("senha", { type: "manual", message: "Senha incorreta." });
           }
         } else {
-          // Para outros erros do servidor
+    
           console.error("Erro do servidor:", error);
         }
       } else {
