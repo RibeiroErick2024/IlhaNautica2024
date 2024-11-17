@@ -31,6 +31,8 @@ api.interceptors.request.use(
     return config;
   },
   (error) => {
+    console.log(error)
+
     return Promise.reject(error);
   },
 );
@@ -40,8 +42,10 @@ api.interceptors.response.use(
     return response;
   },
   (error) => {
+    console.log(error)
     if (error.response && error.response.status === 401) {
-      window.location.href = "/login";
+      // window.location.href = "/login";
+      
     }
     return Promise.reject(error);
   },
