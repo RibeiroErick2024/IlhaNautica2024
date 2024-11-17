@@ -3,6 +3,7 @@ import "./index.css";
 import { Eye, EyeOff, Mail } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form"; 
+import api from "../../config/axios";
 
 const FormLogin = ({ onToggleForm }) => {
   const { register, handleSubmit, formState: { errors }, setError, clearErrors } = useForm();
@@ -26,6 +27,39 @@ const FormLogin = ({ onToggleForm }) => {
     if (data.email === "admin" && data.senha === "123") {
       console.log("Sucesso:", data);
       navigate("/home"); 
+    }
+  };
+  async function handleLogin (data){
+    data.preventDefault();
+
+    const loginData = {
+      email: "email",
+      senha: "data.senha",
+    };
+    try {
+      const response = await api.post("/auth/login", loginData);
+
+      console.log("Login realizado com sucesso:", response);
+      login(response.data.token, response.data.idUsuario); // Aqui você faz login com o token retornado
+      navigate("/home"); // Redireciona para a página inicial
+    } catch (error) {
+      console.log("Erro de login:", error);
+
+      if (error.response) {
+        // Se a resposta do servidor contiver erro
+        if (error.response.status === 401) {
+          if (error.response.data.message === "Usuário inválido.") {
+            setError("email", { type: "manual", message: "Usuário inválido." });
+          } else if (error.response.data.message === "Senha incorreta.") {
+            setError("senha", { type: "manual", message: "Senha incorreta." });
+          }
+        } else {
+          // Para outros erros do servidor
+          console.error("Erro do servidor:", error);
+        }
+      } else {
+        console.error("Erro desconhecido:", error);
+      }
     }
   };
 
