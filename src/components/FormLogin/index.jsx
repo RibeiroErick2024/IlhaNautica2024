@@ -35,21 +35,18 @@ const FormLogin = ({ onToggleForm }) => {
       login(response.data.token, response.data.idUsuario);
       navigate("/home");
     } catch (error) {
-      console.log("Erro de login:", error);
+      console.log("Erro de login:", error.response.data);
 
-      if (error.response) {
-        if (error.response.status === 401) {
-          // if (error.response.data.message === "Usuário inválido.") {
-            setError("email", { type: "manual", message: "Usuário inválido." });
-          // } else if (error.response.data.message === "Senha incorreta.") {
+        if (error.status === 401) {
+          console.log("OI")
+          if (error.response.data.includes("Email")) {
+            setError("email", { type: "manual", message: "Email inválido." });
+          } else if (error.response.data.includes("Senha")) {
             setError("senha", { type: "manual", message: "Senha incorreta." });
-          // }
+          }
         } else {
           console.error("Erro do servidor:", error);
-        }
-      } else {
-        console.error("Erro desconhecido:", error.response);
-      }
+        } 
     }
   }
 

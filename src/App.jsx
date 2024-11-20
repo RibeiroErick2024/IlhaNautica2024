@@ -26,7 +26,7 @@ function App() {
           </Route>
 
 
-          {/* <Route path="*" element={<Navigate to="/home" />} /> */}
+          <Route path="*" element={<Navigate to="/home" />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>
