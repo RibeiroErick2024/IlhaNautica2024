@@ -3,11 +3,11 @@ import './App.css'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
 import Login from './pages/login/Login';
-import Home from './pages/home/Home';
 import RecuperacaoSenha from './components/FormRecuperacaoSenha';
 import CadastroLocador from './pages/cadastroLocador';
 import CadastroEmbarcacoes from './components/FormCadastroEmbarcacao';
 import ProtectedRoute from './components/ProtectedRoute';
+import Home from './pages/Home';
 
 
 function App() {
