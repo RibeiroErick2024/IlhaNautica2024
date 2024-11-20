@@ -106,7 +106,7 @@ html {
   }
 
   .input-field-select {
-    width: 100%;
+    width: 49%;
     /* height: 6.5vh; */
     /* background: rebeccapurple; */
     outline: none;
@@ -149,3 +149,5 @@ html {
     font-weight: 500;
     line-height: 29px;
   }
+
+

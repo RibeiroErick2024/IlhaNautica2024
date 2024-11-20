@@ -1,15 +1,37 @@
+import "./index.css";
 import React, { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
-import { Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField, Select, MenuItem, InputLabel, FormControl } from "@mui/material";
-import "./index.css";
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  TextField,
+  Select,
+  MenuItem,
+  InputLabel,
+  FormControl,
+} from "@mui/material";
 
-import { ColorButtonCancelar, ColorButtonSalvar,  ContainerTextFieldInput,  SelectInput,  TextFieldInput, Titulo, ContainerModal } from "./styles.jsx";
+import {
+  ColorButtonCancelar,
+  ColorButtonSalvar,
+  ContainerTextFieldInput,
+  SelectInput,
+  TextFieldInput,
+  Titulo,
+  ContainerModal,
+  FormControlDiv,
+} from "./styles.jsx";
+
+import api from "../../config/axios";
 
 function CompletarCadastro() {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
+  const { idUsuario } = useAuth();
   const {
     register,
     handleSubmit,
@@ -19,18 +41,16 @@ function CompletarCadastro() {
     control,
     formState: { errors },
   } = useForm();
-  // Configuração do react-hook-form para gerenciamento de formulário e validação
-  // const { control, handleSubmit, formState: { errors }, setValue } = useForm();
 
-  // Função chamada no envio do formulário
-  const onSubmit = (data) => {
-    console.log(data);  // Exibe os dados preenchidos no console
-    handleClose();      // Fecha o modal após o envio
+  const onSubmit = async (data) => {
+    await handleCadastro(data);
+    handleClose();
   };
 
   const opcoes = [
-    { value: "masculino", label: "Masculino" },
+    { value: "empresa", label: "Não se aplica (Empresa)" },
     { value: "feminino", label: "Feminino" },
+    { value: "masculino", label: "Masculino" },
     { value: "nao-binario", label: "Não-binário" },
     { value: "transgenero", label: "Transgênero" },
     { value: "genero_fluido", label: "Gênero fluido" },
@@ -38,82 +58,153 @@ function CompletarCadastro() {
     { value: "prefiro_nao_dizer", label: "Prefiro não dizer" },
   ];
 
+  async function handleCadastro(data) {
+
+    const endereco = {
+      bairro: data.bairro,
+      cep: data.cep,
+      cidade: data.cidade,
+      rua: data.rua,
+      numero: data.numero,
+      usuario: {
+        id: {idUsuario}
+      }
+    };
+
+    // Criar o objeto JSON com os dados organizados
+    const usuario = {
+      id:{idUsuario},
+      nomeCompleto: data.nomeCompleto,
+      cpf: data.cpf,
+      dataNascimento: data.dataNascimento,
+      genero: data.genero,
+      telefone: data.telefone,
+     
+    };
+    console.log("data", usuario);
+    try {
+      const response = await api.post(
+        `usuario/completarcadastro/${idUsuario}`,
+        usuario
+      );
+      // const responseEd = await api.post(
+      //   "endereco/usuario/",
+      //   endereco
+      // );
+      // console.log(responseEd)
+
+      console.log("Console", response);
+    } catch (error) {
+      console.log("Console", error.response.data);
+    }
+  }
+
   return (
     <div>
       <Button onClick={handleOpen}>Abrir modal</Button>
 
-      <ContainerModal open={open} onClose={handleClose}>
+      <ContainerModal
+        open={open}
+        onClose={handleClose}
+        fullWidth={true}
+        maxWidth={"lg"}
+      >
         <Titulo>Complete seu Cadastro</Titulo>
         <ContainerTextFieldInput>
-          <form onSubmit={handleSubmit(onSubmit)} >
+          <form onSubmit={handleSubmit(onSubmit)}>
             <TextFieldInput
               fullWidth
               label="Nome Completo"
               variant="outlined"
               margin="dense"
-              {...register("nomeCompleto", { required: "Nome Completo é obrigatório", minLength: 6 })}
+              {...register("nomeCompleto", {
+                required: "Nome Completo é obrigatório",
+                minLength: 6,
+              })}
               error={!!errors.nomeCompleto}
               helperText={errors.nomeCompleto?.message}
             />
             <TextFieldInput
               fullWidth
-              type="number"
+              focused
+              type="date"
               label="Data de Nascimento"
               variant="outlined"
               margin="dense"
-              {...register("dataNascimento", { required: "Data de Nascimento é obrigatória" })}
+              {...register("dataNascimento", {
+                required: "Data de Nascimento é obrigatória",
+              })}
               error={!!errors.dataNascimento}
               helperText={errors.dataNascimento?.message}
             />
-
-            {/* Campo de seleção de Gênero */}
-            <FormControl fullWidth margin="dense" error={!!errors.genero}>
-              <InputLabel>Gênero</InputLabel>
+            <TextFieldInput
+              fullWidth
+              type="text"
+              label="CPF"
+              variant="outlined"
+              margin="dense"
+              {...register("cpf", {
+                required: "CPF ou CPNJ são obrigatórios",
+                pattern: {
+                  value: /^[0-9]{11,13}$/,
+                  message: "CPF ou CNPJ inválido",
+                },
+              })}
+              error={!!errors.cpf}
+              helperText={errors.cpf?.message}
+            />
+            <TextFieldInput
+              fullWidth
+              type="tel"
+              label="Telefone"
+              variant="outlined"
+              margin="dense"
+              {...register("telefone", { required: "Telefone é obrigatória" })}
+              error={!!errors.telefone}
+              helperText={errors.telefone?.message}
+            />
+            <FormControlDiv margin="dense">
               <Controller
                 name="genero"
                 control={control}
+                // defaultValue="prefiro_nao_dizer"
                 rules={{ required: "Gênero é obrigatório" }}
                 render={({ field }) => (
-
-                  <SelectInput {...field} label="Gênero" className="input-field-select">
-                    {/* {opcoes.map((opcoe) => (
-                      <MenuItem
-                        key={opcoe}
-                        value={opcoe}
-                        style={getStyles(opcoe, theme)}
-                      >
-                        {opcoe}
+                  <SelectInput
+                    fullWidth
+                    select
+                    label="Gênero"
+                    {...register("genero", { required: "Selecione uma opcão" })}
+                    error={!!errors.genero}
+                    helperText={errors.genero?.message}
+                  >
+                    {opcoes.map((option) => (
+                      <MenuItem key={option.value} value={option.value}>
+                        {option.label}
                       </MenuItem>
-                    ))} */}
-                    <MenuItem selected className="MenuItem" value="masculino">Masculino</MenuItem>
-                    <MenuItem value="feminino">Feminino</MenuItem>
-                    <MenuItem value="nao-binario">Não-binário</MenuItem>
-                    <MenuItem value="transgenero">Transgênero</MenuItem>
-                    <MenuItem value="genero_fluido">Gênero Fluido</MenuItem>
-                    <MenuItem value="outro">Outro</MenuItem>
-                    <MenuItem value="prefiro_nao_dizer">Prefiro não dizer</MenuItem>
+                    ))}
                   </SelectInput>
                 )}
               />
-              {errors.genero && <p style={{ color: 'red' }}>{errors.genero.message}</p>}
-            </FormControl>
+            </FormControlDiv>
+
             <TextFieldInput
               fullWidth
               label="CEP"
               variant="outlined"
               margin="dense"
-              {...register("zipCode", { required: "CEP é obrigatório" })}
-              error={!!errors.zipCode}
-              helperText={errors.zipCode?.message}
+              {...register("cep", { required: "CEP é obrigatório" })}
+              error={!!errors.cep}
+              helperText={errors.cep?.message}
             />
             <TextFieldInput
               fullWidth
               label="Rua"
               variant="outlined"
               margin="dense"
-              {...register("street", { required: "Rua é obrigatória" })}
-              error={!!errors.street}
-              helperText={errors.street?.message}
+              {...register("rua", { required: "Rua é obrigatória" })}
+              error={!!errors.rua}
+              helperText={errors.rua?.message}
             />
             <TextFieldInput
               fullWidth
@@ -121,40 +212,42 @@ function CompletarCadastro() {
               label="Número"
               variant="outlined"
               margin="dense"
-              {...register("number", { required: "Número é obrigatório" })}
-              error={!!errors.number}
-              helperText={errors.number?.message}
+              {...register("numero", { required: "Número é obrigatório" })}
+              error={!!errors.numero}
+              helperText={errors.numero?.message}
             />
             <TextFieldInput
               fullWidth
               label="Cidade"
               variant="outlined"
               margin="dense"
-              {...register("city", { required: "Cidade é obrigatória" })}
-              error={!!errors.city}
-              helperText={errors.city?.message}
+              {...register("cidade", { required: "Cidade é obrigatória" })}
+              error={!!errors.cidade}
+              helperText={errors.cidade?.message}
             />
             <TextFieldInput
               fullWidth
               label="Bairro"
               variant="outlined"
               margin="dense"
-              {...register("neighborhood", { required: "Bairro é obrigatório" })}
-              error={!!errors.neighborhood}
-              helperText={errors.neighborhood?.message}
+              {...register("bairro", {
+                required: "Bairro é obrigatório",
+              })}
+              error={!!errors.bairro}
+              helperText={errors.bairro?.message}
             />
-            <TextFieldInput
-              fullWidth
-              label="País"
-              variant="outlined"
-              margin="dense"
-              {...register("country", { required: "País é obrigatório" })}
-              error={!!errors.country}
-              helperText={errors.country?.message}
-            />
+
             <DialogActions>
-              <ColorButtonCancelar onClick={handleClose}>Cancelar</ColorButtonCancelar>
-              <ColorButtonSalvar type="submit" variant="contained" color="primary"  >Salvar</ColorButtonSalvar>
+              <ColorButtonCancelar onClick={handleClose}>
+                Cancelar
+              </ColorButtonCancelar>
+              <ColorButtonSalvar
+                type="submit"
+                variant="contained"
+                color="primary"
+              >
+                Salvar
+              </ColorButtonSalvar>
             </DialogActions>
           </form>
         </ContainerTextFieldInput>

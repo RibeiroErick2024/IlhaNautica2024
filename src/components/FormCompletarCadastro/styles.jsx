@@ -1,11 +1,11 @@
 import {makeStyles} from '@mui/styles';
-import { Button, Dialog, DialogContent, DialogTitle, Select, TextField } from '@mui/material';
+import { Button, Dialog, DialogContent, DialogTitle, Select, TextField, FormControl, outlinedInputClasses } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { purple, lightGreen, lightBlue, cyan } from '@mui/material/colors';
 
 
 export const Titulo = styled(DialogTitle)(({ theme }) => ({
-    color: theme.palette.getContrastText(cyan[300]),
+    theme: theme.palette.getContrastText(cyan[300]),
     // backgroundColor: "#1DE59F",
     // width: "100%",
    
@@ -54,26 +54,30 @@ export const ColorButtonCancelar = styled(Button)(({ theme }) => ({
 
 export const ContainerModal= styled(Dialog)(({ theme }) => ({
     color: theme.palette.getContrastText(lightBlue[300]),
-    //  width: "100%",
+    fullWidth: true,
+    maxWidth:'lg',
+    width: "100%",
     //  alignItems: "center",
     //  display: "flex",
     //  flexDirection: "column",
     //  justifyContent: "space-evenly",
      padding: "0 1vw",
-     borderRadius: "20px",
-         // '&:hover': {
+    //  borderRadius: "40px",
+    //      '&:hover': {
     //   backgroundColor: purple[700],
     // },
   }));
 
 export const ContainerTextFieldInput= styled(DialogContent)(({ theme }) => ({
     color: theme.palette.getContrastText(lightBlue[300]),
-    // width: "10vw",
+    width: "100%",
     //  alignItems: "center",
-    //  display: "flex",
-    //  flexDirection: "column",
-    //  justifyContent: "space-evenly",
-     padding: "0% 15%",
+     display: "flex",
+     flexDirection: "row",
+     justifyContent: "space-evenly",
+    //  padding: "0% 3%",
+    //  flexWrap: "wrap"
+    //  borderRadius: "40px",
 
     // '&:hover': {
     //   backgroundColor: purple[700],
@@ -81,68 +85,40 @@ export const ContainerTextFieldInput= styled(DialogContent)(({ theme }) => ({
   }));
 export const TextFieldInput= styled(TextField)(({ theme }) => ({
     color: theme.palette.getContrastText(lightBlue[300]),
-    width: "80%",
+    width: "40%",
      border: "2px solid rgba(19,141,147,255)",
+     margin: "1% 3%",
     //  alignItems: "center",
     //  display: "flex",
     //  flexDirection: "column",
     //  justifyContent: "space-evenly",
-    borderRadius: "20px",
+    borderRadius: "3px",
+   
     // '&:hover': {
     //   backgroundColor: purple[700],
     // },
   }));
-  export const SelectInput= styled(Select)(({ theme }) => ({
+  export const FormControlDiv = styled(FormControl)(({ theme }) => ({
     color: theme.palette.getContrastText(lightBlue[300]),
-    width: "80%",
-     border: "2px solid rgba(19,141,147,255)",
-    borderRadius: "20px",
+    width: "40%",
+    margin: "1% 3%",
+
+    // borderRadius: "20px",
     // '&:hover': {
     //   backgroundColor: purple[700],
     // },
   }));
-const useStyles = makeStyles((theme) => ({
-  dialog: {
-    backgroundColor: "wheat", // Cor de fundo do modal
-    borderRadius: "1vw", // Bordas arredondadas do modal
-  },
-  paper: {
-    padding: "2em", // Adiciona um pouco de padding no conteúdo do modal
-  },
-  title: {
-    fontSize: "2vw", // Tamanho da fonte para o título
-    fontWeight: "bold",
-    color: "#333", // Cor do título
-  },
-  formContainer: {
-    padding: "20px",
-    backgroundColor: "white", // Fundo branco para o formulário
-    borderRadius: "12px",
-  },
-  inputField: {
-    marginBottom: "15px",
-    borderRadius: "40px",
-    border: "1px solid rgba(19,141,147,255)", // Bordas personalizadas
-  },
-  selectField: {
-    marginBottom: "15px",
-    borderRadius: "40px",
-    border: "1px solid rgba(19,141,147,255)",
-  },
-  button: {
-    backgroundColor: "#1DE59F", // Cor do botão
-    color: "white",
-    padding: "10px 20px",
-    borderRadius: "12px",
-    fontSize: "1vw",
-    '&:hover': {
-      backgroundColor: "#0f9c7f", // Cor de hover do botão
-    }
-  },
-  dialogActions: {
-    justifyContent: "space-between",
-    padding: "10px 20px",
-  }
-}));
-
-export default useStyles;
+  export const SelectInput= styled(TextField)(({ theme }) => ({
+    color: theme.palette.getContrastText(lightBlue[300]),
+    color: theme.palette.getContrastText(lightBlue[300]),
+    width: "100%%",
+     border: "2px solid rgba(19,141,147,255)",
+    //  margin: "1% 3%",
+    //  alignItems: "center",
+    //  display: "flex",
+    //  flexDirection: "column",
+    //  justifyContent: "space-evenly",
+    borderRadius: "3px",
+    //   backgroundColor: purple[700],
+    // },
+  }));
