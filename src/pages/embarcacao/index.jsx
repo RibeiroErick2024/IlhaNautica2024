@@ -4,19 +4,30 @@ import Header from '../../components/Header'
 import EmbarcacaoGaleria from '../../components/EmbarcacaoGaleria';
 import CaracteristicasEmbarcacao from '../../components/CaracteristicasEmbarcacao';
 import InfoAluguel from '../../components/CardInfoAluguel';
-function Embarcacao() {
-  const fotosEmbarcacao = [
-    'https://images.unsplash.com/photo-1548890016-d70b9be7a22f',
-    'https://images.unsplash.com/photo-1564653486614-9359f364f47a', 
-    'https://images.unsplash.com/photo-1522862342195-22fefb2a88c5', 
-    'https://images.unsplash.com/photo-1575347925981-0eeb8a8b9820', 
-    'https://images.unsplash.com/photo-1558991569-30098e3e96e1', 
-];
+import { Navigate, useNavigate, useLocation } from 'react-router-dom';
+import axios from 'axios';
 
+function Embarcacao(props) {
+
+  const location = useLocation();
+  
+  // Access the passed state.id safely
+  const barcoId = location.state?.id;  // Use optional chaining in case `state` is undefined
+  
+  console.log(barcoId);
+  async function pegarInfo(id){
+    try{
+      const resultCard = await axios.get(`http://localhost:8080/embarcacao/${id}`, { responseType: 'json' });
+      console.log(resultCard)
+    }catch(error){
+      console.log( "Erro ao tentar pegar dados do barcos", error)
+    }
+  }
+  pegarInfo(barcoId)
   return (
     <div className='embarcacao-container'>
       <Header />
-      <EmbarcacaoGaleria fotos={fotosEmbarcacao}/>
+      {/* <EmbarcacaoGaleria /> */}
 
       <div className="infos-container">
 
