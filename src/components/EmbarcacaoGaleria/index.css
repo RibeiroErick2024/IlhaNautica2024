@@ -1,0 +1,69 @@
+*{
+    color: black;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+
+.container-fotos{
+    width: 80%;
+    height: 660px; /* Altura total da galeria */
+    display: flex; /* Utiliza flexbox para alinhar os elementos */
+    margin-top: 100px;
+    flex-direction: column;
+    background-color: rgba(236, 52, 52, 0.007);
+    gap: 7px;
+    color: black;
+    text-shadow: none;
+}
+
+.galeria-container {
+    width: 100%;
+    height: 700px; /* Altura total da galeria */
+    display: flex; /* Utiliza flexbox para alinhar os elementos */
+    gap: 5px;
+    background-color: rgba(127, 255, 212, 0);
+}
+
+.div-img-grande {
+    display: flex;
+    width: 40%; /* Largura da imagem grande */
+    height: 100%; /* Altura total da galeria */
+}
+
+.foto-grande {
+    width: 100%; /* A imagem grande ocupa toda a largura */
+    height: auto; /* Mantém a proporção da imagem */
+    background-color: rgb(84, 118, 211);
+}
+
+.div-img-pequena {
+    display: grid; /* Utiliza grid para organizar as imagens pequenas */
+    width: 80%; /* Largura da área para as imagens pequenas */
+    height: 100%; /* Altura total da galeria */
+    gap: 5px; /* Espaço entre as imagens pequenas */
+    grid-template-columns: repeat(2, 1fr); /* Define 2 colunas iguais */
+    grid-template-rows: repeat(2, 1fr); /* Define 2 linhas iguais */
+}
+
+.fotos {
+    display: flex;
+    width: 100%; /* A largura da div fotos ocupa 100% do espaço */
+    height: 100%; /* A altura da div fotos ocupa 100% do espaço */
+    background-color: rgb(26, 107, 182); /* Cor de fundo para as fotos pequenas */
+}
+
+.foto-pequena {
+    width: 100%; /* A imagem pequena ocupa toda a largura do contêiner */
+    height: 100%; /* A imagem pequena ocupa toda a altura do contêiner */
+    object-fit: cover; /* Garante que a imagem cubra o espaço sem distorção */
+}
+
+
+.div-fabricante-modelo-embarcacao {
+    margin-bottom: 5px;
+}
+
+.div-usuario-embarcacao{
+    margin-top: 15px;
+}

@@ -75,9 +75,6 @@ function PerfilEmbarcacao() {
               value={userroteiros}
               onChange={(e) => setUserRoteiros(e.target.value)}
             />
-
-
-            
           </div>
         </form>
 
