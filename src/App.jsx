@@ -8,6 +8,7 @@ import CadastroLocador from './pages/cadastroLocador';
 import CadastroEmbarcacoes from './components/FormCadastroEmbarcacao';
 import ProtectedRoute from './components/ProtectedRoute';
 import Home from './pages/Home';
+import CompletarCadastro from './components/FormCompletarCadastro';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Routes>
           <Route path="/login" element={<Login />} />
             <Route path="/home" element={<Home />} />
+            <Route path="/complete" element={<CompletarCadastro />} />
           <Route path="/recuperacaoSenha" element={<RecuperacaoSenha />} />
           
           <Route element={<ProtectedRoute />}>

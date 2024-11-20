@@ -1,0 +1,151 @@
+
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: "Montserrat", sans-serif;
+    min-width: 100%;
+    min-height: 100%;
+  }
+  
+.container-cadastro-complete{
+    width: 100%;
+    height: 100%;
+    padding: 20vh 0vw;
+    background-color: wheat;
+}
+.container-modal{
+    height: 60vh;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 1vw;
+}
+.step{
+    height: 60vh;
+    /* background-color: yellow; */
+}
+.stepperSubDiv {
+  height: 50vh;
+  /* background: #172539; */
+  border-radius: 12px;
+  padding: 1.4em;
+  color: #63b38f;
+}
+.titulo{
+    width: 100%;
+    height: 4vh;
+
+    
+}
+.titulo h4{
+    height: 100%;
+    /* background-color: green; */
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    color: black;
+    font-weight: 500;
+    line-height: 29px;
+    font-size: 1.5vw;
+
+
+}
+.form-section-cadastro-complete{
+    width: 50%;
+    height: 83%;
+    margin: 0 25%;
+}
+.form-section-cadastro-step-dois{
+    width: 50%;
+    height: 83%;
+    margin: 0 15%;
+}
+.input-field-cadastro  {
+    width: 100%;
+    height:46vh;
+    /* background: red; */
+    outline: none;
+    /* border: 2px solid rgba(255, 255, 255, 0.2); */
+    /* font-size: 56px; */
+    color: #fff;
+    display: flex;
+    flex-flow: row wrap;
+    /* row-gap: 10px; */
+    /* column-gap: 1vw; */
+    justify-content: space-evenly;
+    align-items: center;
+    /* row-gap: 1vh; */
+    padding: 2.5% 5vw;
+
+  }
+
+  .input-field-cadastro input {
+    width: 100%;
+    height: 6.5vh;
+    /* background: rebeccapurple; */
+    outline: none;
+    border: 1px solid rgba(19,141,147,255);
+    border-radius: 40px;
+    font-size: 1.3vw;
+    color: black;
+    /* padding: 20px 45px 20px 25px; */
+  }
+  .input-field-cadastro input {
+    width: 100%;
+    height: 6.5vh;
+    /* background: rebeccapurple; */
+    outline: none;
+    border: 1px solid rgba(19,141,147,255);
+    border-radius: 40px;
+    font-size: 1.3vw;
+    color: black;
+    /* padding: 20px 45px 20px 25px; */
+  }
+
+  .input-field-select {
+    width: 100%;
+    /* height: 6.5vh; */
+    /* background: rebeccapurple; */
+    outline: none;
+    border: 1px solid rgba(19,141,147,255);
+    /* font-size: 1.3vw; */
+    /* color: black; */
+    /* padding: 20px 45px 20px 25px; */
+    /* background-color: #1DE59F; */
+    /* margin: 1vh 0; */
+  }
+  /* .css-1jej0o0-control{
+    width: 100%;
+    height: 6vh;
+  } */
+
+  
+  .input-field input::placeholder {
+    color: black;
+  }
+
+  .btnContainer{
+    width: 100%;
+    height: 15%;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+  .btnAvancar {
+    align-self:flex-end;
+    justify-content: flex-end;
+    font-size: 1.2vw; 
+    height: 4vh;
+    width: 10vw;
+    color: white;
+    background-color: "#1DE59F";
+    border-radius: .8vw;
+    align-self: center;
+    border: 1px solid transparent;
+    font-weight: 500;
+    line-height: 29px;
+  }

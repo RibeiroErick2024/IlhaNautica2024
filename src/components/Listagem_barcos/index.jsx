@@ -13,7 +13,7 @@ function ListagemBarcos() {
     const fetchBarcos = async () => {
       try {
         const resultCard = await axios.get(`http://localhost:8080/embarcacao/`, { responseType: 'json' });
-
+          console.log(resultCard.data)
         // Função para transformar a imagem em Base64
         const transformarImagem = async (id) => {
           const resultImage = await axios.get(`http://localhost:8080/imagem/${id}`, { responseType: 'arraybuffer' });
