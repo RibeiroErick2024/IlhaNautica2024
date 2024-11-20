@@ -5,7 +5,7 @@ import RecuperacaoSenha from "../components/FormRecuperacaoSenha";
 import CadastroEmbarcacoes from "../components/FormCadastroEmbarcacao";
 import CadastroLocador from "../pages/cadastroLocador";
 import FormDescricao from "../components/FormDescricao";
-
+import PerfilMarinheiro from "../pages/perfilMarinheiro"
 
 
 
@@ -17,7 +17,7 @@ const router = createBrowserRouter([
      {path: "/cadastroLocador", element: <CadastroLocador/>},//correto
     {path: "/cadastroD", element: <FormDescricao/>},
     {path: "/cadastroEmbarcacoes", element: <CadastroEmbarcacoes/>},
-
+    {path: "/perfilMarinheiro", element: <PerfilMarinheiro/>},
    
     { path: "/recuperacaoSenha", element: <RecuperacaoSenha /> },
     { path: "/home", element: <Home /> },

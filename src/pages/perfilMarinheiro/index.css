@@ -1,0 +1,115 @@
+html {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.container-marinheiro {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 40px;
+    width: 1000px;
+}
+
+
+.icones-marinheiro {
+    display: flex;
+    flex-direction: column;
+    /* Alinha os ícones verticalmente */
+    gap: 40px;
+    /* Espaçamento maior entre os ícones */
+    justify-content: center;
+    /* Centraliza os ícones verticalmente */
+    align-items: center;
+    /* Centraliza os ícones horizontalmente */
+    background-color: green;
+    /* Fundo verde */
+    padding: 40px;
+    /* Espaçamento interno */
+    border-radius: 15px;
+    /* Bordas arredondadas */
+    width: 200px;
+    /* Largura fixa para o contêiner de ícones */
+    height: 800px;
+    /* Altura ajustável ao conteúdo */
+}
+
+.btn-icone {
+    width: 100px;
+    height: 100px;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+
+    cursor: pointer;
+
+}
+
+.icon-svg {
+    width: 60px;
+    /* Tamanho maior para os ícones */
+    height: 60px;
+}
+
+.form-section-marinheiro {
+    gap: 19px;
+    display: flex;
+    /* Permite que os inputs fiquem organizados mesmo se o espaço for limitado */
+    padding: 10px;
+    margin-top: 59px;
+}
+
+.inputs-marinheiro {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: white;
+    border-radius: 15px;
+    width: 100%;
+    height: auto;
+    padding-left: 250px;
+    padding-top: 150px;
+
+}
+
+/* Estilo para os inputs */
+.input-marinheiro input {
+
+    border: 2px solid #007CE2;
+    border-radius: 10px;
+    font-size: 18px;
+    /* Aumenta o tamanho da fonte */
+    padding: 10px;
+    /* Aumenta o padding para deixar o input mais espaçoso */
+    box-sizing: border-box;
+    /* Garante que o padding não afete o tamanho total */
+    height: 50px;
+    /* Aumenta a altura do input */
+}
+
+/* Garantir que o botão Salvar também fique ajustado */
+.btn-salvar-marinheiro {
+    width: 200px;
+    height: 50px;
+    background-color: #007CE2;
+    color: white;
+    border-radius: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.btn-icone:hover {
+    background-color: darkgreen;
+    /* Adiciona uma cor mais escura ao passar o mouse */
+}
+
+
+
+.titulo-primeiro-marinheiro {
+    color: black;
+    padding: 15px;
+}
