@@ -1,4 +1,4 @@
-import { makeStyles } from '@material-ui/styles';
+import {makeStyles} from '@mui/styles';
 import { Button, Dialog, DialogContent, DialogTitle, Select, TextField } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { purple, lightGreen, lightBlue, cyan } from '@mui/material/colors';
@@ -14,9 +14,6 @@ export const Titulo = styled(DialogTitle)(({ theme }) => ({
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-evenly",
-    color: "black",
-    fontWeight: 500,
-    lineHeight: "29px",
     fontSize: "1.3vw",
     color: "black",
     fontFamily: "Montserrat",
@@ -28,12 +25,12 @@ export const Titulo = styled(DialogTitle)(({ theme }) => ({
     },
   }));
 export const ColorButtonSalvar = styled(Button)(({ theme }) => ({
-    color: theme.palette.getContrastText(cyan[300]),
+    theme: theme.palette.getContrastText(cyan[300]),
     backgroundColor: "#1DE59F",
     width: 150,
-    color: "white",
     fontFamily: "Montserrat",
-    fontWeight: 800,
+    fontWeight: 400,
+    color: "white",
     lineHeight: "29px",
     borderRadius:".8vw",
     '&:hover': {
@@ -42,14 +39,13 @@ export const ColorButtonSalvar = styled(Button)(({ theme }) => ({
   }));
 
 export const ColorButtonCancelar = styled(Button)(({ theme }) => ({
-    color: theme.palette.getContrastText(lightBlue[300]),
+    theme: theme.palette.getContrastText(lightBlue[300]),
     backgroundColor: lightBlue[500],
     width: 100,
     color: "white",
     fontFamily: "Montserrat",
-    fontWeight: 800,
+    fontWeight: 400,
     lineHeight: "29px",
-    borderRadius:".8vw",
     borderRadius:".8vw",
     '&:hover': {
       backgroundColor: purple[700],
