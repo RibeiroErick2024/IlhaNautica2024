@@ -26,6 +26,7 @@ import {
 } from "./styles.jsx";
 
 import api from "../../config/axios";
+import { useAuth } from "../../contexts/AuthContext";
 
 function CompletarCadastro() {
   const [open, setOpen] = useState(false);
@@ -59,41 +60,43 @@ function CompletarCadastro() {
   ];
 
   async function handleCadastro(data) {
-
     const endereco = {
       bairro: data.bairro,
       cep: data.cep,
       cidade: data.cidade,
       rua: data.rua,
       numero: data.numero,
+      latitude: -22.906847,
+      longitude: -43.172897,
       usuario: {
-        id: {idUsuario}
-      }
+        id: { idUsuario },
+      },
     };
 
-    // Criar o objeto JSON com os dados organizados
     const usuario = {
-      id:{idUsuario},
+      id: { idUsuario },
       nomeCompleto: data.nomeCompleto,
       cpf: data.cpf,
       dataNascimento: data.dataNascimento,
       genero: data.genero,
       telefone: data.telefone,
-     
     };
-    console.log("data", usuario);
+    // console.log("data", usuario);
     try {
       const response = await api.post(
         `usuario/completarcadastro/${idUsuario}`,
         usuario
       );
-      // const responseEd = await api.post(
-      //   "endereco/usuario/",
-      //   endereco
-      // );
-      // console.log(responseEd)
 
       console.log("Console", response);
+    } catch (error) {
+      console.log("Console", error.response.data);
+    }
+    try {
+      const responseEndereco = await api.post("endereco/usuario", endereco);
+      console.log("Dados endereço enviados back:", responseEd);
+
+      // console.log("Console", response);
     } catch (error) {
       console.log("Console", error.response.data);
     }
@@ -110,15 +113,15 @@ function CompletarCadastro() {
         maxWidth={"lg"}
       >
         <Titulo>Complete seu Cadastro</Titulo>
-        <ContainerTextFieldInput>
-          <form onSubmit={handleSubmit(onSubmit)}>
+        <form  className="form-section-cadastro-complete" onSubmit={handleSubmit(onSubmit)}>
+          <ContainerTextFieldInput>
             <TextFieldInput
               fullWidth
               label="Nome Completo"
               variant="outlined"
               margin="dense"
               {...register("nomeCompleto", {
-                required: "Nome Completo é obrigatório",
+                required: "Campo obrigatório",
                 minLength: 6,
               })}
               error={!!errors.nomeCompleto}
@@ -132,7 +135,7 @@ function CompletarCadastro() {
               variant="outlined"
               margin="dense"
               {...register("dataNascimento", {
-                required: "Data de Nascimento é obrigatória",
+                required: "Campo obrigatório",
               })}
               error={!!errors.dataNascimento}
               helperText={errors.dataNascimento?.message}
@@ -144,7 +147,7 @@ function CompletarCadastro() {
               variant="outlined"
               margin="dense"
               {...register("cpf", {
-                required: "CPF ou CPNJ são obrigatórios",
+                required: "Campo obrigatório",
                 pattern: {
                   value: /^[0-9]{11,13}$/,
                   message: "CPF ou CNPJ inválido",
@@ -159,7 +162,7 @@ function CompletarCadastro() {
               label="Telefone"
               variant="outlined"
               margin="dense"
-              {...register("telefone", { required: "Telefone é obrigatória" })}
+              {...register("telefone", { required: "Campo obrigatório" })}
               error={!!errors.telefone}
               helperText={errors.telefone?.message}
             />
@@ -168,7 +171,7 @@ function CompletarCadastro() {
                 name="genero"
                 control={control}
                 // defaultValue="prefiro_nao_dizer"
-                rules={{ required: "Gênero é obrigatório" }}
+                rules={{ required: "Campo obrigatório" }}
                 render={({ field }) => (
                   <SelectInput
                     fullWidth
@@ -187,13 +190,14 @@ function CompletarCadastro() {
                 )}
               />
             </FormControlDiv>
-
+          </ContainerTextFieldInput>
+          <ContainerTextFieldInput>
             <TextFieldInput
               fullWidth
               label="CEP"
               variant="outlined"
               margin="dense"
-              {...register("cep", { required: "CEP é obrigatório" })}
+              {...register("cep", { required: "Campo obrigatório" })}
               error={!!errors.cep}
               helperText={errors.cep?.message}
             />
@@ -202,7 +206,7 @@ function CompletarCadastro() {
               label="Rua"
               variant="outlined"
               margin="dense"
-              {...register("rua", { required: "Rua é obrigatória" })}
+              {...register("rua", { required: "Campo obrigatório" })}
               error={!!errors.rua}
               helperText={errors.rua?.message}
             />
@@ -212,7 +216,7 @@ function CompletarCadastro() {
               label="Número"
               variant="outlined"
               margin="dense"
-              {...register("numero", { required: "Número é obrigatório" })}
+              {...register("numero", { required: "Campo obrigatório" })}
               error={!!errors.numero}
               helperText={errors.numero?.message}
             />
@@ -221,7 +225,7 @@ function CompletarCadastro() {
               label="Cidade"
               variant="outlined"
               margin="dense"
-              {...register("cidade", { required: "Cidade é obrigatória" })}
+              {...register("cidade", { required: "Campo obrigatório" })}
               error={!!errors.cidade}
               helperText={errors.cidade?.message}
             />
@@ -231,26 +235,25 @@ function CompletarCadastro() {
               variant="outlined"
               margin="dense"
               {...register("bairro", {
-                required: "Bairro é obrigatório",
+                required: "Campo obrigatório",
               })}
               error={!!errors.bairro}
               helperText={errors.bairro?.message}
             />
-
-            <DialogActions>
-              <ColorButtonCancelar onClick={handleClose}>
-                Cancelar
-              </ColorButtonCancelar>
-              <ColorButtonSalvar
-                type="submit"
-                variant="contained"
-                color="primary"
-              >
-                Salvar
-              </ColorButtonSalvar>
-            </DialogActions>
-          </form>
-        </ContainerTextFieldInput>
+          </ContainerTextFieldInput>
+          <DialogActions>
+            <ColorButtonCancelar onClick={handleClose}>
+              Cancelar
+            </ColorButtonCancelar>
+            <ColorButtonSalvar
+              type="submit"
+              variant="contained"
+              color="primary"
+            >
+              Salvar
+            </ColorButtonSalvar>
+          </DialogActions>
+        </form>
       </ContainerModal>
     </div>
   );
