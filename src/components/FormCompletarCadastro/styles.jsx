@@ -87,13 +87,25 @@ export const ContainerTextFieldInput= styled(DialogContent)(({ theme }) => ({
 export const TextFieldInput= styled(TextField)(({ theme }) => ({
     color: theme.palette.getContrastText(lightBlue[300]),
     width: "100%",
-     border: "2px solid rgba(19,141,147,255)",
+    //  border: "1px solid rgba(19,141,147,255)",
     //  margin: "1% 3%",
     //  alignItems: "center",
     //  display: "flex",
     //  flexDirection: "column",
     //  justifyContent: "space-evenly",
-    borderRadius: "3px",
+    //  borderColor: 'yellow',
+    // borderRadius: "40px",
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        borderColor: '#E0E3E7',
+        borderRadius: 40,
+      }},
+    '& .MuiInputBase-formControl': {
+      '& fieldset': {
+        borderColor: 'rgba(19,141,147,255)',
+        borderRadius: 40,
+      }},
+   
    
     // '&:hover': {
     //   backgroundColor: purple[700],
@@ -102,23 +114,33 @@ export const TextFieldInput= styled(TextField)(({ theme }) => ({
   export const FormControlDiv = styled(FormControl)(({ theme }) => ({
     color: theme.palette.getContrastText(lightBlue[300]),
     width: "100%",
-    // margin: "1% 3%",
-
-    // borderRadius: "20px",
-    // '&:hover': {
-    //   backgroundColor: purple[700],
-    // },
+   
   }));
   export const SelectInput= styled(TextField)(({ theme }) => ({
     color: theme.palette.getContrastText(lightBlue[300]),
     width: "100%%",
-     border: "2px solid rgba(19,141,147,255)",
+    //  border: "2px solid rgba(19,141,147,255)",
     //  margin: "1% 3%",
     //  alignItems: "center",
     //  display: "flex",
     //  flexDirection: "column",
     //  justifyContent: "space-evenly",
-    borderRadius: "3px",
+    // borderRadius: "40",
     //   backgroundColor: purple[700],
     // },
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        borderColor: '#E0E3E7',
+        borderRadius: 40,
+      }},
+    '& .MuiInputBase-formControl': {
+      '& fieldset': {
+        borderColor: 'rgba(19,141,147,255)',
+        borderRadius: 40,
+      }},
+    '& .MuiInputBase-formControl': {
+      '& fieldset': {
+        borderColor: 'rgba(19,141,147,255)',
+        borderRadius: 40,
+      }},
   }));

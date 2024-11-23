@@ -22,8 +22,8 @@ function App() {
             <Route path="/complete" element={<CompletarCadastro />} />
           <Route path="/recuperacaoSenha" element={<RecuperacaoSenha />} />
           
-          <Route element={<ProtectedRoute />}>
           <Route path="/cadastroLocador" element={<CadastroLocador />} />
+          <Route element={<ProtectedRoute />}>
           <Route path="/cadastroEmbarcacoes" element={<CadastroEmbarcacoes />} />
           </Route>
 

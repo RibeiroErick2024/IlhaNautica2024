@@ -47,6 +47,9 @@ function CompletarCadastro() {
     await handleCadastro(data);
     handleClose();
   };
+  const onError = (errors) => {
+    console.log("Error no form", errors); 
+  };
 
   const opcoes = [
     { value: "empresa", label: "Não se aplica (Empresa)" },
@@ -113,7 +116,7 @@ function CompletarCadastro() {
         maxWidth={"lg"}
       >
         <Titulo>Complete seu Cadastro</Titulo>
-        <form  className="form-section-cadastro-complete" onSubmit={handleSubmit(onSubmit)}>
+        <form  className="form-section-cadastro-complete" onSubmit={handleSubmit(onSubmit, onError)}>
           <ContainerTextFieldInput>
             <TextFieldInput
               fullWidth
