@@ -133,19 +133,6 @@ const CadastroEmbarcacaoContinua = () => {
 
           <TextFieldInput
             fullWidth
-            type="number"
-            label="Número de Banheiros"
-            variant="outlined"
-            margin="dense"
-            {...register("quantidadeBanheiro", {
-              required: "Campo obrigatório"
-            })}
-            error={!!errors.quantidadeBanheiro}
-            helperText={errors.quantidadeBanheiro?.message}
-          />
-
-          <TextFieldInput
-            fullWidth
             label="Inscrição IMO"
             variant="outlined"
             margin="dense"

@@ -33,8 +33,17 @@ function CompletarCadastro() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const { idUsuario } = useAuth();
-  const {
-    register,
+  const opcoes = [
+    { value: "empresa", label: "Não se aplica (Empresa)" },
+    { value: "feminino", label: "Feminino" },
+    { value: "masculino", label: "Masculino" },
+    { value: "nao-binario", label: "Não-binário" },
+    { value: "transgenero", label: "Transgênero" },
+    { value: "genero_fluido", label: "Gênero fluido" },
+    { value: "outro", label: "Outro" },
+    { value: "prefiro_nao_dizer", label: "Prefiro não dizer" },
+  ];
+  const { register,
     handleSubmit,
     watch,
     setError,
@@ -50,17 +59,19 @@ function CompletarCadastro() {
   const onError = (errors) => {
     console.log("Error no form", errors); 
   };
-
-  const opcoes = [
-    { value: "empresa", label: "Não se aplica (Empresa)" },
-    { value: "feminino", label: "Feminino" },
-    { value: "masculino", label: "Masculino" },
-    { value: "nao-binario", label: "Não-binário" },
-    { value: "transgenero", label: "Transgênero" },
-    { value: "genero_fluido", label: "Gênero fluido" },
-    { value: "outro", label: "Outro" },
-    { value: "prefiro_nao_dizer", label: "Prefiro não dizer" },
-  ];
+  useEffect(() => {
+    axios
+      .get(
+        `http://localhost:8080/marinheiro/${idUsuario}`
+      )
+      .then((response) => {
+        const data = response.data;
+        console.log(data);
+        setValue("nomeCompleto", data.nomeCompleto);
+    
+      })
+      .catch((error) => console.log(error));
+  }, []);
 
   async function handleCadastro(data) {
     const endereco = {
@@ -72,7 +83,7 @@ function CompletarCadastro() {
       latitude: -22.906847,
       longitude: -43.172897,
       usuario: {
-        id: { idUsuario },
+        id: {idUsuario },
       },
     };
 
@@ -84,7 +95,6 @@ function CompletarCadastro() {
       genero: data.genero,
       telefone: data.telefone,
     };
-    // console.log("data", usuario);
     try {
       const response = await api.post(
         `usuario/completarcadastro/${idUsuario}`,
@@ -97,9 +107,8 @@ function CompletarCadastro() {
     }
     try {
       const responseEndereco = await api.post("endereco/usuario", endereco);
-      console.log("Dados endereço enviados back:", responseEd);
+      console.log("Dados endereço enviados back:", responseEndereco);
 
-      // console.log("Console", response);
     } catch (error) {
       console.log("Console", error.response.data);
     }

@@ -11,37 +11,14 @@ import { useNavigate } from "react-router-dom";
 import MobileStepper from "@mui/material/MobileStepper";
 import Button from "@mui/material/Button";
 
-function ProgressMobileStepper() {
-  return (
-    <div>
-      <MobileStepper
-        variant="progress"
-        steps={6}
-        position="static"
-        activeStep={activeStep}
-        sx={{ maxWidth: 400, flexGrow: 1 }}
-        nextButton={
-          <Button size="small" onClick={handleNext} disabled={activeStep === 5}>
-            Next
-          </Button>
-        }
-        backButton={
-          <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
-            Back
-          </Button>
-        }
-      />
-    </div>
-  );
-}
 
 function CadastroLocador({ titulo }) {
   const navigate = useNavigate();
   const [activeStep, setActiveStep] = useState(0);
   const steps = [
-    <PerfilEmbarcacao />,
-    <CadastroEmbarcacaoContinua />,
+    // <PerfilEmbarcacao />,
     <CadastroEmbarcacoes titulo="Cadastro Embarcação" />,
+    <CadastroEmbarcacaoContinua />,
     <PerfilMarinheiro />,
     <DescricaoEmbarcacao />,
   ];
@@ -102,16 +79,11 @@ function CadastroLocador({ titulo }) {
         </div>
 
         <div className="forms-cadastro">
-          {/* <PerfilEmbarcacao />
-          <CadastroEmbarcacaoContinua />
-          <CadastroEmbarcacoes titulo="Cadastro Embarcação" />
-          <PerfilMarinheiro />
-          <DescricaoEmbarcacao /> */}
-          {steps[activeStep]}
+         {steps[activeStep]}
         </div>
         <MobileStepper
           variant="progress"
-          steps={6}
+          steps={4}
           position="static"
           activeStep={activeStep}
           sx={{ maxWidth: 400, flexGrow: 1 }}
@@ -119,9 +91,9 @@ function CadastroLocador({ titulo }) {
             <Button
               size="small"
               onClick={handleNext}
-              disabled={activeStep === 5}
+              disabled={activeStep === 3}
             >
-              Continuar
+               {activeStep === steps.length - 1 ? 'Concluir' : 'Continuar'}
             </Button>
           }
           backButton={

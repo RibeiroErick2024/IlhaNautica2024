@@ -1,14 +1,14 @@
-import { useState } from "react";
-
-import "../FormCadastroEmbarcacao/index.css";
+import { useEffect, useState } from "react";
 import { useForm, Controller } from "react-hook-form";
+import axios from "axios";
+import "../FormCadastroEmbarcacao/index.css";
 import {
   Button,
   Dialog,
   DialogActions,
   DialogContent,
   DialogTitle,
-  TextField,
+  TextField, 
   Select,
   MenuItem,
   InputLabel,
@@ -37,26 +37,49 @@ function PerfilMarinheiro() {
     handleSubmit,
     watch,
     setError,
+    setValue,
     clearErrors,
     control,
     formState: { errors },
   } = useForm();
   const onSubmit = (data, event) => {
     event.preventDefault();
-    console.log(data)
+    console.log(data);
   };
   const onError = (errors) => {
-    console.log("Error no form", errors); 
+    console.log("Error no form", errors);
   };
+  useEffect(() => {
+    axios
+      .get(
+        "http://localhost:8080/marinheiro/fc83bcb0-ea6c-4f7d-bf01-d8b23d4ff2c5"
+      )
+      .then((response) => {
+        const data = response.data;
+        console.log(data);
+        setValue("nome", data.nome);
+        setValue("categoria", data.categoria);
+        setValue("registroMaritimo", data.registroMaritimo);
+        setValue("disponibilidade", data.disponibilidade);
+        setValue("dataNascimento", '000');
+        setValue("cpf", '0000000000');
+    
+      })
+      .catch((error) => console.log(error));
+  }, []);
 
   return (
     <div>
       <div className="container-cadastro-embarcacoes">
         <h1 className="titulo-embarcacao">Perfil Marinheiro</h1>
-        <form onSubmit={handleSubmit(onSubmit, onError)} className="form-section-embarcacoes">
+        <form
+          onSubmit={handleSubmit(onSubmit, onError)}
+          className="form-section-embarcacoes">
           <ContainerTextFieldInput>
             <TextFieldInput
               fullWidth
+              focused
+               id="validation-outlined-input"
               label="Nome Completo"
               variant="outlined"
               margin="dense"
@@ -68,7 +91,7 @@ function PerfilMarinheiro() {
               helperText={errors.nome?.message}
             />
 
-            <TextFieldInput
+            <TextFieldInput //adicionar no back
               fullWidth
               focused
               type="date"
@@ -148,17 +171,29 @@ function PerfilMarinheiro() {
               helperText={errors.telefone?.message}
             />
 
-            <TextFieldInput
+            <TextFieldInput 
               fullWidth
-              label="Posto"
+              label="Disponibilidade"
               variant="outlined"
               margin="dense"
-              {...register("posto", {
+              {...register("disponibilidade", {
                 required: "Campo obrigatório",
                 minLength: 3,
               })}
-              error={!!errors.posto}
-              helperText={errors.posto?.message}
+              error={!!errors.disponibilidade}
+              helperText={errors.disponibilidade?.message}
+            />
+            <TextFieldInput 
+              fullWidth
+              label="Categoria"
+              variant="outlined"
+              margin="dense"
+              {...register("categoria", {
+                required: "Campo obrigatório",
+                minLength: 3,
+              })}
+              error={!!errors.categoria}
+              helperText={errors.categoria?.message}
             />
           </ContainerTextFieldInput>
 
