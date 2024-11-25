@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import "../FormCadastroEmbarcacaoContinua/index.css";
 import { useForm, Controller } from "react-hook-form";
@@ -24,13 +24,9 @@ import {
   ContainerModal,
   FormControlDiv,
 } from "../FormCompletarCadastro/styles.jsx";
+import axios from "axios";
 
 const CadastroEmbarcacaoContinua = () => {
-  // const [cidade, setCidade] = useState("");
-  // const [datasdisponiveis, setdatasdisponiveis] = useState("");
-  // const [equipamento, setEquipamnetos] = useState("");
-  // const [porto, setPorto] = useState("");
-  // const [capitao, setCapitao] = useState("");
   const [isChecked, setIsChecked] = useState(false);
   const {
     register,
@@ -38,6 +34,7 @@ const CadastroEmbarcacaoContinua = () => {
     watch,
     setError,
     clearErrors,
+    setValue,
     control,
     formState: { errors },
   } = useForm();
@@ -51,13 +48,30 @@ const CadastroEmbarcacaoContinua = () => {
     setIsChecked(!isChecked);
   };
 
+  useEffect(() => {
+    axios
+      .get(
+        "http://localhost:8080/embarcacao/b23f42e2-7e3d-4c68-bdc6-09027dff0fbb"
+      )
+      .then((response) => {
+        const data = response.data;
+        console.log(data);
+     
+        setValue("enderecoEmbarque", data.enderecoEmbarque);
+        setValue("inscricao", data.inscricao);
+        setValue("preco", data.preco);
+        setValue("bandeira", data.bandeira);
+      
+        // setValue("registroMaritimo" ,data.registroMaritimo);
+    
+      })
+      .catch((error) => console.log(error));
+  }, []);
+
   return (
     <div className="container-cadastro-embarcacoes">
       {/* <h1 className="titulo-embarcacao">Embarcação</h1> */}
-      <form
-        onSubmit={handleSubmit(Submit)}
-        className="form-section-embarcacoes"
-      >
+      <form onSubmit={handleSubmit(Submit)} className="form-section-embarcacoes">
         <ContainerTextFieldInput>
           <TextFieldInput
             fullWidth
@@ -78,7 +92,7 @@ const CadastroEmbarcacaoContinua = () => {
             label="Datas Disponíveis"
             variant="outlined"
             margin="dense"
-            type="date"
+            type="text"
             {...register("datasdisponiveis", {
               required: "Campo obrigatório",
             })}
@@ -88,28 +102,15 @@ const CadastroEmbarcacaoContinua = () => {
 
           <TextFieldInput
             fullWidth
-            label="Equipamento"
+            label="Endereco de Embarque"
             variant="outlined"
             margin="dense"
-            {...register("equipamento", {
+            {...register("enderecoEmbarque", {
               required: "Campo obrigatório",
               minLength: 3,
             })}
-            error={!!errors.equipamento}
-            helperText={errors.equipamento?.message}
-          />
-
-          <TextFieldInput
-            fullWidth
-            label="Porto"
-            variant="outlined"
-            margin="dense"
-            {...register("enderecoembarque", {
-              required: "Campo obrigatório",
-              minLength: 3,
-            })}
-            error={!!errors.porto}
-            helperText={errors.porto?.message}
+            error={!!errors.enderecoEmbarque}
+            helperText={errors.enderecoEmbarque?.message}
           />
         </ContainerTextFieldInput>
 
@@ -136,15 +137,15 @@ const CadastroEmbarcacaoContinua = () => {
             label="Inscrição IMO"
             variant="outlined"
             margin="dense"
-            {...register("inscricaoIMO", {
+            {...register("inscricao", {
               required: "Campo obrigatório",
               minLength: {
                 value: 6,
                 message: "Inscrição IMO inválida",
               },
             })}
-            error={!!errors.inscricaoIMO}
-            helperText={errors.inscricaoIMO?.message}
+            error={!!errors.inscricao}
+            helperText={errors.inscricao?.message}
           />
 
           <TextFieldInput
@@ -162,17 +163,6 @@ const CadastroEmbarcacaoContinua = () => {
             error={!!errors.bandeira}
             helperText={errors.bandeira?.message}
           />
-        <div className="topping">
-          <input
-            type="checkbox"
-            id="topping"
-            name="topping"
-            value="Paneer"
-            checked={isChecked}
-            onChange={handleOnChange}
-          />
-          Equipamento de segurança
-        </div>
         </ContainerTextFieldInput>
 
         <button type="submit" className="btn-salvar-embarcacao">

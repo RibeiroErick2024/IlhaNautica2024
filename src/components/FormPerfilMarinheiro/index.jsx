@@ -61,8 +61,12 @@ function PerfilMarinheiro() {
         setValue("categoria", data.categoria);
         setValue("registroMaritimo", data.registroMaritimo);
         setValue("disponibilidade", data.disponibilidade);
-        setValue("dataNascimento", '000');
-        setValue("cpf", '0000000000');
+        setValue("dataNascimento", data.dataNascimento);
+        setValue("cpf", data.cpf);
+        setValue("email", data.email); 
+        setValue("telefone", data.telefone); 
+        setValue("genero", data.genero); 
+        // setValue("registroMaritimo" ,data.registroMaritimo);
     
       })
       .catch((error) => console.log(error));
@@ -101,8 +105,8 @@ function PerfilMarinheiro() {
               {...register("dataNascimento", {
                 required: "Campo obrigatório",
               })}
-              error={!!errors.aniversario}
-              helperText={errors.aniversario?.message}
+              error={!!errors.dataNascimento}
+              helperText={errors.dataNascimento?.message}
             />
 
             <TextFieldInput

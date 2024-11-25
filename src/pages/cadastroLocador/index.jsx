@@ -16,7 +16,7 @@ function CadastroLocador({ titulo }) {
   const navigate = useNavigate();
   const [activeStep, setActiveStep] = useState(0);
   const steps = [
-    // <PerfilEmbarcacao />,
+     <PerfilEmbarcacao />,
     <CadastroEmbarcacoes titulo="Cadastro Embarcação" />,
     <CadastroEmbarcacaoContinua />,
     <PerfilMarinheiro />,
