@@ -9,6 +9,7 @@ import CadastroEmbarcacoes from './components/FormCadastroEmbarcacao';
 import ProtectedRoute from './components/ProtectedRoute';
 import Home from './pages/Home';
 import CompletarCadastro from './components/FormCompletarCadastro';
+import PerfilMarinheiro from './pages/perfilMarinheiro';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
             <Route path="/home" element={<Home />} />
             <Route path="/complete" element={<CompletarCadastro />} />
           <Route path="/recuperacaoSenha" element={<RecuperacaoSenha />} />
+          <Route path="/perfilMarinheiro" element={<PerfilMarinheiro />} />
           
           <Route path="/cadastroLocador" element={<CadastroLocador />} />
           <Route element={<ProtectedRoute />}>

@@ -2,24 +2,21 @@ import { useState } from "react";
 
 import "./index.css";
 import CadastroEmbarcacoes from "../../components/FormCadastroEmbarcacao";
-import PerfilEmbarcacao from "../../components/FormPerfilEmbarcacao";
 import DescricaoEmbarcacao from "../../components/FormDescricao";
-import HeaderPrincipal from "../../components/Header";
-import PerfilMarinheiro from "../../components/FormPerfilMarinheiro";
 import CadastroEmbarcacaoContinua from "../../components/FormCadastroEmbarcacaoContinua";
 import { useNavigate } from "react-router-dom";
 import MobileStepper from "@mui/material/MobileStepper";
 import Button from "@mui/material/Button";
+import FormPerfilMarinheiro from "../../components/FormPerfilMarinheiro";
 
 
 function CadastroLocador({ titulo }) {
   const navigate = useNavigate();
   const [activeStep, setActiveStep] = useState(0);
   const steps = [
-     <PerfilEmbarcacao />,
     <CadastroEmbarcacoes titulo="Cadastro Embarcação" />,
     <CadastroEmbarcacaoContinua />,
-    <PerfilMarinheiro />,
+    <FormPerfilMarinheiro />,
     <DescricaoEmbarcacao />,
   ];
   const handleNext = () => {

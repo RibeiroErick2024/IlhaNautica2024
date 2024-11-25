@@ -24,14 +24,9 @@ import {
   ContainerModal,
   FormControlDiv,
 } from "../FormCompletarCadastro/styles.jsx";
-function PerfilMarinheiro() {
-  // const [nome, setNome] = useState("");
-  // const [aniversario, setAniversario] = useState("");
-  // const [cpf, setCPF] = useState("");
-  // const [genero, setGenero] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [telefone, setTelefone] = useState("");
-  // const [posto, setPosto] = useState("");
+import { useContextGlobal } from "../../contexts/GlobalContext.jsx";
+function FormPerfilMarinheiro() {
+ const {editando, setEditando} = useContextGlobal()
   const {
     register,
     handleSubmit,
@@ -50,27 +45,32 @@ function PerfilMarinheiro() {
     console.log("Error no form", errors);
   };
   useEffect(() => {
-    axios
-      .get(
-        "http://localhost:8080/marinheiro/fc83bcb0-ea6c-4f7d-bf01-d8b23d4ff2c5"
-      )
-      .then((response) => {
-        const data = response.data;
-        console.log(data);
-        setValue("nome", data.nome);
-        setValue("categoria", data.categoria);
-        setValue("registroMaritimo", data.registroMaritimo);
-        setValue("disponibilidade", data.disponibilidade);
-        setValue("dataNascimento", data.dataNascimento);
-        setValue("cpf", data.cpf);
-        setValue("email", data.email); 
-        setValue("telefone", data.telefone); 
-        setValue("genero", data.genero); 
-        // setValue("registroMaritimo" ,data.registroMaritimo);
-    
-      })
-      .catch((error) => console.log(error));
-  }, []);
+    setEditando(false)
+    if(editando){
+      console.log("Dentro")
+      axios
+        .get(
+          "http://localhost:8080/marinheiro/fc83bcb0-ea6c-4f7d-bf01-d8b23d4ff2c5"
+        )
+        .then((response) => {
+          const data = response.data;
+          console.log(data);
+          setValue("nome", data.nome);
+          setValue("categoria", data.categoria);
+          setValue("registroMaritimo", data.registroMaritimo);
+          setValue("disponibilidade", data.disponibilidade);
+          setValue("dataNascimento", data.dataNascimento);
+          setValue("cpf", data.cpf);
+          setValue("email", data.email); 
+          setValue("telefone", data.telefone); 
+          setValue("genero", data.genero); 
+          // setValue("registroMaritimo" ,data.registroMaritimo);
+      
+        })
+        .catch((error) => console.log(error));
+
+    }
+  }, [setValue]);
 
   return (
     <div>
@@ -82,7 +82,7 @@ function PerfilMarinheiro() {
           <ContainerTextFieldInput>
             <TextFieldInput
               fullWidth
-              focused
+              focused={editando}
                id="validation-outlined-input"
               label="Nome Completo"
               variant="outlined"
@@ -111,6 +111,7 @@ function PerfilMarinheiro() {
 
             <TextFieldInput
               fullWidth
+              focused={editando}
               type="text"
               label="CPF"
               variant="outlined"
@@ -128,6 +129,7 @@ function PerfilMarinheiro() {
 
             <TextFieldInput
               fullWidth
+              focused={editando}
               label="Gênero"
               variant="outlined"
               margin="dense"
@@ -143,6 +145,7 @@ function PerfilMarinheiro() {
           <ContainerTextFieldInput>
             <TextFieldInput
               fullWidth
+              focused={editando}
               type="email"
               label="E-mail"
               variant="outlined"
@@ -160,6 +163,7 @@ function PerfilMarinheiro() {
 
             <TextFieldInput
               fullWidth
+              focused={editando}
               type="tel"
               label="Telefone"
               variant="outlined"
@@ -177,6 +181,7 @@ function PerfilMarinheiro() {
 
             <TextFieldInput 
               fullWidth
+              focused={editando}
               label="Disponibilidade"
               variant="outlined"
               margin="dense"
@@ -189,6 +194,7 @@ function PerfilMarinheiro() {
             />
             <TextFieldInput 
               fullWidth
+              focused={editando}
               label="Categoria"
               variant="outlined"
               margin="dense"
@@ -208,4 +214,4 @@ function PerfilMarinheiro() {
   );
 }
 
-export default PerfilMarinheiro;
+export default FormPerfilMarinheiro;

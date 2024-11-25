@@ -1,15 +1,16 @@
 
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
 export const GlobalContext = createContext()
 
 export const GlobalContextProvider = ({children}) => {
 
-const [editando, setEditando] = useState(false);
+const [editando, setEditando] = useState(true);
 
     return(
-        <GlobalContext.Provider value={{}}>
+        <GlobalContext.Provider value={{editando, setEditando}}>
             {children}
         </GlobalContext.Provider>
     )
 }
+export const useContextGlobal = () => useContext(GlobalContext);
