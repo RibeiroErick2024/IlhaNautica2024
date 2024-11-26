@@ -8,20 +8,29 @@ import { useNavigate } from "react-router-dom";
 import MobileStepper from "@mui/material/MobileStepper";
 import Button from "@mui/material/Button";
 import FormPerfilMarinheiro from "../../components/FormPerfilMarinheiro";
+import { useContextGlobal } from "../../contexts/GlobalContext";
 
 
 function CadastroLocador({ titulo }) {
-  const navigate = useNavigate();
-  const [activeStep, setActiveStep] = useState(0);
-  const steps = [
-    <CadastroEmbarcacoes titulo="Cadastro Embarcação" />,
-    <CadastroEmbarcacaoContinua />,
-    <FormPerfilMarinheiro />,
-    <DescricaoEmbarcacao />,
-  ];
+   const navigate = useNavigate();
+  
+  const { activeStep, setActiveStep, isStepValid, } = useContextGlobal();
+  
+
   const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    if (isStepValid[activeStep]) {  // Verifica se a etapa atual é válida
+      setActiveStep(prevStep => prevStep + 1); 
+    } else {
+      console.log("Formulário inválido");
+    }
   };
+  const steps = [
+    <CadastroEmbarcacoes indiceEtapa={0} />,
+    <CadastroEmbarcacaoContinua indiceEtapa={1} />,
+    <FormPerfilMarinheiro indiceEtapa={2} />,
+    <DescricaoEmbarcacao indiceEtapa={3} />
+  ];
+
 
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);

@@ -12,9 +12,7 @@ function PerfilMarinheiro() {
   useEffect(() => {
     setEditando(true); 
   }, [setEditando]);
-  useEffect(() =>{
  
-  })
   return (
     <div >
       {/* Contêiner de Ícones */}

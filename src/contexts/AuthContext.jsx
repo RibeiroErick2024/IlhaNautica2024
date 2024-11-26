@@ -12,12 +12,14 @@ export const AuthProvider = ({ children }) => {
     setIdUsuario(id);
     localStorage.setItem("token", jwtToken);
     localStorage.setItem("idUsuario", id);
+    localStorage.setItem("logado", true)
   };
 
   const logout = () => {
     setToken(null);
     localStorage.removeItem("token");
     localStorage.removeItem("idUsuario");
+    localStorage.remove("logado", true)
   };
 
   const isAuthenticated = () => !!token;

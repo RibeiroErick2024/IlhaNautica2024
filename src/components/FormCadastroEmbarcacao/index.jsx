@@ -26,14 +26,7 @@ import {
 import axios from "axios";
 
 function CadastroEmbarcacoes() {
-  // const [fabricante, setFabricante] = useState("");
-  // const [nomeembarcacao, setNomeEmbarcacao] = useState("");
-  // const [comprimento, setComprimento] = useState("");
-  // const [numerocabines, setNumerodeCabines] = useState("");
-  // const [modelo, setModulos] = useState("");
-  // const [fabricacao, setAnoFabricacao] = useState("");
-  // const [capacidade, setCapacidade] = useState("");
-  // const [potencia, setPotencial] = useState("");
+
   const [isDisabled, setIsDisabled] = useState(false);
   const {
     register,

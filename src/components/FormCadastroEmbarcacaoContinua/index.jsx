@@ -26,8 +26,9 @@ import {
 } from "../FormCompletarCadastro/styles.jsx";
 import axios from "axios";
 
-const CadastroEmbarcacaoContinua = () => {
+const CadastroEmbarcacaoContinua = ({ indiceEtapa}) => {
   const [isChecked, setIsChecked] = useState(false);
+  const { definirValidadeEtapa } = useFormContext();
   const {
     register,
     handleSubmit,
@@ -39,9 +40,10 @@ const CadastroEmbarcacaoContinua = () => {
     formState: { errors },
   } = useForm();
 
-  const Submit = (data, event) => {
+  const submitForm = (data, event) => {
     event.preventDefault();
     console.log(data);
+    definirValidadeEtapa(indiceEtapa, true)
   };
 
   const handleOnChange = () => {
@@ -71,7 +73,7 @@ const CadastroEmbarcacaoContinua = () => {
   return (
     <div className="container-cadastro-embarcacoes">
       {/* <h1 className="titulo-embarcacao">Embarcação</h1> */}
-      <form onSubmit={handleSubmit(Submit)} className="form-section-embarcacoes">
+      <form onSubmit={handleSubmit(submitForm)} className="form-section-embarcacoes">
         <ContainerTextFieldInput>
           <TextFieldInput
             fullWidth

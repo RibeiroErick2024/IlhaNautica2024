@@ -4,7 +4,7 @@ import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-function DescricaoEmbarcacao() {
+function DescricaoEmbarcacao({handleNext}) {
     const [inputDescricao, setInputDescricao] = useState("");
     const [inputRegras, setInputRegras] = useState("");
     const [fotosSelecionadas, setFotosSelecionadas] = useState([]);
@@ -65,6 +65,7 @@ function DescricaoEmbarcacao() {
             .catch((error) => {
                 console.error("Error ao fazer upload de fotos: ", error);
             });
+            handleNext();
     }
 
     return (

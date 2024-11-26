@@ -25,7 +25,7 @@ import {
   FormControlDiv,
 } from "../FormCompletarCadastro/styles.jsx";
 import { useContextGlobal } from "../../contexts/GlobalContext.jsx";
-function FormPerfilMarinheiro() {
+function FormPerfilMarinheiro({handleNext}) {
  const {editando, setEditando} = useContextGlobal()
   const {
     register,
@@ -40,6 +40,7 @@ function FormPerfilMarinheiro() {
   const onSubmit = (data, event) => {
     event.preventDefault();
     console.log(data);
+    handleNext();
   };
   const onError = (errors) => {
     console.log("Error no form", errors);
@@ -47,7 +48,6 @@ function FormPerfilMarinheiro() {
   useEffect(() => {
     setEditando(false)
     if(editando){
-      console.log("Dentro")
       axios
         .get(
           "http://localhost:8080/marinheiro/fc83bcb0-ea6c-4f7d-bf01-d8b23d4ff2c5"
