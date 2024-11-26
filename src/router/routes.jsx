@@ -6,7 +6,7 @@ import RecuperacaoSenha from "../components/FormRecuperacaoSenha";
 import CadastroEmbarcacoes from "../components/FormCadastroEmbarcacao";
 import CadastroLocador from "../pages/cadastroLocador";
 import FormDescricao from "../components/FormDescricao";
-import Embarcacao from "../pages/embarcacao";
+import Embarcacao from "../pages/embarcacaoPageAluguel";
 
 
 

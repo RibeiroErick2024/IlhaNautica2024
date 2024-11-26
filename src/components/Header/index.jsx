@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import menuIcon from '../../assets/menu.svg'; // Certifique-se de que o caminho está correto
 import './index.css'; // Supondo que você tenha um arquivo CSS para estilos
+import { Navigate, useNavigate } from 'react-router-dom';
 
 function HeaderPrincipal() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const menuRef = useRef(null);
+    const navigate = useNavigate("/embarcacao")
 
     const handleMenuToggle = () => {
         setIsMenuOpen((prev) => !prev);
@@ -25,7 +27,7 @@ function HeaderPrincipal() {
 
     return (
         <header className='header-container'>
-            <div className="logo-container">
+            <div className="logo-container" onClick={() => navigate('/home')}>
                 <h1>Ilha Náutica</h1>
             </div>
 
