@@ -12,6 +12,12 @@
     font-size: 30px;
     color: #f1eded;
   }
+  .h1recuperacao{
+    color: #f1eded;
+    font-size: 30px;
+    text-align: center;
+    font-family: var(--font-Titulo);
+  }
   
   .container .input-field {
     position: relative;

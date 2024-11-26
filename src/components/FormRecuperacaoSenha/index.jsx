@@ -18,6 +18,9 @@ const RecuperacaoSenha = () => {
       console.log("Dados para recuperação de senha:", { email });
       setMensagemSucesso("Um e-mail de recuperação foi enviado para o seu endereço.");
       clearErrors(); 
+      
+      // Exibir alert e enviar mensagem após o usuário clicar em "OK"
+      window.alert("Um e-mail de recuperação foi enviado para o seu endereço.");
     }
   };
 
@@ -29,14 +32,15 @@ const RecuperacaoSenha = () => {
   // Função para navegar para a página de login
   const handleLoginClick = (event) => {
     event.preventDefault(); 
-    navigate("/"); 
+    navigate("/login"); 
   };
 
   return (
     <div className="imgFundo">
       <div className="container">
+      <h5 className="h1recuperacao">Recuperar senha</h5>
+        
         <form onSubmit={handleSubmit(onSubmit)}>
-          <h1>Recuperar senha</h1>
 
           <div className="input-field">
             <input
@@ -57,7 +61,7 @@ const RecuperacaoSenha = () => {
 
           <div className="signup-link">
             <p>
-              <a href="#" onClick={handleLoginClick}>
+              <a href="/login" onClick={handleLoginClick}>
                 Realizar login
               </a>
             </p>
