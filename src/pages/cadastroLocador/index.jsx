@@ -9,15 +9,18 @@ import MobileStepper from "@mui/material/MobileStepper";
 import Button from "@mui/material/Button";
 import FormPerfilMarinheiro from "../../components/FormPerfilMarinheiro";
 import { useContextGlobal } from "../../contexts/GlobalContext";
+import { useForm } from "react-hook-form";
 
 
 function CadastroLocador({ titulo }) {
    const navigate = useNavigate();
   
-  const { activeStep, setActiveStep, isStepValid, } = useContextGlobal();
+  const { activeStep, setActiveStep, isStepValid, gatilho, setGatilho} = useContextGlobal();
+
   
 
   const handleNext = () => {
+    setGatilho(true)
     if (isStepValid[activeStep]) {  // Verifica se a etapa atual é válida
       setActiveStep(prevStep => prevStep + 1); 
     } else {

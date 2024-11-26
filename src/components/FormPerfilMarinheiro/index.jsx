@@ -25,8 +25,8 @@ import {
   FormControlDiv,
 } from "../FormCompletarCadastro/styles.jsx";
 import { useContextGlobal } from "../../contexts/GlobalContext.jsx";
-function FormPerfilMarinheiro({handleNext}) {
- const {editando, setEditando} = useContextGlobal()
+function FormPerfilMarinheiro({ indiceEtapa}) {
+ const {editando, setEditando, definirValidadeEtapa} = useContextGlobal()
   const {
     register,
     handleSubmit,
@@ -40,7 +40,7 @@ function FormPerfilMarinheiro({handleNext}) {
   const onSubmit = (data, event) => {
     event.preventDefault();
     console.log(data);
-    handleNext();
+    definirValidadeEtapa(indiceEtapa, true)
   };
   const onError = (errors) => {
     console.log("Error no form", errors);

@@ -24,9 +24,11 @@ import {
   FormControlDiv,
 } from "../FormCompletarCadastro/styles.jsx";
 import axios from "axios";
+import { useContextGlobal } from "../../contexts/GlobalContext.jsx";
 
-function CadastroEmbarcacoes() {
-
+function CadastroEmbarcacoes({ indiceEtapa }) {
+  var cont = 1
+  const { editando, setEditando, definirValidadeEtapa, gatilho, setGatilho } = useContextGlobal();
   const [isDisabled, setIsDisabled] = useState(false);
   const {
     register,
@@ -35,18 +37,29 @@ function CadastroEmbarcacoes() {
     setError,
     setValue,
     clearErrors,
+    trigger,
     control,
     formState: { errors },
   } = useForm();
   const onSubmit = (data, event) => {
     event.preventDefault();
+   
     console.log(data);
+    definirValidadeEtapa(indiceEtapa, true);
   };
   const onError = (errors) => {
     console.log("Error no form", errors);
   };
+  
+
+
   useEffect(() => {
-    axios
+    if(gatilho && cont == 1){
+      console.log("aaaa")
+      trigger();
+    cont = cont++
+    }
+      axios
       .get("http://localhost:8080/embarcacao/b23f42e2-7e3d-4c68-bdc6-09027dff0fbb")
       .then((response) => {
         const data = response.data;
