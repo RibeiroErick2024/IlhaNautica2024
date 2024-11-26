@@ -2,36 +2,60 @@ import { useState } from "react";
 
 import "./index.css";
 import CadastroEmbarcacoes from "../../components/FormCadastroEmbarcacao";
-import PerfilEmbarcacao from "../../components/FormPerfilEmbarcacao";
 import DescricaoEmbarcacao from "../../components/FormDescricao";
-import HeaderPrincipal from "../../components/Header";
-import PerfilMarinheiro from "../../components/FormPerfilMarinheiro"
-import CadastroEmbarcacaoContinua from "../../components/FormCadastroEmbarcacaoContinua"
+import CadastroEmbarcacaoContinua from "../../components/FormCadastroEmbarcacaoContinua";
 import { useNavigate } from "react-router-dom";
+import MobileStepper from "@mui/material/MobileStepper";
+import Button from "@mui/material/Button";
+import FormPerfilMarinheiro from "../../components/FormPerfilMarinheiro";
+import { useContextGlobal } from "../../contexts/GlobalContext";
+import { useForm } from "react-hook-form";
 
 
+function CadastroLocador({ titulo }) {
+   const navigate = useNavigate();
+  
+  const { activeStep, setActiveStep, isStepValid, gatilho, setGatilho} = useContextGlobal();
 
-function CadastroLocador({titulo}) {
-  const navigate = useNavigate();
+  
+
+  const handleNext = () => {
+    setGatilho(true)
+    if (isStepValid[activeStep]) {  // Verifica se a etapa atual é válida
+      setActiveStep(prevStep => prevStep + 1); 
+    } else {
+      console.log("Formulário inválido");
+    }
+  };
+  const steps = [
+    <CadastroEmbarcacoes indiceEtapa={0} />,
+    <CadastroEmbarcacaoContinua indiceEtapa={1} />,
+    <FormPerfilMarinheiro indiceEtapa={2} />,
+    <DescricaoEmbarcacao indiceEtapa={3} />
+  ];
+
+
+  const handleBack = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
   };
-  
-  //teste 
+
+  //teste
   const handleClick = () => {
-    navigate("/home"); 
+    navigate("/home");
   };
 
   return (
     <>
-    {/* <HeaderPrincipal /> */}
+      {/* <HeaderPrincipal /> */}
       <div className="container-cadastro">
         <div className="titulo-cadastro">
           <h2>Seu Barco </h2>
           <hr className="linhaHr" />
         </div>
-
         <div className="icones-embarcacao">
           <button type="button" className="btn-icone" onClick={handleClick}>
             <img
@@ -64,13 +88,33 @@ function CadastroLocador({titulo}) {
         </div>
 
         <div className="forms-cadastro">
-        
-        <PerfilEmbarcacao />
-        <CadastroEmbarcacaoContinua />
-        <CadastroEmbarcacoes titulo="Cadastro Embarcação"/>
-        <PerfilMarinheiro />
-        <DescricaoEmbarcacao />
+         {steps[activeStep]}
         </div>
+        <MobileStepper
+          variant="progress"
+          steps={4}
+          position="static"
+          activeStep={activeStep}
+          sx={{ maxWidth: 400, flexGrow: 1 }}
+          nextButton={
+            <Button
+              size="small"
+              onClick={handleNext}
+              disabled={activeStep === 3}
+            >
+               {activeStep === steps.length - 1 ? 'Concluir' : 'Continuar'}
+            </Button>
+          }
+          backButton={
+            <Button
+              size="small"
+              onClick={handleBack}
+              disabled={activeStep === 0}
+            >
+              Voltar
+            </Button>
+          }
+        />
       </div>
     </>
   );

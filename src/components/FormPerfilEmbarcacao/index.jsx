@@ -1,89 +1,174 @@
 import { useState } from "react";
-
 import "../FormCadastroEmbarcacao/index.css";
+import { useForm, Controller } from "react-hook-form";
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  TextField,
+  Select,
+  MenuItem,
+  InputLabel,
+  FormControl,
+} from "@mui/material";
+import {
+  ColorButtonCancelar,
+  ColorButtonSalvar,
+  ContainerTextFieldInput,
+  SelectInput,
+  TextFieldInput,
+  Titulo,
+  ContainerModal,
+  FormControlDiv,
+} from "../FormCompletarCadastro/styles.jsx";
 
 function PerfilEmbarcacao() {
-  const [usernome, setUserNome] = useState("");
-  const [usermodelo, setUserModelo] = useState("");
-  const [userano, setUserAno] = useState("");
-  const [usercapacidade, setUserCapacidade] = useState("");
-  const [useranimaispermitidos, setUserAnimaisPermitidos] = useState("");
-  const [userlocalizacao, setUserLocallizacao] = useState("");
-  const [userroteiros, setUserRoteiros] = useState("");
-  const handleSubmit = (event) => {
+  // const [nome, setNome] = useState("");
+  // const [modelo, setModelo] = useState("");
+  // const [ano, setAno] = useState("");
+  // const [capacidade, setCapacidade] = useState("");
+  // const [animaispermitidos, setAnimaisPermitidos] = useState("");
+  // const [localizacao, setLocallizacao] = useState("");
+  // const [roteiros, setRoteiros] = useState("");
+  const {
+    register,
+    handleSubmit,
+    watch,
+    setError,
+    clearErrors,
+    control,
+    formState: { errors },
+  } = useForm();
+
+  const submit = (data, event) => {
     event.preventDefault();
+    console.log(data);
+    console.log(event);
+  };
+  const onError = (errors) => {
+    console.log("Error no form", errors); 
   };
 
   return (
     <div>
       <div className="container-cadastro-embarcacoes">
         <h1 className="titulo-embarcacao">Perfil Embarcação</h1>
-        <form onSubmit={handleSubmit} className="form-section-embarcacoes">
-          <div className="input-field">
-            <input
-              type="text"
-              placeholder="Nome"
-              required
-              value={usernome}
-              onChange={(e) => setUserNome(e.target.value)}
+        <form
+          onSubmit={handleSubmit(submit, onError)}
+          className="form-section-embarcacoes"
+        >
+          <ContainerTextFieldInput>
+            <TextFieldInput
+              fullWidth
+              label="Nome"
+              variant="outlined"
+              margin="dense"
+              {...register("nome", {
+                required: "Campo obrigatório",
+                minLength: 3,
+              })}
+              error={!!errors.nome}
+              helperText={errors.nome?.message}
             />
 
-            <input
-              type="text"
-              placeholder="Modelo"
-              required
-              value={usermodelo}
-              onChange={(e) => setUserModelo(e.target.value)}
+            <TextFieldInput
+              fullWidth
+              label="Modelo"
+              variant="outlined"
+              margin="dense"
+              {...register("modelo", {
+                required: "Campo obrigatório",
+                minLength: 3,
+              })}
+              error={!!errors.modelo}
+              helperText={errors.modelo?.message}
             />
 
-            <input
-              type="text"
-              placeholder="Ano"
-              required
-              value={userano}
-              onChange={(e) => setUserAno(e.target.value)}
+            <TextFieldInput
+              fullWidth
+              type="number"
+              label="Ano"
+              variant="outlined"
+              margin="dense"
+              {...register("ano", {
+                required: "Campo obrigatório",
+                min: {
+                  value: 1900,
+                  message: "Ano inválido",
+                },
+                max: {
+                  value: new Date().getFullYear(),
+                  message: "Ano não pode ser maior que o ano atual",
+                },
+              })}
+              error={!!errors.ano}
+              helperText={errors.ano?.message}
             />
 
-            <input
-              type="text"
-              placeholder="Capacidade"
-              required
-              value={usercapacidade}
-              onChange={(e) => setUserCapacidade(e.target.value)}
+            <TextFieldInput
+              fullWidth
+              type="number"
+              label="Capacidade"
+              variant="outlined"
+              margin="dense"
+              {...register("capacidade", {
+                required: "Campo obrigatório",
+                min: {
+                  value: 1,
+                  message: "Capacidade mínima é 1",
+                },
+              })}
+              error={!!errors.capacidade}
+              helperText={errors.capacidade?.message}
+            />
+          </ContainerTextFieldInput>
+          <ContainerTextFieldInput>
+            <TextFieldInput
+              fullWidth
+              label="Animais Permitidos"
+              variant="outlined"
+              margin="dense"
+              {...register("animaispermitidos", {
+                required: "Campo obrigatório",
+                minLength: 3,
+              })}
+              error={!!errors.animaispermitidos}
+              helperText={errors.animaispermitidos?.message}
             />
 
-            <input
-              type="text"
-              placeholder="Animais Permitidos"
-              required
-              value={useranimaispermitidos}
-              onChange={(e) => setUserAnimaisPermitidos(e.target.value)}
+            <TextFieldInput
+              fullWidth
+              label="Localização"
+              variant="outlined"
+              margin="dense"
+              {...register("localizacao", {
+                required: "Campo obrigatório",
+                minLength: 3,
+              })}
+              error={!!errors.localizacao}
+              helperText={errors.localizacao?.message}
             />
 
-            <input
-              type="text"
-              placeholder="Localização"
-              required
-              value={userlocalizacao}
-              onChange={(e) => setUserLocallizacao(e.target.value)}
+            <TextFieldInput
+              fullWidth
+              label="Roteiros"
+              variant="outlined"
+              margin="dense"
+              {...register("roteiros", {
+                required: "Campo obrigatório",
+                minLength: 3,
+              })}
+              error={!!errors.roteiros}
+              helperText={errors.roteiros?.message}
             />
+          </ContainerTextFieldInput>
 
-            <input
-              type="text"
-              placeholder="Roteiros"
-              required
-              value={userroteiros}
-              onChange={(e) => setUserRoteiros(e.target.value)}
-            />
-
-
-            
-          </div>
+          <button type="submit" className="btn-salvar-embarcacao">
+            Salvar
+          </button>
         </form>
-
-        <div>
-          <button className="btn-salvar-embarcacao">Salvar</button>
-        </div>
       </div>
     </div>
   );

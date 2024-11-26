@@ -1,0 +1,9 @@
+.listagem-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 2fr)); /* Colunas adaptáveis e mais largas */
+    gap: 16px; /* Ajuste o gap para ocupar menos espaço */
+    padding: 30px; /* Reduza o padding para garantir que não ultrapasse a largura */
+    background-color: rgb(255, 255, 255);
+    max-width: 100%; /* Limita o contêiner à largura da tela */
+    overflow-x: hidden; /* Esconde qualquer transbordamento horizontal */
+}

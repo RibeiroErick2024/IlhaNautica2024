@@ -1,96 +1,178 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-import "../FormCadastroEmbarcacaoContinua/index.css"
+import "../FormCadastroEmbarcacaoContinua/index.css";
+import { useForm, Controller } from "react-hook-form";
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  TextField,
+  Select,
+  MenuItem,
+  InputLabel,
+  FormControl,
+} from "@mui/material";
+import {
+  ColorButtonCancelar,
+  ColorButtonSalvar,
+  ContainerTextFieldInput,
+  SelectInput,
+  TextFieldInput,
+  Titulo,
+  ContainerModal,
+  FormControlDiv,
+} from "../FormCompletarCadastro/styles.jsx";
+import axios from "axios";
 
-
-const CadastroEmbarcacaoContinua = () => {
-
-  const [usercidade, setUserCidade] = useState("");
-  const [userdatasdisponiveis, setUserdatasdisponiveis] = useState("");
-  const [userequipamento, setUserEquipamnetos] = useState("");
-  const [userporto, setUserPorto] = useState("");
-  const [usercapitao, setUserCapitao] = useState("");
+const CadastroEmbarcacaoContinua = ({ indiceEtapa}) => {
   const [isChecked, setIsChecked] = useState(false);
+  const { definirValidadeEtapa } = useFormContext();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    setError,
+    clearErrors,
+    setValue,
+    control,
+    formState: { errors },
+  } = useForm();
 
-
-  const handleSubmit = (event) => {
-
+  const submitForm = (data, event) => {
     event.preventDefault();
+    console.log(data);
+    definirValidadeEtapa(indiceEtapa, true)
   };
 
   const handleOnChange = () => {
     setIsChecked(!isChecked);
   };
 
-  return (
-    <div className="container-cadastro-embarcacoes" >
-      {/* <h1 className="titulo-embarcacao">Embarcação</h1> */}
-      <form onSubmit={handleSubmit} className="form-section-embarcacoes">
+  useEffect(() => {
+    axios
+      .get(
+        "http://localhost:8080/embarcacao/b23f42e2-7e3d-4c68-bdc6-09027dff0fbb"
+      )
+      .then((response) => {
+        const data = response.data;
+        console.log(data);
+     
+        setValue("enderecoEmbarque", data.enderecoEmbarque);
+        setValue("inscricao", data.inscricao);
+        setValue("preco", data.preco);
+        setValue("bandeira", data.bandeira);
       
-        <div className="input-field">
-          <input
-            type="text"
-            placeholder="Cidade"
-            required
-            value={usercidade}
-            onChange={(e) => setUserCidade(e.target.value)}
+        // setValue("registroMaritimo" ,data.registroMaritimo);
+    
+      })
+      .catch((error) => console.log(error));
+  }, []);
+
+  return (
+    <div className="container-cadastro-embarcacoes">
+      {/* <h1 className="titulo-embarcacao">Embarcação</h1> */}
+      <form onSubmit={handleSubmit(submitForm)} className="form-section-embarcacoes">
+        <ContainerTextFieldInput>
+          <TextFieldInput
+            fullWidth
+            label="Cidade"
+            variant="outlined"
+            margin="dense"
+            {...register("cidade", {
+              required: "Campo obrigatório",
+              minLength: 3,
+            })}
+            error={!!errors.cidade}
+            helperText={errors.cidade?.message}
           />
 
-          <input
+          <TextFieldInput
+            fullWidth
+            focused
+            label="Datas Disponíveis"
+            variant="outlined"
+            margin="dense"
             type="text"
-            placeholder="Data Disponiveis"
-            required
-            value={userdatasdisponiveis}
-            onChange={(e) => setUserdatasdisponiveis(e.target.value)}
+            {...register("datasdisponiveis", {
+              required: "Campo obrigatório",
+            })}
+            error={!!errors.datasdisponiveis}
+            helperText={errors.datasdisponiveis?.message}
           />
 
-          <input
-            type="text"
-            placeholder="Equipamentos"
-            required
-            value={userequipamento}
-            onChange={(e) => setUserEquipamnetos(e.target.value)}
+          <TextFieldInput
+            fullWidth
+            label="Endereco de Embarque"
+            variant="outlined"
+            margin="dense"
+            {...register("enderecoEmbarque", {
+              required: "Campo obrigatório",
+              minLength: 3,
+            })}
+            error={!!errors.enderecoEmbarque}
+            helperText={errors.enderecoEmbarque?.message}
+          />
+        </ContainerTextFieldInput>
+
+        <ContainerTextFieldInput>
+          <TextFieldInput
+            fullWidth
+            type="number"
+            label="Preço"
+            variant="outlined"
+            margin="dense"
+            {...register("preco", {
+              required: "Campo obrigatório",
+              min: {
+                value: 0,
+                message: "Preço deve ser maior ou igual a 0",
+              },
+            })}
+            error={!!errors.preco}
+            helperText={errors.preco?.message}
           />
 
-          <input
-            type="text"
-            placeholder="Porto"
-            required
-            value={userporto}
-            onChange={(e) => setUserPorto(e.target.value)}
+          <TextFieldInput
+            fullWidth
+            label="Inscrição IMO"
+            variant="outlined"
+            margin="dense"
+            {...register("inscricao", {
+              required: "Campo obrigatório",
+              minLength: {
+                value: 6,
+                message: "Inscrição IMO inválida",
+              },
+            })}
+            error={!!errors.inscricao}
+            helperText={errors.inscricao?.message}
           />
 
-          <input
-            type="text"
-            placeholder="Capitao"
-            required
-            value={usercapitao}
-            onChange={(e) => setUserCapitao(e.target.value)}
+          <TextFieldInput
+            fullWidth
+            label="Bandeira"
+            variant="outlined"
+            margin="dense"
+            {...register("bandeira", {
+              required: "Campo obrigatório",
+              minLength: {
+                value: 2,
+                message: "Bandeira inválida",
+              },
+            })}
+            error={!!errors.bandeira}
+            helperText={errors.bandeira?.message}
           />
+        </ContainerTextFieldInput>
 
-        </div>
-        <div className="topping">
-          <input type="checkbox" id="topping" name="topping"
-            value="Paneer"
-            checked={isChecked}
-            onChange={handleOnChange}
-          />Equipamento de segurança
-        </div>
-
-
-      </form>
-      <div>
-        <button className="btn-salvar-embarcacao">
+        <button type="submit" className="btn-salvar-embarcacao">
           Salvar
         </button>
-      </div>
+      </form>
     </div>
-
-
-
-
   );
 };
-
 
 export default CadastroEmbarcacaoContinua;
