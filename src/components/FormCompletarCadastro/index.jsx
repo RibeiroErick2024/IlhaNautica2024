@@ -52,7 +52,7 @@ export function FormUsuario(){
 
   const onSubmit = async (data) => {
     await handleCadastro(data);
-    handleClose();
+    // handleClose();
   };
   const onError = (errors) => {
     console.log("Error no form", errors); 
@@ -242,9 +242,9 @@ export function FormUsuario(){
     />
   </ContainerTextFieldInput>
   <DialogActions>
-    <ColorButtonCancelar onClick={handleClose}>
+    {/* <ColorButtonCancelar onClick={handleClose}>
       Cancelar
-    </ColorButtonCancelar>
+    </ColorButtonCancelar> */}
     <ColorButtonSalvar
       type="submit"
       variant="contained"
