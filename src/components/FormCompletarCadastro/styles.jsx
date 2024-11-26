@@ -1,16 +1,13 @@
-import { makeStyles } from "@mui/styles";
 import {
   Button,
   Dialog,
   DialogContent,
   DialogTitle,
-  Select,
-  TextField,
   FormControl,
-  outlinedInputClasses,
+  TextField
 } from "@mui/material";
+import { cyan, lightBlue, purple } from "@mui/material/colors";
 import { styled } from "@mui/material/styles";
-import { purple, lightGreen, lightBlue, cyan } from "@mui/material/colors";
 
 export const Titulo = styled(DialogTitle)(({ theme }) => ({
   theme: theme.palette.getContrastText(cyan[300]),
@@ -101,6 +98,52 @@ export const TextFieldInput = styled(TextField)(({ theme }) => ({
     },
   },
 }));
+
+export const ContainerTextFieldInputCadastro = styled(DialogContent)(({ theme }) => ({
+  color: theme.palette.getContrastText(lightBlue[300]),
+  width: "50%",
+  height: "100%",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "space-evenly",
+
+}));
+export const TextFieldInputCadastro = styled(TextField)(({ theme }) => ({
+  color: theme.palette.getContrastText(lightBlue[300]),
+  width: "100%",
+  "& .MuiOutlinedInput-root": {
+    "& fieldset": {
+      borderColor: "#E0E3E7",
+      borderRadius: 40,
+    },
+  },
+  "& .MuiInputBase-formControl": {
+    "& fieldset": {
+      borderColor: "rgba(19,141,147,255)",
+      borderRadius: 40,
+    },
+  },
+}));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const FormControlDiv = styled(FormControl)(({ theme }) => ({
   color: theme.palette.getContrastText(lightBlue[300]),
   width: "100%",
