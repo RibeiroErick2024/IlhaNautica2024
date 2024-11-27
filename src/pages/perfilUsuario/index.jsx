@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from "react";
-
+import { Link } from "react-router-dom";
 import "./index.css";
-import CompletarCadastro from "../../components/FormCompletarCadastro"
 import { useContextGlobal } from "../../contexts/GlobalContext";
+import FormUsuario from "../../components/FormUsuario";
 
 function PerfilUsuario() {
   const { editando, setEditando } = useContextGlobal();
@@ -23,10 +23,17 @@ function PerfilUsuario() {
         <button type="button" className="btn-icone">
           <img className="icon-svg" src="./images/perfil.png" alt="Ícone Marinheiro" />
         </button>
-        <button type="button" className="btn-icone">
-          <img className="icon-svg" src="./images/embarcacao.png" alt="Ícone Marinheiro" />
-         
-        </button>
+
+        <Link to="/embarcacao">
+          <button type="button" className="btn-icone">
+            <img
+              className="icon-svg"
+              src="./images/embarcacao.png"
+              alt="Ícone Marinheiro"
+            />
+          </button>
+        </Link>
+
         <button type="button" className="btn-icone">
           <img className="icon-svg" src="./images/notificacao.png" alt="Ícone Marinheiro" />
         </button>
@@ -36,8 +43,8 @@ function PerfilUsuario() {
 
       {/* <button type="submit" className="btn-salvar-marinheiro">Salvar</button> */}
       <div className="perfilMarinheiro">
+        <FormUsuario />
 
-        <CompletarCadastro />
 
       </div>
     </div>
