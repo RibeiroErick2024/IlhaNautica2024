@@ -25,10 +25,11 @@ import {
   FormControlDiv,
 } from "../FormCompletarCadastro/styles.jsx";
 import axios from "axios";
+import { useContextGlobal } from "../../contexts/GlobalContext.jsx";
 
 const CadastroEmbarcacaoContinua = ({ indiceEtapa}) => {
   const [isChecked, setIsChecked] = useState(false);
-  const { definirValidadeEtapa } = useFormContext();
+  const { editando, setEditando, definirValidadeEtapa, gatilho, setGatilho } = useContextGlobal();
   const {
     register,
     handleSubmit,
@@ -77,6 +78,7 @@ const CadastroEmbarcacaoContinua = ({ indiceEtapa}) => {
         <ContainerTextFieldInput>
           <TextFieldInput
             fullWidth
+            focused={editando}
             label="Cidade"
             variant="outlined"
             margin="dense"
@@ -90,7 +92,7 @@ const CadastroEmbarcacaoContinua = ({ indiceEtapa}) => {
 
           <TextFieldInput
             fullWidth
-            focused
+            focused={editando}
             label="Datas Disponíveis"
             variant="outlined"
             margin="dense"
@@ -104,6 +106,7 @@ const CadastroEmbarcacaoContinua = ({ indiceEtapa}) => {
 
           <TextFieldInput
             fullWidth
+            focused={editando}
             label="Endereco de Embarque"
             variant="outlined"
             margin="dense"
@@ -119,6 +122,7 @@ const CadastroEmbarcacaoContinua = ({ indiceEtapa}) => {
         <ContainerTextFieldInput>
           <TextFieldInput
             fullWidth
+            focused={editando}
             type="number"
             label="Preço"
             variant="outlined"
@@ -136,6 +140,7 @@ const CadastroEmbarcacaoContinua = ({ indiceEtapa}) => {
 
           <TextFieldInput
             fullWidth
+            focused={editando}
             label="Inscrição IMO"
             variant="outlined"
             margin="dense"
@@ -152,6 +157,7 @@ const CadastroEmbarcacaoContinua = ({ indiceEtapa}) => {
 
           <TextFieldInput
             fullWidth
+            focused={editando}
             label="Bandeira"
             variant="outlined"
             margin="dense"

@@ -121,3 +121,24 @@ export const SelectInput = styled(TextField)(({ theme }) => ({
     },
   },
 }));
+
+export const TextAreaInputField = styled(TextField)(({ theme }) => ({
+  color: theme.palette.getContrastText(lightBlue[300]),
+  width: "100%",
+  height:"100%",
+  "& .MuiOutlinedInput-root": {
+    "& fieldset": {
+      borderColor: "#E0E3E7",
+      borderRadius: 40,
+    },
+  },
+  "& .MuiInputBase-formControl": {
+    "& fieldset": {
+      borderColor: "rgba(19,141,147,255)",
+      borderRadius: 40,
+    },
+  },
+  "& .MuiInputBase-multiline": {
+    padding: "16px", // Adiciona algum padding para melhor visualização
+  },
+}));
