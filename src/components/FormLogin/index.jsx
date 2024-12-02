@@ -71,8 +71,9 @@ const FormLogin = ({ onToggleForm }) => {
 
   return (
     <div className="container">
+      <h1>Entrar</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <h1>Entrar</h1>
+        
 
         <div className="input-field">
           <input
