@@ -49,8 +49,9 @@ const FormCadastro = () => {
 
   return (
     <div className="container">
+      <h1>CADASTRAR</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <h1>CADASTRAR</h1>
+        
 
         <div className="input-field">
           <input
@@ -154,7 +155,7 @@ const FormCadastro = () => {
 
         <div className="signup-link">
           <p>
-            Já tem uma conta? <a href="/">Clique aqui</a>
+            Já tem uma conta? <a href="/login">Clique aqui</a>
           </p>
         </div>
       </form>

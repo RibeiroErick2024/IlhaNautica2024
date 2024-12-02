@@ -95,7 +95,7 @@ function CadastroLocador({ titulo }) {
           steps={4}
           position="static"
           activeStep={activeStep}
-          sx={{ maxWidth: 400, flexGrow: 1 }}
+          sx={{ maxWidth: 1200, flexGrow: 1, alignItems:"center", justifyContent:"center", alignContent: "center" }}
           nextButton={
             <Button
               size="small"
@@ -111,7 +111,7 @@ function CadastroLocador({ titulo }) {
               onClick={handleBack}
               disabled={activeStep === 0}
             >
-              Voltar
+              {activeStep === 0 ? '' : 'Voltar'}
             </Button>
           }
         />

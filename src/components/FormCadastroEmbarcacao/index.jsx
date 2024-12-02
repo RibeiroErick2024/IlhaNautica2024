@@ -27,7 +27,7 @@ import axios from "axios";
 import { useContextGlobal } from "../../contexts/GlobalContext.jsx";
 
 function CadastroEmbarcacoes({ indiceEtapa }) {
-  var cont = 1
+
   const { editando, setEditando, definirValidadeEtapa, gatilho, setGatilho } = useContextGlobal();
   const [isDisabled, setIsDisabled] = useState(false);
   const {
@@ -43,23 +43,19 @@ function CadastroEmbarcacoes({ indiceEtapa }) {
   } = useForm();
   const onSubmit = (data, event) => {
     event.preventDefault();
-   
+
     console.log(data);
     definirValidadeEtapa(indiceEtapa, true);
   };
   const onError = (errors) => {
     console.log("Error no form", errors);
   };
-  
+
 
 
   useEffect(() => {
-    if(gatilho && cont == 1){
-      console.log("aaaa")
-      trigger();
-    cont = cont++
-    }
-      axios
+
+    axios
       .get("http://localhost:8080/embarcacao/b23f42e2-7e3d-4c68-bdc6-09027dff0fbb")
       .then((response) => {
         const data = response.data;
@@ -85,6 +81,7 @@ function CadastroEmbarcacoes({ indiceEtapa }) {
         <ContainerTextFieldInput>
           <TextFieldInput
             fullWidth
+            focused={editando}
             label="Fabricante"
             variant="outlined"
             margin="dense"
@@ -98,6 +95,7 @@ function CadastroEmbarcacoes({ indiceEtapa }) {
 
           <TextFieldInput
             fullWidth
+            focused={editando}
             label="Nome da Embarcação"
             variant="outlined"
             margin="dense"
@@ -110,6 +108,7 @@ function CadastroEmbarcacoes({ indiceEtapa }) {
           />
           <TextFieldInput
             fullWidth
+            focused={editando}
             type="number"
             label="Ano de Fabricação"
             variant="outlined"
@@ -131,6 +130,7 @@ function CadastroEmbarcacoes({ indiceEtapa }) {
 
           <TextFieldInput
             fullWidth
+            focused={editando}
             type="number"
             label="Comprimento"
             variant="outlined"
@@ -148,20 +148,9 @@ function CadastroEmbarcacoes({ indiceEtapa }) {
         </ContainerTextFieldInput>
 
         <ContainerTextFieldInput>
-          {/* <TextFieldInput //Não tem no back
-            fullWidth
-            label="Modelo"
-            variant="outlined"
-            margin="dense"
-            {...register("modelo", {
-              required: "Campo obrigatório",
-              minLength: 3,
-            })}
-            error={!!errors.modelo}
-            helperText={errors.modelo?.message}
-          /> */}
           <TextFieldInput
             fullWidth
+            focused={editando}
             type="number"
             label="Potência"
             variant="outlined"
@@ -178,6 +167,7 @@ function CadastroEmbarcacoes({ indiceEtapa }) {
           />
           <TextFieldInput
             fullWidth
+            focused={editando}
             type="number"
             label="Número de Cabines"
             variant="outlined"
@@ -191,6 +181,7 @@ function CadastroEmbarcacoes({ indiceEtapa }) {
           />
           <TextFieldInput
             fullWidth
+            focused={editando}
             type="number"
             label="Número de Banheiros"
             variant="outlined"
@@ -205,6 +196,7 @@ function CadastroEmbarcacoes({ indiceEtapa }) {
 
           <TextFieldInput
             fullWidth
+            focused={editando}
             type="number"
             label="Capacidade"
             variant="outlined"
