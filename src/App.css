@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-.App {
+/* .App {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,4 +12,4 @@
   background: url("assets/barco.jpg") no-repeat;
   background-size: cover;
   background-position: center;
-}
+} */

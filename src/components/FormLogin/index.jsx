@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import api from "../../config/axios";
 import { useAuth } from "../../contexts/AuthContext";
+import { TextFieldInput, ContainerTextFieldInput } from "./styles.jsx"
 
 const FormLogin = ({ onToggleForm }) => {
   const {
@@ -73,39 +74,49 @@ const FormLogin = ({ onToggleForm }) => {
     <div className="container">
       <h1>Entrar</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
-        
-
-        <div className="input-field">
-          <input
-            type="text"
-            placeholder="E-mail"
-            {...register("email", { required: "O e-mail é obrigatório." })}
+      <ContainerTextFieldInput> 
+          <TextFieldInput
+            fullWidth
+            type="email"
+            label="E-mail"
+            variant="outlined"
+            margin="dense"
+            focused={true}
+            {...register("email", {
+              required: "O e-mail é obrigatório.",
+              pattern: {
+                value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+                message: "E-mail inválido",
+              },
+            })}
+            error={!!errors.email}
+            helperText={errors.email?.message}
             onChange={() => handleInputChange("email")}
+            InputProps={{
+              endAdornment: <Mail size={26} className="icon" />, 
+            }}
           />
-          <Mail size={22} className="icon" />
-          {tentativaLogin && errors.email && (
-            <p style={{ color: "red", marginLeft: "10px", marginTop: "10px" }}>
-              {errors.email.message}
-            </p>
-          )}
-        </div>
-
-        <div className="input-field" style={{ position: "relative" }}>
-          <input
+     
+           <TextFieldInput
+            fullWidth
             type={mostrarSenha ? "text" : "password"}
-            placeholder="Senha"
+            label="Senha"
+            variant="outlined"
+            margin="dense"
+            focused={true}
             {...register("senha", { required: "A senha é obrigatória." })}
+            error={!!errors.senha}
+            helperText={errors.senha?.message}
             onChange={() => handleInputChange("senha")}
+            InputProps={{
+              endAdornment: (
+                <div className="iconeSenha" onClick={toggleSenhaVisibilidade}>
+                  {mostrarSenha ? <EyeOff size={22} /> : <Eye size={22} />}
+                </div>
+              ),
+            }}
           />
-          <div className="iconeSenha" onClick={toggleSenhaVisibilidade}>
-            {mostrarSenha ? <EyeOff size={22} /> : <Eye size={22} />}
-          </div>
-          {tentativaLogin && errors.senha && (
-            <p style={{ color: "red", marginLeft: "10px", marginTop: "10px" }}>
-              {errors.senha.message}
-            </p>
-          )}
-        </div>
+       </ContainerTextFieldInput>
 
         <div className="recall-forget">
           <a href="#" onClick={handleRecuperacaoClick}>
