@@ -11,6 +11,7 @@ import Home from './pages/Home';
 import CompletarCadastro from './components/FormCompletarCadastro';
 import PerfilMarinheiro from './pages/perfilMarinheiro';
 import PerfilUsuario from './pages/perfilUsuario';
+import FormCadastro from './components/FormCadastro';
 
 function App() {
 
@@ -18,8 +19,9 @@ function App() {
     <AuthProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/login" element={<Login />} />
             <Route path="/home" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/cadastro" element={<FormCadastro />} />
             <Route path="/complete" element={<CompletarCadastro />} />
           <Route path="/recuperacaoSenha" element={<RecuperacaoSenha />} />
           <Route path="/perfilMarinheiro" element={<PerfilMarinheiro />} />

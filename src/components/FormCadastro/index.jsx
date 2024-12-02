@@ -32,6 +32,11 @@ const FormCadastro = () => {
     try {
       const response = await api.post(`auth/cadastro`, usuario);
       console.log("Console", response);
+      console.log("Oi")
+      if(response){
+        console.log("Ooooi")
+        navigate("/login")
+      }
     } catch (error) {
       console.log("Console", error.response.data);
     }
