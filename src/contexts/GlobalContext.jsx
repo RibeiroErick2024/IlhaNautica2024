@@ -12,6 +12,7 @@ const edit = false
 const [isStepValid, setIsStepValid] = useState([false, false, false, false]); 
 const [activeStep, setActiveStep] = useState(0);
 const [gatilho, setGatilho]= useState(false)
+const [locador, setLocador] = useState(false)
 
  const definirValidadeEtapa = (indiceEtapa, statusValidacao) => {
     const etapasAtualizadas = [...isStepValid]; // Cria uma cópia do estado atual
@@ -23,7 +24,8 @@ const [gatilho, setGatilho]= useState(false)
         <GlobalContext.Provider value={{editando, setEditando, edit,  activeStep,
             setActiveStep,
             isStepValid,
-            definirValidadeEtapa, gatilho, setGatilho}}>
+            definirValidadeEtapa, gatilho, setGatilho,
+            locador, setLocador}}>
             {children}
         </GlobalContext.Provider>
     )

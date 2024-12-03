@@ -28,7 +28,7 @@ import { useContextGlobal } from "../../contexts/GlobalContext.jsx";
 
 function CadastroEmbarcacoes({ indiceEtapa }) {
 
-  const { editando, setEditando, definirValidadeEtapa, gatilho, setGatilho } = useContextGlobal();
+  const { editando, setEditando } = useContextGlobal();
   const [isDisabled, setIsDisabled] = useState(false);
   const {
     register,
@@ -45,7 +45,7 @@ function CadastroEmbarcacoes({ indiceEtapa }) {
     event.preventDefault();
 
     console.log(data);
-    definirValidadeEtapa(indiceEtapa, true);
+    
   };
   const onError = (errors) => {
     console.log("Error no form", errors);

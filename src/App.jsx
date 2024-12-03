@@ -3,6 +3,7 @@ import './App.css'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
 import Login from './pages/login/Login';
+import Home from './pages/Home';
 import RecuperacaoSenha from './components/FormRecuperacaoSenha';
 import CadastroLocador from './pages/cadastroLocador';
 import CadastroEmbarcacoes from './components/FormCadastroEmbarcacao';
@@ -26,8 +27,7 @@ function App() {
           <Route path="/perfilMarinheiro" element={<PerfilMarinheiro />} />
           <Route path="/perfilUsuario" element={<PerfilUsuario />} />
           <Route path="/cadastroLocador" element={<CadastroLocador />} />
-          <Route path="/de" element={<DescricaoEmbarcacao />} />
-          <Route element={<ProtectedRoute />}>
+           <Route element={<ProtectedRoute />}>
           <Route path="/cadastroEmbarcacoes" element={<CadastroEmbarcacoes />} />
           </Route>
 

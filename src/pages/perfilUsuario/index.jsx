@@ -1,21 +1,29 @@
 import { useContext, useEffect, useState } from "react";
 
 import "./index.css";
-import CompletarCadastro from "../../components/FormCompletarCadastro"
+import CompletarCadastro, { FormUsuario } from "../../components/FormCompletarCadastro"
 import { useContextGlobal } from "../../contexts/GlobalContext";
+import HeaderPrincipal from "../../components/Header";
+import { useNavigate } from "react-router-dom";
 
 function PerfilUsuario() {
-  const { editando, setEditando } = useContextGlobal();
+  const navigate = useNavigate()
+  const { editando, setEditando, locador } = useContextGlobal();
+
   const handleSubmit = (event) => {
     event.preventDefault();
   };
   useEffect(() => {
     setEditando(true);
-  }, [setEditando]);
-  useEffect(() => {
-
-  })
+  }, []);
+ 
+  function paraLocador(){
+    setEditando(true);
+    navigate("/cadastroLocador")
+  }
   return (
+    <>
+    <HeaderPrincipal />
     <div className="containerPerfil" >
 
       {/* Contêiner de Ícones */}
@@ -23,10 +31,10 @@ function PerfilUsuario() {
         <button type="button" className="btn-icone">
           <img className="icon-svg" src="./images/perfil.png" alt="Ícone Marinheiro" />
         </button>
-        <button type="button" className="btn-icone">
+        {locador && <button type="button" className="btn-icone" onClick={paraLocador}>
           <img className="icon-svg" src="./images/embarcacao.png" alt="Ícone Marinheiro" />
          
-        </button>
+        </button>}
         <button type="button" className="btn-icone">
           <img className="icon-svg" src="./images/notificacao.png" alt="Ícone Marinheiro" />
         </button>
@@ -37,10 +45,11 @@ function PerfilUsuario() {
       {/* <button type="submit" className="btn-salvar-marinheiro">Salvar</button> */}
       <div className="perfilMarinheiro">
 
-        <CompletarCadastro />
+        <FormUsuario />
 
       </div>
     </div>
+    </>
   );
 }
 

@@ -56,7 +56,8 @@ const FormLogin = ({ onToggleForm }) => {
 
   const handleRegistrarClick = (event) => {
     event.preventDefault();
-    onToggleForm();
+    // onToggleForm();
+    navigate("/cadastro")
   };
 
   const handleRecuperacaoClick = (event) => {

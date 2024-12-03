@@ -10,34 +10,13 @@ import Button from "@mui/material/Button";
 import FormPerfilMarinheiro from "../../components/FormPerfilMarinheiro";
 import { useContextGlobal } from "../../contexts/GlobalContext";
 import { useForm } from "react-hook-form";
+import HeaderPrincipal from "../../components/Header";
 
 
 function CadastroLocador({ titulo }) {
-   const navigate = useNavigate();
-  
-  const { activeStep, setActiveStep, isStepValid, gatilho, setGatilho} = useContextGlobal();
+  const navigate = useNavigate();
 
-  
-
-  const handleNext = () => {
-    setGatilho(true)
-    if (isStepValid[activeStep]) {  // Verifica se a etapa atual é válida
-      setActiveStep(prevStep => prevStep + 1); 
-    } else {
-      console.log("Formulário inválido");
-    }
-  };
-  const steps = [
-    <CadastroEmbarcacoes indiceEtapa={0} />,
-    <CadastroEmbarcacaoContinua indiceEtapa={1} />,
-    <FormPerfilMarinheiro indiceEtapa={2} />,
-    <DescricaoEmbarcacao indiceEtapa={3} />
-  ];
-
-
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
+  const { editando } = useContextGlobal();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -50,7 +29,7 @@ function CadastroLocador({ titulo }) {
 
   return (
     <>
-      {/* <HeaderPrincipal /> */}
+      <HeaderPrincipal />
       <div className="container-cadastro">
         <div className="titulo-cadastro">
           <h2>Seu Barco </h2>
@@ -88,33 +67,12 @@ function CadastroLocador({ titulo }) {
         </div>
 
         <div className="forms-cadastro">
-         {steps[activeStep]}
-        </div>
-        <MobileStepper
-          variant="progress"
-          steps={4}
-          position="static"
-          activeStep={activeStep}
-          sx={{ maxWidth: 1200, flexGrow: 1, alignItems:"center", justifyContent:"center", alignContent: "center" }}
-          nextButton={
-            <Button
-              size="small"
-              onClick={handleNext}
-              disabled={activeStep === 3}
-            >
-               {activeStep === steps.length - 1 ? 'Concluir' : 'Continuar'}
-            </Button>
-          }
-          backButton={
-            <Button
-              size="small"
-              onClick={handleBack}
-              disabled={activeStep === 0}
-            >
-              {activeStep === 0 ? '' : 'Voltar'}
-            </Button>
-          }
-        />
+        <CadastroEmbarcacoes indiceEtapa={0} />,
+        <CadastroEmbarcacaoContinua indiceEtapa={1} />,
+        <FormPerfilMarinheiro indiceEtapa={2} />,
+        <DescricaoEmbarcacao indiceEtapa={3} />
+
+          </div>
       </div>
     </>
   );
