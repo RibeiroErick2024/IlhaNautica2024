@@ -1,23 +1,59 @@
-.caracteristica{
-    display: flex;
-    /* width: 100%; */
-    background-color: rgba(255, 255, 255, 0.938);
-   margin-top: 50px;
-   flex-direction: column;
-}
 
-.div-caracteristicas-barco{
-    display: flex;
+.div-caracteristicas-barco {
+    display: flex; /* Usando flexbox para distribuir os elementos */
+    justify-content: left; /* Espaço igual entre as colunas */
     background-color: rgba(255, 255, 255, 0);
-    /* padding: 010px; */
     border-top: 1px solid black;
-    margin-top: 10px;
+    gap: 60px;
+    padding: 10px;
+    
 }
 
-.caract-container{
+.div-caracteristicas-barco p {
+    width: 100%; /* Cada <p> vai ocupar toda a largura disponível */
+    margin-bottom: 10px; /* Espaçamento entre os <p> */
+    text-align: left; /* Alinha o texto à esquerda (ou center, se preferir) */
+    display: flex; /* Torna o <p> um contêiner flexível */
+    align-items: center; /* Alinha verticalmente os itens dentro do <p> */
+    gap: 8px; /* Espaçamento entre a imagem e o texto */
+}
+
+.div-caracteristicas-barco img {
+    width: 20px; /* Ajuste o tamanho da imagem */
+    height: 20px; /* Ajuste o tamanho da imagem */
+}
+
+
+.caracteristica {
+    display: flex;
+    background-color: rgba(255, 255, 255, 0.938);
+    margin-top: 10px;
+    flex-direction: column;
+}
+
+.caract-container {
     display: flex;
     width: 50%;
-    background-color: rgba(224, 38, 38, 0.726);
-   margin-top: 70px;
-   flex-direction: column;
+    margin-top: 10px;
+    flex-direction: column;
+}
+.div-descricao-barco {
+    display: flex; /* Usando flexbox para distribuir os elementos */
+    justify-content: left; /* Espaço igual entre as colunas */
+    background-color: rgba(255, 255, 255, 0);
+    border-top: 1px solid black;
+    gap: 60px;
+    padding: 10px;
+    margin-top: 10px;
+    
+}
+.div-regras-uso-barco {
+    display: flex; /* Usando flexbox para distribuir os elementos */
+    justify-content: left; /* Espaço igual entre as colunas */
+    background-color: rgba(255, 255, 255, 0);
+    border-top: 1px solid black;
+    gap: 60px;
+    padding: 10px;
+    margin-top: 10px;
+    
 }

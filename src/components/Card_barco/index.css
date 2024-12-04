@@ -4,6 +4,7 @@
     justify-content: space-between;
     align-items: center;
     height: 350px;
+    width: 270px;
     padding: auto;
     background-color: rgb(255, 255, 255);
     color: white;
@@ -30,4 +31,9 @@
     border-radius: 8px 8px 0 0 ;
 }
 
-    
+.barco-info{
+    display: flex;
+    flex-direction: column;
+    height: 50%;
+    font-size: 12px;
+}

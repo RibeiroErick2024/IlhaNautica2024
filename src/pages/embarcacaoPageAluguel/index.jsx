@@ -35,7 +35,7 @@ function Embarcacao() {
       try {
         // Realiza uma requisição para obter os dados da embarcação
         const resultCard = await axios.get(`${url}/embarcacao/${id}`, { responseType: 'json' });
-
+        console.log(resultCard.data)
         // Extrai os IDs das imagens do campo "imagem" da resposta
         const imagensArray = resultCard.data.imagem.map(imagem => imagem.id_imagem);
 
@@ -58,6 +58,9 @@ function Embarcacao() {
           imagensBase64, // Imagens em Base64
           usuarioId: usuario.id, // ID do usuário
           usuarioNome: usuario.nomeCompleto, // Nome completo do usuário
+          regras: resultCard.data.regras,
+          descricao: resultCard.data.descricao,
+          ObjetoDados: 'sim'
         };
 
         // Atualiza o estado com todos os dados
@@ -74,19 +77,30 @@ function Embarcacao() {
     }
   }, [barcoId]);
 
-  console.log(dadosBarco  )
+  console.log(dadosBarco)
 
   return (
     <div className='embarcacao-container'>
       <Header />
       {/* Passa todos os dados do barco para o componente EmbarcacaoGaleria */}
-      <EmbarcacaoGaleria 
-        imagens={dadosBarco.imagensBase64} 
-        nome={dadosBarco.nome} 
+      <EmbarcacaoGaleria
+        imagens={dadosBarco.imagensBase64}
+        nome={dadosBarco.nome}
         usuarioNome={dadosBarco.usuarioNome}
       />
       <div className="infos-container">
-        <CaracteristicasEmbarcacao />
+        <CaracteristicasEmbarcacao
+          Caracteristica={{
+            potencia: dadosBarco.potencia,
+            tamanho: dadosBarco.tamanho,
+            capacidade: dadosBarco.capacidade,
+            quantidadeCabines: dadosBarco.quantidadeCabines,
+            quantidadeBanheiro: dadosBarco.quantidadeBanheiro,
+            pet: dadosBarco.pet,
+            descricao: dadosBarco.descricao,
+            regrasUso: dadosBarco.regras
+          }}
+        />
         <InfoAluguel />
       </div>
     </div>
