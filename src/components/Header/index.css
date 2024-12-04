@@ -32,6 +32,9 @@ h1 {
     align-items: center;
 }
 
+.logo-container:hover{
+    cursor: pointer;
+}
 .iconMenu-container {
     position: relative;
     width: 5%;
