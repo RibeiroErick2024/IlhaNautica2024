@@ -1,0 +1,54 @@
+html {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.containerPerfil {
+    display: flex;
+    gap: 25px;
+    padding: 25px;
+
+}
+
+.perfilMarinheiro {
+    display: flex;
+    background-color: aquamarine;
+    padding: 45px;
+    
+}
+
+
+.icones-marinheiro {
+    display: flex;
+    flex-direction: column;
+    /* Alinha os ícones verticalmente */
+    gap: 40px;
+    /* Espaçamento maior entre os ícones */
+    justify-content: center;
+    /* Centraliza os ícones verticalmente */
+    align-items: center;
+    /* Centraliza os ícones horizontalmente */
+    background-color: green;
+    /* Fundo verde */
+    border-radius: 15px;
+    /* Bordas arredondadas */
+    width: 150px;
+    /* Largura fixa para o contêiner de ícones */
+    height: 700px;
+    /* Altura ajustável ao conteúdo */
+}
+
+.icone-btn {
+    width: 00px;
+    height: 100px;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+
+    cursor: pointer;
+
+}

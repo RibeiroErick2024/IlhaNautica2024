@@ -1,4 +1,3 @@
-// src/ListagemBarcos.jsx
 import React, { useState, useEffect, Suspense } from 'react';
 import axios from 'axios';
 import './index.css';
@@ -27,12 +26,14 @@ function ListagemBarcos() {
 
         // Formatando os dados dos barcos
         const formattedData = await Promise.all(resultCard.data.map(async (barco) => {
-          const idImagem = barco.imagem[0].id_imagem;  // Pegando o ID da primeira imagem do barco
-          const imagemUrl = await transformarImagem(idImagem);  // Carregando a imagem
+         
+            const idImagem = barco.imagem[0].id_imagem;  // Pegando o ID da primeira imagem do barco
+            const imagemUrl = await transformarImagem(idImagem);  // Carregando a imagem
+          
 
           return {
             ...barco,
-            cidade: barco.endereco.cidade,
+            cidade: barco.enderecoEmbarque || "Não registrada",
             nome: `${barco.fabricante} ${barco.nome} (${barco.anoFabricacao})` || 'Sem descrição',
             potencia: barco.potencia || "Não informado",
             tamanho: barco.tamanho || "não informado",
