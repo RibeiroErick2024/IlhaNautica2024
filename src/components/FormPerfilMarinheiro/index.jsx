@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import axios from "axios";
-import "../FormCadastroEmbarcacao/index.css";
+
+
+import "./index.css";
 import {
   Button,
   Dialog,
@@ -73,12 +75,12 @@ function FormPerfilMarinheiro({ indiceEtapa}) {
   }, [setValue]);
 
   return (
-    <div>
-      <div className="container-cadastro-embarcacoes">
+    <div className="container-marinheiro">
+      <div className="container-cadastro-marinheiro">
         <h1 className="titulo-embarcacao">Perfil Marinheiro</h1>
         <form
           onSubmit={handleSubmit(onSubmit, onError)}
-          className="form-section-embarcacoes">
+          className="form-section-marinheiro">
           <ContainerTextFieldInput>
             <TextFieldInput
               fullWidth

@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import api, { axiosapi } from "../../config/axios";
 import { useAuth } from "../../contexts/AuthContext";
 import axios from "axios";
+import "./index.css";
 
 const FormCadastro = () => {
   const {
@@ -48,6 +49,7 @@ const FormCadastro = () => {
   };
 
   return (
+    <div className="imgFundo">
     <div className="container">
       <h1>CADASTRAR</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -159,6 +161,7 @@ const FormCadastro = () => {
           </p>
         </div>
       </form>
+    </div>
     </div>
   );
 };

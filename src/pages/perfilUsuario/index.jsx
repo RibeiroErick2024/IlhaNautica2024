@@ -29,14 +29,14 @@ function PerfilUsuario() {
       {/* Contêiner de Ícones */}
       <div className="icones-marinheiro">
         <button type="button" className="btn-icone">
-          <img className="icon-svg" src="./images/perfil.png" alt="Ícone Marinheiro" />
+          <img className="icon" src="./images/perfil.png" alt="Ícone Marinheiro" />
         </button>
         {locador && <button type="button" className="btn-icone" onClick={paraLocador}>
-          <img className="icon-svg" src="./images/embarcacao.png" alt="Ícone Marinheiro" />
+          <img className="icon" src="./images/embarcacao.png" alt="Ícone Marinheiro" />
          
         </button>}
         <button type="button" className="btn-icone">
-          <img className="icon-svg" src="./images/notificacao.png" alt="Ícone Marinheiro" />
+          <img className="icon" src="./images/notificacao.png" alt="Ícone Marinheiro" />
         </button>
       </div>
 

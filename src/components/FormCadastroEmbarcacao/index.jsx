@@ -26,7 +26,7 @@ function CadastroEmbarcacoes() {
   const [fotosSelecionadas, setFotosSelecionadas] = useState([]);
   const [idEmb, setIdEmb] = useState()
   const [previews, setPreviews] = useState([]);
-  const [isSubmitting, setIsSubmitting] = useState(false); 
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const {
     register,
     handleSubmit,
@@ -39,11 +39,7 @@ function CadastroEmbarcacoes() {
     formState: { errors },
   } = useForm();
   // const onSubmit = async (data, event) => {
-  //   event.preventDefault();
-  //   await handleCadastroEmbarcacao(data)
-  //   console.log(data);
 
-  // };
   const onError = (errors) => {
     console.log("Error no form", errors);
   };
@@ -51,35 +47,7 @@ function CadastroEmbarcacoes() {
 
 
 
-  // useEffect(() => {
-  // if (editando) {
-    //   axios
-    //     .get("http://localhost:8080/embarcacao/b23f42e2-7e3d-4c68-bdc6-09027dff0fbb")
-    //     .then((response) => {
-    //       const data = response.data;
-    //       if (data.categoria == "Jet Ski") {
-    //         setIsDisabled(true);
-    //       }
-    //       console.log(data);
-    //       setValue("nome", data.nome);
-    //       setValue("fabricante", data.fabricante);
-    //       setValue("anoFabricacao", data.anoFabricacao);
-    //       setValue("tamanho", data.tamanho);
-    //       setValue("capacidade", data.capacidade);
-    //       setValue("quantidadeCabines", data.quantidadeCabines);
-    //       setValue("quantidadeBanheiro", data.quantidadeBanheiro);
-    //       setValue("potencia", data.potencia);
 
-
-    //       setValue("enderecoEmbarque", data.enderecoEmbarque);
-    //       setValue("inscricao", data.inscricao);
-    //       setValue("preco", data.preco);
-    //       setValue("bandeira", data.bandeira);
-    //     })
-    //     .catch((error) => console.log(error));
-  // }
-
-  // }, []);
   const onSubmit = async (data, event) => {
     event.preventDefault();
 
@@ -179,245 +147,144 @@ function CadastroEmbarcacoes() {
     <div className="container-cadastro-embarcacoes">
       <h1 className="titulo-embarcacao">Embarcação</h1>
       <form onSubmit={handleSubmit(onSubmit, onError)} className="form-section-embarcacoes">
+        <div className='teste' >
+          <ContainerTextFieldInput className='coluna-um'>
+            <TextFieldInput
+              fullWidth
+              focused={editando}
+              label="Fabricante"
+              variant="outlined"
+              margin="dense"
+              {...register("fabricante", { required: "Campo obrigatório", minLength: 3 })}
+              error={!!errors.fabricante}
+              helperText={errors.fabricante?.message}
+            />
+            <TextFieldInput
+              fullWidth
+              focused={editando}
+              label="Nome da Embarcação"
+              variant="outlined"
+              margin="dense"
+              {...register("nome", { required: "Campo obrigatório", minLength: 3 })}
+              error={!!errors.nome}
+              helperText={errors.nome?.message}
+            />
+            <TextFieldInput
+              fullWidth
+              focused={editando}
+              type="number"
+              label="Ano de Fabricação"
+              variant="outlined"
+              margin="dense"
+              {...register("anoFabricacao", { required: "Campo obrigatório", min: { value: 1900, message: "Ano inválido" }, max: { value: new Date().getFullYear(), message: "Ano de fabricação não pode ser maior que o ano atual" } })}
+              error={!!errors.anofabricacao}
+              helperText={errors.anofabricacao?.message}
+            />
+            <TextFieldInput
+              fullWidth
+              focused={editando}
+              type="number"
+              label="Comprimento"
+              variant="outlined"
+              margin="dense"
+              {...register("tamanho", { required: "Campo obrigatório", min: { value: 0, message: "Comprimento inválido" } })}
+              error={!!errors.tamanho}
+              helperText={errors.tamanho?.message}
+            />
+            <TextFieldInput
+              fullWidth
+              focused={editando}
+              type="number"
+              label="Potência"
+              variant="outlined"
+              margin="dense"
+              {...register("potencia", { required: "Campo obrigatório", min: { value: 1, message: "Potência mínima é 1" } })}
+              error={!!errors.potencia}
+              helperText={errors.potencia?.message}
+            />
+            <TextFieldInput
+              fullWidth
+              focused={editando}
+              type="number"
+              label="Número de Cabines"
+              variant="outlined"
+              margin="dense"
+              {...register("quantidadeCabines", { required: "Campo obrigatório" })}
+              disabled={isDisabled}
+              error={!!errors.quantidadecabines}
+              helperText={errors.quantidadecabines?.message}
+            />
+          </ContainerTextFieldInput>
 
-        <ContainerTextFieldInput>
-          <TextFieldInput
-            fullWidth
-            focused={editando}
-            label="Fabricante"
-            variant="outlined"
-            margin="dense"
-            {...register("fabricante", {
-              required: "Campo obrigatório",
-              minLength: 3,
-            })}
-            error={!!errors.fabricante}
-            helperText={errors.fabricante?.message}
-          />
+          <ContainerTextFieldInput className='coluna-dois'>
+            <TextFieldInput
+              fullWidth
+              focused={editando}
+              label="Cidade"
+              variant="outlined"
+              margin="dense"
+              {...register("cidade", { required: "Campo obrigatório", minLength: 3 })}
+              error={!!errors.cidade}
+              helperText={errors.cidade?.message}
+            />
+            <TextFieldInput
+              fullWidth
+              focused={editando}
+              label="Endereco de Embarque"
+              variant="outlined"
+              margin="dense"
+              {...register("enderecoEmbarque", { required: "Campo obrigatório", minLength: 3 })}
+              error={!!errors.enderecoEmbarque}
+              helperText={errors.enderecoEmbarque?.message}
+            />
+            <TextFieldInput
+              fullWidth
+              focused={editando}
+              label="Datas Disponíveis"
+              variant="outlined"
+              margin="dense"
+              type="text"
+              {...register("datasdisponiveis", { required: "Campo obrigatório" })}
+              error={!!errors.datasdisponiveis}
+              helperText={errors.datasdisponiveis?.message}
+            />
+            <TextFieldInput
+              fullWidth
+              focused={editando}
+              type="number"
+              label="Preço"
+              variant="outlined"
+              margin="dense"
+              {...register("preco", { required: "Campo obrigatório", min: { value: 0, message: "Preço deve ser maior ou igual a 0" } })}
+              error={!!errors.preco}
+              helperText={errors.preco?.message}
+            />
+            <TextFieldInput
+              fullWidth
+              focused={editando}
+              label="Inscrição IMO"
+              variant="outlined"
+              margin="dense"
+              {...register("inscricao", { required: "Campo obrigatório", minLength: { value: 6, message: "Inscrição IMO inválida" } })}
+              error={!!errors.inscricao}
+              helperText={errors.inscricao?.message}
+            />
+            <TextFieldInput
+              fullWidth
+              focused={editando}
+              label="Bandeira"
+              variant="outlined"
+              margin="dense"
+              {...register("bandeira", { required: "Campo obrigatório", minLength: { value: 2, message: "Bandeira inválida" } })}
+              error={!!errors.bandeira}
+              helperText={errors.bandeira?.message}
+            />
+          </ContainerTextFieldInput>
+        </div>
 
-          <TextFieldInput
-            fullWidth
-            focused={editando}
-            label="Nome da Embarcação"
-            variant="outlined"
-            margin="dense"
-            {...register("nome", {
-              required: "Campo obrigatório",
-              minLength: 3,
-            })}
-            error={!!errors.nome}
-            helperText={errors.nome?.message}
-          />
-          <TextFieldInput
-            fullWidth
-            focused={editando}
-            type="number"
-            label="Ano de Fabricação"
-            variant="outlined"
-            margin="dense"
-            {...register("anoFabricacao", {
-              required: "Campo obrigatório",
-              min: {
-                value: 1900,
-                message: "Ano inválido",
-              },
-              max: {
-                value: new Date().getFullYear(),
-                message: "Ano de fabricação não pode ser maior que o ano atual",
-              },
-            })}
-            error={!!errors.anofabricacao}
-            helperText={errors.anofabricacao?.message}
-          />
-
-          <TextFieldInput
-            fullWidth
-            focused={editando}
-            type="number"
-            label="Comprimento"
-            variant="outlined"
-            margin="dense"
-            {...register("tamanho", {
-              required: "Campo obrigatório",
-              min: {
-                value: 0,
-                message: "Comprimento inválido",
-              },
-            })}
-            error={!!errors.tamanho}
-            helperText={errors.tamanho?.message}
-          />
-          <TextFieldInput
-            fullWidth
-            focused={editando}
-            type="number"
-            label="Potência"
-            variant="outlined"
-            margin="dense"
-            {...register("potencia", {
-              required: "Campo obrigatório",
-              min: {
-                value: 1,
-                message: "Potência mínima é 1",
-              },
-            })}
-            error={!!errors.potencia}
-            helperText={errors.potencia?.message}
-          />
-        </ContainerTextFieldInput>
-
-        <ContainerTextFieldInput>
-
-          <TextFieldInput
-            fullWidth
-            focused={editando}
-            type="number"
-            label="Número de Cabines"
-            variant="outlined"
-            margin="dense"
-            {...register("quantidadeCabines", {
-              required: "Campo obrigatório",
-            })}
-            disabled={isDisabled}
-            error={!!errors.quantidadecabines}
-            helperText={errors.quantidadecabines?.message}
-          />
-          <TextFieldInput
-            fullWidth
-            focused={editando}
-            type="number"
-            label="Número de Banheiros"
-            variant="outlined"
-            margin="dense"
-            {...register("quantidadeBanheiro", {
-              required: "Campo obrigatório",
-            })}
-            disabled={isDisabled}
-            error={!!errors.quantidadeBanheiro}
-            helperText={errors.quantidadeBanheiro?.message}
-          />
-
-          <TextFieldInput
-            fullWidth
-            focused={editando}
-            type="number"
-            label="Capacidade"
-            variant="outlined"
-            margin="dense"
-            {...register("capacidade", {
-              required: "Campo obrigatório",
-              min: {
-                value: 1,
-                message: "Capacidade mínima é 1",
-              },
-            })}
-            error={!!errors.capacidade}
-            helperText={errors.capacidade?.message}
-          />
-          <TextFieldInput
-            fullWidth
-            focused={editando}
-            label="Cidade"
-            variant="outlined"
-            margin="dense"
-            {...register("cidade", {
-              required: "Campo obrigatório",
-              minLength: 3,
-            })}
-            error={!!errors.cidade}
-            helperText={errors.cidade?.message}
-          />
-          <TextFieldInput
-            fullWidth
-            focused={editando}
-            label="Endereco de Embarque"
-            variant="outlined"
-            margin="dense"
-            {...register("enderecoEmbarque", {
-              required: "Campo obrigatório",
-              minLength: 3,
-            })}
-            error={!!errors.enderecoEmbarque}
-            helperText={errors.enderecoEmbarque?.message}
-          />
-        </ContainerTextFieldInput>
-
-        <ContainerTextFieldInput>
-
-
-          <TextFieldInput
-            fullWidth
-            focused={editando}
-            label="Datas Disponíveis"
-            variant="outlined"
-            margin="dense"
-            type="text"
-            {...register("datasdisponiveis", {
-              required: "Campo obrigatório",
-            })}
-            error={!!errors.datasdisponiveis}
-            helperText={errors.datasdisponiveis?.message}
-          />
-
-
-
-          <TextFieldInput
-            fullWidth
-            focused={editando}
-            type="number"
-            label="Preço"
-            variant="outlined"
-            margin="dense"
-            {...register("preco", {
-              required: "Campo obrigatório",
-              min: {
-                value: 0,
-                message: "Preço deve ser maior ou igual a 0",
-              },
-            })}
-            error={!!errors.preco}
-            helperText={errors.preco?.message}
-          />
-
-          <TextFieldInput
-            fullWidth
-            focused={editando}
-            label="Inscrição IMO"
-            variant="outlined"
-            margin="dense"
-            {...register("inscricao", {
-              required: "Campo obrigatório",
-              minLength: {
-                value: 6,
-                message: "Inscrição IMO inválida",
-              },
-            })}
-            error={!!errors.inscricao}
-            helperText={errors.inscricao?.message}
-          />
-
-          <TextFieldInput
-            fullWidth
-            focused={editando}
-            label="Bandeira"
-            variant="outlined"
-            margin="dense"
-            {...register("bandeira", {
-              required: "Campo obrigatório",
-              minLength: {
-                value: 2,
-                message: "Bandeira inválida",
-              },
-            })}
-            error={!!errors.bandeira}
-            helperText={errors.bandeira?.message}
-          />
-        </ContainerTextFieldInput>
-
-        <div className="inputContainer">
+        <div className="inputContainer-regras">
           <div className="descricaoContainer">
             <h3>Descreva sua embarcação</h3>
-
             <div className="descricaoInput">
               <TextAreaInputField
                 fullWidth
@@ -459,6 +326,7 @@ function CadastroEmbarcacoes() {
           </div>
         </div>
 
+        {/* Fotos */}
         <div className="fotosContainer">
           <ToastContainer
             className={"toastContainer"}
