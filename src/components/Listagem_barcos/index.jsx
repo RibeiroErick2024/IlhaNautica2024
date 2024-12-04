@@ -1,4 +1,3 @@
-// src/ListagemBarcos.jsx
 import React, { useState, useEffect, Suspense } from 'react';
 import axios from 'axios';
 import './index.css';
@@ -12,9 +11,8 @@ function ListagemBarcos() {
   useEffect(() => {
     const fetchBarcos = async () => {
       try {
-       
         const resultCard = await axios.get(`http://localhost:8080/embarcacao/`, { responseType: 'json' });
-          console.log(resultCard.data)
+
         // Função para transformar a imagem em Base64
         const transformarImagem = async (id) => {
           const resultImage = await axios.get(`http://localhost:8080/imagem/${id}`, { responseType: 'arraybuffer' });
@@ -45,7 +43,7 @@ function ListagemBarcos() {
             quantidadeBanheiro: barco.quantidadeBanheiro || 2,
             pet: barco.pet ? "Tem" : "Não tem",
             preco: barco.preco || "Não disponibilizado",
-            url: imagemUrl ,
+            url: imagemUrl,
             id: barco.idEmbarcacao 
           };
         }));  
