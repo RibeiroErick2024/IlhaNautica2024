@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom"; 
 import { Mail } from "lucide-react"; 
 
-const RecuperacaoSenha = () => {
+const \RecuperacaoSenha = () => {
   const { register, handleSubmit, setError, clearErrors, formState: { errors } } = useForm();
   const [mensagemSucesso, setMensagemSucesso] = useState(""); 
   const navigate = useNavigate(); 
