@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 
-import "./index.css";
+import "./PerfilMarinheiro.css";
 import FormPerfilMarinheiro from "../../components/FormPerfilMarinheiro";
 import { useContextGlobal } from "../../contexts/GlobalContext";
 

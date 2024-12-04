@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 
-import "./index.css";
+import "./PerfilUsuario.css";
 import CompletarCadastro, { FormUsuario } from "../../components/FormCompletarCadastro"
 import { useContextGlobal } from "../../contexts/GlobalContext";
 import HeaderPrincipal from "../../components/Header";
