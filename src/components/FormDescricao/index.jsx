@@ -7,7 +7,7 @@ import { useContextGlobal } from '../../contexts/GlobalContext';
 import {TextAreaInputField} from '../FormCompletarCadastro/styles.jsx'
 import { useForm } from 'react-hook-form';
 import { instanceMultipart } from '../../config/axios';
-function DescricaoEmbarcacao({ indiceEtapa}) {
+function DescricaoEmbarcacao(id) {
  
     const [fotosSelecionadas, setFotosSelecionadas] = useState([]);
     const [previews, setPreviews] = useState([]);
@@ -28,6 +28,7 @@ function DescricaoEmbarcacao({ indiceEtapa}) {
       //Para esconder o input file de origem
       const esconderInputFile = useRef(null);
       useEffect(() => {
+        console.log(id)
           // URL representando o arquivo (foto)
           const newPreviews = fotosSelecionadas.map(file => URL.createObjectURL(file));
           setPreviews(newPreviews);
@@ -57,7 +58,7 @@ function DescricaoEmbarcacao({ indiceEtapa}) {
         }
         
         function onSubmit(event) {
-            event.preventDefault();
+            // event.preventDefault();
             
             const formData = new FormData();
             fotosSelecionadas.forEach((file, index) => {
@@ -65,7 +66,7 @@ function DescricaoEmbarcacao({ indiceEtapa}) {
                 formData.append(`imagens`, file);
             });
             
-            instanceMultipart.post(url, formData, config)
+            instanceMultipart.post('imagem/upload/66d82cd5-d24a-462e-bcf9-8b833ef1b11f', formData)
             .then((response) => {
                 console.log(response.data);
                 // setUploadedFiles(response.data.files);
@@ -82,54 +83,7 @@ function DescricaoEmbarcacao({ indiceEtapa}) {
         <div>
           <div className="containerDescricao">
             <form onSubmit={handleSubmit(onSubmit, onError)}>
-              <div className="inputContainer">
-                <div className="descricaoContainer">
-                  <div className="textoDesc">
-                    <h3>Descreva sua embarcação</h3>
-                  </div>
-                  <div className="descricaoInput">
-                    <TextAreaInputField
-                      fullWidth
-                      multiline
-                      rows={7}
-                      label="Descrição da Embarcação"
-                      variant="outlined"
-                      margin="dense"
-                      {...register("descricao", {
-                        required: "Campo obrigatório",
-                        minLength: { value: 10, message: "Descrição muito curta" },
-                      })}
-                      error={!!errors.descricao}
-                      helperText={errors.descricao?.message}
-                      placeholder="Exemplo: Um barco lindo de 1000m²"
-                    />
-                  </div>
-                </div>
-      
-                <div className="regrasContainer">
-                  <div className="textoDesc">
-                    <h3>Descreva suas regras</h3>
-                  </div>
-                  <div className="regrasInput">
-                    <TextAreaInputField
-                      fullWidth
-                      multiline
-                      rows={7}
-                      label="Regras da Embarcação"
-                      variant="outlined"
-                      margin="dense"
-                      {...register("regras", {
-                        required: "Campo obrigatório",
-                        minLength: { value: 5, message: "Regras muito curtas" },
-                      })}
-                      error={!!errors.regras}
-                      helperText={errors.regras?.message}
-                      placeholder="Exemplo: Não é permitido o transporte de carga"
-                    />
-                  </div>
-                </div>
-              </div>
-      
+             
               {/* Adicionando as outras seções do formulário */}
               <div className="fotosContainer">
                 <ToastContainer

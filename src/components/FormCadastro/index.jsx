@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Eye, EyeOff, Mail, User } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import api from "../../config/axios";
+import api, { axiosapi } from "../../config/axios";
 import { useAuth } from "../../contexts/AuthContext";
 import axios from "axios";
 
@@ -30,9 +30,9 @@ const FormCadastro = () => {
       senha: data.senha
     }
     try {
-      const response = await api.post(`auth/cadastro`, usuario);
-      console.log("Console", response);
       console.log("Oi")
+      const response = await axiosapi.post(`auth/cadastro`, usuario);
+      console.log("Console", response);
       if(response){
         console.log("Ooooi")
         navigate("/login")

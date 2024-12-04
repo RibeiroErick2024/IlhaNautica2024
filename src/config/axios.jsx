@@ -2,7 +2,7 @@ import axios from "axios";
 
 const url = 'http://localhost:8080/'
 export const instanceMultipart = axios.create({
-  baseURL: 'url',
+  baseURL: `${url}`,
    headers: {
     'content-type': 'multipart/form-data',
 }
@@ -12,6 +12,14 @@ export const instanceMultipart = axios.create({
 //   password: 's00pers3cret'
 // },
 });
+export const axiosapi = axios.create({
+  baseURL: "http://localhost:8080/", 
+  timeout: 10000, 
+  headers: {
+    "Content-Type": "application/json",
+    // Accept: "application/json",
+  },
+});
 const api = axios.create({
   baseURL: "http://localhost:8080/", 
   timeout: 10000, 
@@ -20,6 +28,7 @@ const api = axios.create({
     // Accept: "application/json",
   },
 });
+
 
 
 api.interceptors.request.use(

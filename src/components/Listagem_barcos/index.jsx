@@ -12,6 +12,7 @@ function ListagemBarcos() {
   useEffect(() => {
     const fetchBarcos = async () => {
       try {
+       
         const resultCard = await axios.get(`http://localhost:8080/embarcacao/`, { responseType: 'json' });
           console.log(resultCard.data)
         // Função para transformar a imagem em Base64
@@ -27,12 +28,14 @@ function ListagemBarcos() {
 
         // Formatando os dados dos barcos
         const formattedData = await Promise.all(resultCard.data.map(async (barco) => {
-          const idImagem = barco.imagem[0].id_imagem;  // Pegando o ID da primeira imagem do barco
-          const imagemUrl = await transformarImagem(idImagem);  // Carregando a imagem
+         
+            const idImagem = barco.imagem[0].id_imagem;  // Pegando o ID da primeira imagem do barco
+            const imagemUrl = await transformarImagem(idImagem);  // Carregando a imagem
+          
 
           return {
             ...barco,
-            cidade: barco.endereco.cidade,
+            cidade: barco.enderecoEmbarque || "Não registrada",
             nome: `${barco.fabricante} ${barco.nome} (${barco.anoFabricacao})` || 'Sem descrição',
             potencia: barco.potencia || "Não informado",
             tamanho: barco.tamanho || "não informado",
@@ -42,7 +45,7 @@ function ListagemBarcos() {
             quantidadeBanheiro: barco.quantidadeBanheiro || 2,
             pet: barco.pet ? "Tem" : "Não tem",
             preco: barco.preco || "Não disponibilizado",
-            url: imagemUrl,
+            url: imagemUrl ,
             id: barco.idEmbarcacao 
           };
         }));  
