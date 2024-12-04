@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import "./index.css";
+import "./CadastroLocador.css";
 import CadastroEmbarcacoes from "../../components/FormCadastroEmbarcacao";
 import DescricaoEmbarcacao from "../../components/FormDescricao";
 import CadastroEmbarcacaoContinua from "../../components/FormCadastroEmbarcacaoContinua";

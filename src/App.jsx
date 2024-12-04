@@ -1,17 +1,17 @@
 
-import './App.css'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
-import { AuthProvider } from './contexts/AuthContext';
-import Login from './pages/login/Login';
-import Home from './pages/Home';
-import RecuperacaoSenha from './components/FormRecuperacaoSenha';
-import CadastroLocador from './pages/cadastroLocador';
-import CadastroEmbarcacoes from './components/FormCadastroEmbarcacao';
-import ProtectedRoute from './components/ProtectedRoute';
-import CompletarCadastro from './components/FormCompletarCadastro';
-import PerfilMarinheiro from './pages/perfilMarinheiro';
-import PerfilUsuario from './pages/perfilUsuario';
+import './App.css';
 import FormCadastro from './components/FormCadastro';
+import CadastroEmbarcacoes from './components/FormCadastroEmbarcacao';
+import CompletarCadastro from './components/FormCompletarCadastro';
+import RecuperacaoSenha from './components/FormRecuperacaoSenha';
+import ProtectedRoute from './components/ProtectedRoute';
+import { AuthProvider } from './contexts/AuthContext';
+import CadastroLocador from './pages/cadastroLocador/CadastroLocador';
+import Home from './pages/Home/Home';
+import Login from './pages/login/Login';
+import PerfilMarinheiro from './pages/perfilMarinheiro/PerfilMarinheiro';
+import PerfilUsuario from './pages/perfilUsuario/PerfilUsuario';
 
 function App() {
 

@@ -1,6 +1,6 @@
 import { Navigate } from "react-router-dom";
-import CadastroLocador from "../../pages/cadastroLocador";
 import { useAuth } from "../../contexts/AuthContext";
+import CadastroLocador from "../../pages/cadastroLocador/CadastroLocador";
 // import MenuDrawer from "./MenuDrawer";
 
 const ProtectedRoute = () => {
