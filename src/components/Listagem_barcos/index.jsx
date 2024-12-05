@@ -35,11 +35,7 @@ function ListagemBarcos() {
 
           return {
             ...barco,
-<<<<<<< HEAD
-            // cidade: barco.endereco.cidade,
-=======
             cidade: barco.enderecoEmbarque || "Não registrada",
->>>>>>> 630513913b9c1b54ef52639819286cb2ca943bcb
             nome: `${barco.fabricante} ${barco.nome} (${barco.anoFabricacao})` || 'Sem descrição',
             potencia: barco.potencia || "Não informado",
             tamanho: barco.tamanho || "não informado",
