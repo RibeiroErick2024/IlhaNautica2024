@@ -32,7 +32,7 @@ function ListagemBarcos() {
 
           return {
             ...barco,
-            cidade: barco.endereco.cidade,
+            // cidade: barco.endereco.cidade,
             nome: `${barco.fabricante} ${barco.nome} (${barco.anoFabricacao})` || 'Sem descrição',
             potencia: barco.potencia || "Não informado",
             tamanho: barco.tamanho || "não informado",
