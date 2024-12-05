@@ -40,7 +40,7 @@ function HeaderPrincipal() {
                 />
                 {isMenuOpen && (
                     <div className="dropdown-menu">
-                        <a href="/">Perfil</a>
+                        <a href="/perfilUsuario">Perfil</a>
                         <a href="/about">Anuncie seu barco</a>
                         <a href="/contact">Sobre nós</a>
                     </div>

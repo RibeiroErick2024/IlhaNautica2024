@@ -1,5 +1,5 @@
 import React from 'react'
-import './index.css'
+import './Home.css'
 import Header from '../../components/Header'
 import Filtros from '../../components/Filtros'
 import ListagemBarcos from '../../components/Listagem_barcos'

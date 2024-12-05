@@ -1,0 +1,33 @@
+.imgFundo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url("./barco.jpg") no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  .container .input-field {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin: 50px auto;
+  }
+
+  .input-field .icon {
+    position: absolute;
+    left: 355px;
+    top: 50%;
+    transform: translateY(-50%);
+  
+    color: #fff;
+  }
+  .input-field .iconeSenha {
+    position: absolute;
+    left: 355px;
+    top: 50%;
+    transform: translateY(-50%);
+  
+    color: #fff;
+  }
+  

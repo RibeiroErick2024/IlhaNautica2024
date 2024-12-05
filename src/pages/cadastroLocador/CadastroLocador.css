@@ -1,0 +1,142 @@
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  font-family: "Montserrat", sans-serif;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.container-cadastro{
+  width: 100%;
+  height: 100vh;
+}
+
+.titulo-cadastro {
+  padding-left: 7%;
+  padding-right: 7%;
+}
+.titulo-cadastro h2{
+  color: black;
+}
+
+.linhaHr{
+  border-top: 4px solid rgba(19,141,147,255);
+
+}
+.icones-embarcacao {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2vw; /* Espaçamento entre os botões */
+  padding: 3vh 5vw;
+  height: auto;
+}
+/* .icones-embarcacao {
+  
+  height: 25vh;
+  display: flex;
+  column-gap: 5vw;
+  
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 3vh 10vw;
+  
+} */
+.btn-icone {
+  flex: 1 1 14%; /* Ajusta o botão de acordo com o espaço disponível */
+  max-width: 120px; /* Limita o tamanho máximo do botão */
+  height: auto;
+  border: 1px solid rgba(19,141,147,255);
+  border-radius: 13px;
+  background-color: rgba(245, 245, 245, 0.79);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+/* .btn-icone{
+  width: 14%;
+  height: 95%;
+  border: 1px solid rgba(19,141,147,255);
+  border-radius: 13px;
+  background-color: rgba(245, 245, 245, 0.79);
+} */
+
+
+.btn-icone:hover{
+transform: scale(1.1);
+/* scale: 1.1; */
+}
+.icon-svg {
+  width: 80%;
+  max-width: 70px; /* Mantém tamanho máximo */
+  height: auto;
+  object-fit: contain;
+}
+
+
+/* .icones-svg {
+  width: 70px;
+  height: 70px;
+  width: 100%; 
+  height: auto; 
+  max-width: 70px;
+
+} */
+
+.responsive-svg {
+  width: 50px; /* Default size */
+  height: auto; /* Maintain aspect ratio */
+}
+@media (max-width: 1200px) {
+  .btn-icone {
+    max-width: 100px;
+  }
+}
+
+@media (max-width: 768px) {
+  .btn-icone {
+    max-width: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .icones-embarcacao {
+    flex-direction: column;
+    align-items: center;
+  }
+  .btn-icone {
+    width: 70%;
+    max-width: 60px;
+  }
+}
+
+
+
+@media (max-width: 2000px) {
+  .responsive-svg {
+      width: 500px; 
+  }
+}
+
+@media (max-width: 1290px) {
+  .responsive-svg {
+      width: 240px; 
+  }
+}
+
+@media (max-width: 768px) {
+  .responsive-svg {
+      width: 130px; 
+  }
+}
+
+@media (max-width: 375px) {
+  .responsive-svg {
+      width: 20px; 
+  }
+}
+

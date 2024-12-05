@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './index.css';
+import './EmbarcacaoPageAluguel.css';
 import Header from '../../components/Header';
 import EmbarcacaoGaleria from '../../components/EmbarcacaoGaleria';
 import CaracteristicasEmbarcacao from '../../components/CaracteristicasEmbarcacao';
