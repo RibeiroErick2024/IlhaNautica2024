@@ -1,4 +1,4 @@
-// src/Card_barco.jsx
+
 import React, { forwardRef } from 'react';
 import './index.css';
 
