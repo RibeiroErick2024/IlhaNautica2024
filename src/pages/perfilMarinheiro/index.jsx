@@ -19,10 +19,10 @@ function PerfilMarinheiro() {
       {/* Contêiner de Ícones */}
       <div className="icones-marinheiro">
         <button type="button" className="btn-icone">
-          <img className="icon-svg" src="./images/perfil.png" alt="Ícone Marinheiro" />
+          <img className="icon" src="./images/perfil.png" alt="Ícone Marinheiro" />
         </button>
         <button type="button" className="btn-icone">
-          <img className="icon-svg" src="./images/capitao.png" alt="Ícone Marinheiro" />
+          <img className="icon" src="./images/capitao.png" alt="Ícone Marinheiro" />
         </button>
       </div>
 

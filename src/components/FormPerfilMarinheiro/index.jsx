@@ -10,7 +10,7 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
-  TextField, 
+  TextField,
   Select,
   MenuItem,
   InputLabel,
@@ -27,8 +27,8 @@ import {
   FormControlDiv,
 } from "../FormCompletarCadastro/styles.jsx";
 import { useContextGlobal } from "../../contexts/GlobalContext.jsx";
-function FormPerfilMarinheiro({ indiceEtapa}) {
- const {editando, setEditando, definirValidadeEtapa} = useContextGlobal()
+function FormPerfilMarinheiro({ indiceEtapa }) {
+  const { editando, setEditando, definirValidadeEtapa } = useContextGlobal()
   const {
     register,
     handleSubmit,
@@ -49,7 +49,7 @@ function FormPerfilMarinheiro({ indiceEtapa}) {
   };
   useEffect(() => {
     setEditando(false)
-    if(editando){
+    if (editando) {
       axios
         .get(
           "http://localhost:8080/marinheiro/fc83bcb0-ea6c-4f7d-bf01-d8b23d4ff2c5"
@@ -63,11 +63,11 @@ function FormPerfilMarinheiro({ indiceEtapa}) {
           setValue("disponibilidade", data.disponibilidade);
           setValue("dataNascimento", data.dataNascimento);
           setValue("cpf", data.cpf);
-          setValue("email", data.email); 
-          setValue("telefone", data.telefone); 
-          setValue("genero", data.genero); 
+          setValue("email", data.email);
+          setValue("telefone", data.telefone);
+          setValue("genero", data.genero);
           // setValue("registroMaritimo" ,data.registroMaritimo);
-      
+
         })
         .catch((error) => console.log(error));
 
@@ -75,17 +75,18 @@ function FormPerfilMarinheiro({ indiceEtapa}) {
   }, [setValue]);
 
   return (
-    <div className="container-marinheiro">
+    <div className="container-marinheira">
       <div className="container-cadastro-marinheiro">
         <h1 className="titulo-embarcacao">Perfil Marinheiro</h1>
         <form
           onSubmit={handleSubmit(onSubmit, onError)}
           className="form-section-marinheiro">
+        
           <ContainerTextFieldInput>
             <TextFieldInput
               fullWidth
               focused={editando}
-               id="validation-outlined-input"
+              id="validation-outlined-input"
               label="Nome Completo"
               variant="outlined"
               margin="dense"
@@ -181,7 +182,7 @@ function FormPerfilMarinheiro({ indiceEtapa}) {
               helperText={errors.telefone?.message}
             />
 
-            <TextFieldInput 
+            <TextFieldInput
               fullWidth
               focused={editando}
               label="Disponibilidade"
@@ -194,7 +195,7 @@ function FormPerfilMarinheiro({ indiceEtapa}) {
               error={!!errors.disponibilidade}
               helperText={errors.disponibilidade?.message}
             />
-            <TextFieldInput 
+            <TextFieldInput
               fullWidth
               focused={editando}
               label="Categoria"
@@ -208,8 +209,15 @@ function FormPerfilMarinheiro({ indiceEtapa}) {
               helperText={errors.categoria?.message}
             />
           </ContainerTextFieldInput>
+           
+           <div className="fingon">
+            <button type="submit" className="btn-marinheiro">Salvar</button>
 
-          <button type="submit">Salvar</button>
+           </div>
+         
+
+
+          
         </form>
       </div>
     </div>

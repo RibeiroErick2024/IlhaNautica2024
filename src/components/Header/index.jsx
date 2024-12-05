@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import menuIcon from '../../assets/menu.svg'; // Certifique-se de que o caminho está correto
 import './index.css'; // Supondo que você tenha um arquivo CSS para estilos
+import { useAuth } from '../../contexts/AuthContext';
 
 function HeaderPrincipal() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const menuRef = useRef(null);
+    const { logout, logado } = useAuth()
 
     const handleMenuToggle = () => {
         setIsMenuOpen((prev) => !prev);
@@ -30,17 +32,27 @@ function HeaderPrincipal() {
             </div>
 
             <div className="iconMenu-container" ref={menuRef}>
-                <img 
-                    src={menuIcon} 
-                    alt="Menu" 
-                    onClick={handleMenuToggle} 
+                <img
+                    src={menuIcon}
+                    alt="Menu"
+                    onClick={handleMenuToggle}
                     style={{ cursor: 'pointer', width: '40px', height: '40px' }}
                 />
                 {isMenuOpen && (
                     <div className="dropdown-menu">
-                        <a href="/perfilUsuario">Perfil</a>
+
+                        {!logado &&
+
+                        <a href="/login" >Login | Cadastro</a>
+                        }
+
+                        {logado && <a href="/perfilUsuario">Perfil</a>}
                         <a href="/about">Anuncie seu barco</a>
                         <a href="/contact">Sobre nós</a>
+                        {logado &&
+
+                            <a href="/home" onClick={logout}>Logout</a>
+                        }
                     </div>
                 )}
             </div>
