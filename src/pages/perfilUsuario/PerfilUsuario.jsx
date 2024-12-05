@@ -28,7 +28,7 @@ console.log("Perfil usuario")
   async function deleteUsuario(){
 
     try {
-      const response = api.delete(`usuario/${idUsuario}`)
+      const response = axiosapi.delete(`usuario/${idUsuario}`)
       alert("Tchau")
 logout()
     } catch (error) {
@@ -53,7 +53,7 @@ logout()
         <button type="button" className="btn-icone">
           <img className="icon" src="./images/notificacao.png" alt="Ícone Marinheiro" />
         </button>
-        <button type="button" className="btn-icone" onClick={deleteUsuario}>
+        <button type="button" className="texto-excluir" onClick={deleteUsuario}>
           Excluir conta
           {/* <img className="icon" src="./images/notificacao.png" alt="Ícone Marinheiro" /> */}
         </button>
