@@ -18,8 +18,11 @@ import {
   FormControlDiv,
 } from "../FormCompletarCadastro/styles.jsx";
 import { useContextGlobal } from "../../contexts/GlobalContext.jsx";
+import { useNavigate } from 'react-router-dom';
 
 function CadastroEmbarcacoes() {
+  const navigate = useNavigate();
+
   const { idUsuario } = useAuth();
   const { iconeCategoria, setIconeCategoria, editando, setEditando } = useContextGlobal();
   const [isDisabled, setIsDisabled] = useState(false);
@@ -38,6 +41,7 @@ function CadastroEmbarcacoes() {
     control,
     formState: { errors },
   } = useForm();
+
   const onError = (errors) => {
     console.log("Error no form", errors);
   };
@@ -108,6 +112,8 @@ function CadastroEmbarcacoes() {
       .post(`imagem/upload/${id}`, formData)
       .then((response) => {
         console.log("Fotos enviadas com sucesso:", response.data);
+        alert("Cadastro de Embarcação concluido")
+        navigate("/home")
       })
       .catch((error) => {
         console.error("Erro ao fazer upload de fotos: ", error);
@@ -118,7 +124,8 @@ function CadastroEmbarcacoes() {
   const handleMultipleChange = (event) => {
     const fotos = Array.from(event.target.files);
     if (fotos.length > 5) {
-      toast("Você pode selecionar no máximo 5 fotos.");
+      alert("Você pode selecionar no máximo 5 fotos.")
+      // toast("Você pode selecionar no máximo 5 fotos.");
       return;
     }
     setFotosSelecionadas(fotos);
@@ -328,8 +335,8 @@ function CadastroEmbarcacoes() {
         <div className="fotosContainer">
           <ToastContainer
             className={"toastContainer"}
-            position="top-center"
-            autoClose={5000}
+            position="center"
+            autoClose={500}
             hideProgressBar={true}
             newestOnTop={false}
             closeOnClick

@@ -40,7 +40,7 @@ api.interceptors.request.use(
     return config;
   },
   (error) => {
-    console.log(error)
+    console.log("Erro com token front", error)
 
     return Promise.reject(error);
   },

@@ -10,7 +10,6 @@ import axios from 'axios';
 function Embarcacao() {
   const location = useLocation(); // Obtém a localização atual da navegação
   const barcoId = location.state?.id; // Acessa o ID do barco passado no estado
-  const usuario = { id: "b8a93d7d-6f5c-4cfa-8b23-6d95d699f2ab", nomeCompleto: "Maria Oliveira" }; // Dados do usuário
   const url = "http://localhost:8080"; // URL base para as requisições
 
   const [dadosBarco, setDadosBarco] = useState({}); // Estado para armazenar todos os dados do barco
@@ -56,8 +55,8 @@ function Embarcacao() {
           pet: resultCard.data.pet ? "Tem" : "Não tem",
           preco: resultCard.data.preco || "Não disponibilizado",
           imagensBase64, // Imagens em Base64
-          usuarioId: usuario.id, // ID do usuário
-          usuarioNome: usuario.nomeCompleto, // Nome completo do usuário
+          usuarioId: resultCard.data.usuario.id, // ID do usuário
+          usuarioNome: resultCard.data.usuario.nomeCompleto, // Nome completo do usuário
           regras: resultCard.data.regras,
           descricao: resultCard.data.descricao,
           ObjetoDados: 'sim'
@@ -101,7 +100,7 @@ function Embarcacao() {
             regrasUso: dadosBarco.regras
           }}
         />
-        <InfoAluguel precoDiaria={dadosBarco.preco} />
+        <InfoAluguel precoDiaria={dadosBarco.preco} idEmbarcacao={barcoId}/>
 
       </div>
     </div>

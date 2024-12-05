@@ -8,14 +8,16 @@ const CardBarco = React.lazy(() => import('../Card_barco'));
 function ListagemBarcos() {
   const [barcos, setBarcos] = useState([]);  // Lista de barcos
   const navigate = useNavigate("/embarcacao")
+  const url = "http://localhost:8080/"
+  const urlRender = "https://ilhanauticav2backend.onrender.com"
   useEffect(() => {
     const fetchBarcos = async () => {
       try {
-        const resultCard = await axios.get(`https://ilhanauticav2backend.onrender.com/embarcacao/`, { responseType: 'json' });
+        const resultCard = await axios.get(`${url}embarcacao/`, { responseType: 'json' });
 
         // Função para transformar a imagem em Base64
         const transformarImagem = async (id) => {
-          const resultImage = await axios.get(`https://ilhanauticav2backend.onrender.com/imagem/${id}`, { responseType: 'arraybuffer' });
+          const resultImage = await axios.get(`${url}imagem/${id}`, { responseType: 'arraybuffer' });
           const base64String = btoa(
             new Uint8Array(resultImage.data)
               .reduce((data, byte) => data + String.fromCharCode(byte), '')

@@ -5,7 +5,7 @@ function CaracteristicasEmbarcacao({ Caracteristica }) {
   if (!Caracteristica) {
     return <p>Carregando características...</p>;
   }
-  console.log(Caracteristica)
+  // console.log(Caracteristica)
   return (
     <div className='caract-container'>
       <div className='caracteristica'>

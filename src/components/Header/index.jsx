@@ -3,6 +3,7 @@ import menuIcon from '../../assets/menu.svg'; // Certifique-se de que o caminho 
 import './index.css'; // Supondo que você tenha um arquivo CSS para estilos
 import { Navigate, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
+import CompletarCadastro from '../FormCompletarCadastro';
 
 function HeaderPrincipal() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -27,6 +28,14 @@ function HeaderPrincipal() {
         };
     }, []);
 
+    const verificar = () =>{
+        if(logado){
+            navigate("/cadastroLocador")
+        } else{
+            navigate("/login")
+        }
+    }
+
     return (
         <header className='header-container'>
             <div className="logo-container" onClick={() => navigate('/home')}>
@@ -43,13 +52,9 @@ function HeaderPrincipal() {
                 {isMenuOpen && (
                     <div className="dropdown-menu">
 
-                        {!logado &&
-
-                        <a href="/login" >Login | Cadastro</a>
-                        }
-
-                        {logado && <a href="/perfilUsuario">Perfil</a>}
-                        <a href="/about">Anuncie seu barco</a>
+                        {logado? <a href="/perfilUsuario">Perfil</a> :   <a href="/login" >Login | Cadastro</a>}
+                        {/* {logado && <a href="/perfilUsuario">Perfil</a>} */}
+                        <a onClick={verificar}>Anuncie seu barco</a>
                         <a href="/contact">Sobre nós</a>
                         {logado &&
 

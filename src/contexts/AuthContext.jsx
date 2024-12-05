@@ -20,11 +20,11 @@ export const AuthProvider = ({ children }) => {
     setToken(null);
     localStorage.removeItem("token");
     localStorage.removeItem("idUsuario");
-    localStorage.remove("logado", false)
-    setLogado(false)
+    localStorage.removeItem("logado", false)
+    // setLogado(false)
   };
 
-  const isAuthenticated = () => !!token;
+  const isAuthenticated = () => localStorage.getItem("logado") === "true";
 
   return (
     <AuthContext.Provider value={{ token, login, logout, isAuthenticated, idUsuario, logado}}>

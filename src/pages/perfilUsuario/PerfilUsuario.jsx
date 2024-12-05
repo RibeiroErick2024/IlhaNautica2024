@@ -5,11 +5,14 @@ import CompletarCadastro, { FormUsuario } from "../../components/FormCompletarCa
 import { useContextGlobal } from "../../contexts/GlobalContext";
 import HeaderPrincipal from "../../components/Header";
 import { useNavigate } from "react-router-dom";
+import api, { axiosapi } from "../../config/axios";
+import { useAuth } from "../../contexts/AuthContext";
 
 function PerfilUsuario() {
   const navigate = useNavigate()
   const { editando, setEditando, locador } = useContextGlobal();
-
+  const {idUsuario, logout} = useAuth()
+console.log("Perfil usuario")
   const handleSubmit = (event) => {
     event.preventDefault();
   };
@@ -20,6 +23,17 @@ function PerfilUsuario() {
   function paraLocador(){
     setEditando(true);
     navigate("/cadastroLocador")
+  }
+
+  async function deleteUsuario(){
+
+    try {
+      const response = api.delete(`usuario/${idUsuario}`)
+      alert("Tchau")
+logout  
+    } catch (error) {
+      console.log("Error", error)
+    }
   }
   return (
     <>
@@ -37,6 +51,10 @@ function PerfilUsuario() {
         </button>}
         <button type="button" className="btn-icone">
           <img className="icon" src="./images/notificacao.png" alt="Ícone Marinheiro" />
+        </button>
+        <button type="button" className="btn-icone" onClick={deleteUsuario}>
+          Excluir conta
+          {/* <img className="icon" src="./images/notificacao.png" alt="Ícone Marinheiro" /> */}
         </button>
       </div>
 

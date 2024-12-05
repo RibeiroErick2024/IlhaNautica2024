@@ -7,11 +7,12 @@ import FormPerfilMarinheiro from "../../components/FormPerfilMarinheiro";
 import { useContextGlobal } from "../../contexts/GlobalContext";
 import { useForm } from "react-hook-form";
 import HeaderPrincipal from "../../components/Header";
+import { useAuth } from "../../contexts/AuthContext";
 
 
 function CadastroLocador() {
   const navigate = useNavigate();
-  const { iconeCategoria, setIconeCategoria, setEditando } = useContextGlobal();
+  const { iconeCategoria, setIconeCategoria, setEditando, editando } = useContextGlobal();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -22,7 +23,10 @@ function CadastroLocador() {
     console.log(iconeCategoria)
   };
 
-  useEffect(() => { setEditando(false) }, [])
+  useEffect(() => { 
+    setEditando(false)
+    console.log(editando)
+   }, [setEditando])
 
 
 

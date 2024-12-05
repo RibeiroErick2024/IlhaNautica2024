@@ -3,8 +3,6 @@ import './index.css'; // Importe seu CSS
 
 // Componente EmbarcacaoGaleria recebe 'imagens' e 'nome' como propriedades
 function EmbarcacaoGaleria({ imagens = [], nome, usuarioNome }) {
-  // Exibe as imagens no console para depuração
-  console.log(imagens);
 
   return (
     <div className='container-fotos'>

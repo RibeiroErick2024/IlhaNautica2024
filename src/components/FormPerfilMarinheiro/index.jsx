@@ -2,15 +2,33 @@ import { useEffect, useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import axios from "axios";
 
-
 import "./index.css";
 import {
   ContainerTextFieldInput,
+  FormControlDiv,
+  SelectInput,
   TextFieldInput,
 } from "../FormCompletarCadastro/styles.jsx";
 import { useContextGlobal } from "../../contexts/GlobalContext.jsx";
+import { MenuItem } from "@mui/material";
+import api, { axiosapi } from "../../config/axios.jsx";
+import { useAuth } from "../../contexts/AuthContext.jsx";
 function FormPerfilMarinheiro() {
-  const { editando, setEditando, iconeCategoria } = useContextGlobal()
+  const { editando, setEditando, iconeCategoria } = useContextGlobal();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [cadastrado, setCadastrado] = useState(false);
+  const{idUsuario} = useAuth()
+
+  const opcoes = [
+    { value: "empresa", label: "Não se aplica (Empresa)" },
+    { value: "feminino", label: "Feminino" },
+    { value: "masculino", label: "Masculino" },
+    { value: "nao-binario", label: "Não-binário" },
+    { value: "transgenero", label: "Transgênero" },
+    { value: "genero_fluido", label: "Gênero fluido" },
+    { value: "outro", label: "Outro" },
+    { value: "prefiro_nao_dizer", label: "Prefiro não dizer" },
+  ];
   const {
     register,
     handleSubmit,
@@ -21,21 +39,52 @@ function FormPerfilMarinheiro() {
     control,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data, event) => {
+
+  const onSubmit = async (data, event) => {
     event.preventDefault();
+   
+    if (isSubmitting) {
+      console.log("Enviandos dados... Espere pela resposta")
+      return; // Impede o envio se já estiver em processo de envio
+    }
+
+    setIsSubmitting(true);
     console.log(data);
-    definirValidadeEtapa(indiceEtapa, true)
+    const marinheiro = {
+      nome: data.nome,
+      categoria: data.categoria,
+      registroMaritimo: data.registroMaritimo,
+      disponibilidade: true,
+      dataNascimento: data.dataNascimento,
+      cpf: data.cpf,
+      email: data.email,
+      telefone: data.telefone,
+      genero: data.genero,
+      usuario: {
+        id: idUsuario,
+      },
+    };
+
+    try {
+      const response = await api.post(`marinheiro/cadastrar`, marinheiro);
+      console.log("Marinheiro cadastrao com sucesso", response);
+      setCadastrado(true)
+      alert("Marinheiro cadastrado. Termine o restante do cadastros")
+    } catch (error) {
+      setCadastrado(false)
+      console.log("Erro ao enviar dados ao back", error.response);
+    } finally {
+      setIsSubmitting(false); // Reabilita o botão após a operação
+    }
   };
+
   const onError = (errors) => {
     console.log("Error no form", errors);
   };
   useEffect(() => {
-    setEditando(false)
     if (editando) {
       axios
-        .get(
-          "http://localhost:8080/marinheiro/fc83bcb0-ea6c-4f7d-bf01-d8b23d4ff2c5"
-        )
+        .get("http://localhost:8080/marinheiro/fc83bcb0-ea6c-4f7d-bf01-d8b23d4ff2c5")
         .then((response) => {
           const data = response.data;
           console.log(data);
@@ -48,22 +97,16 @@ function FormPerfilMarinheiro() {
           setValue("email", data.email);
           setValue("telefone", data.telefone);
           setValue("genero", data.genero);
-          // setValue("registroMaritimo" ,data.registroMaritimo);
-
         })
         .catch((error) => console.log(error));
-
     }
   }, [setValue]);
 
   return (
     <div className="container-marinheira">
       <div className="container-cadastro-marinheiro">
-        <h1 className="titulo-embarcacao">Perfil Marinheiro</h1>
-        <form
-          onSubmit={handleSubmit(onSubmit, onError)}
-          className="form-section-marinheiro">
-
+        <h1 className="titulo-embarcacao">Marinheiro</h1>
+        <form onSubmit={handleSubmit(onSubmit, onError)} className="form-section-marinheiro">
           <ContainerTextFieldInput>
             <TextFieldInput
               fullWidth
@@ -112,19 +155,31 @@ function FormPerfilMarinheiro() {
               helperText={errors.cpf?.message}
             />
 
-            <TextFieldInput
-              fullWidth
-              focused={editando}
-              label="Gênero"
-              variant="outlined"
-              margin="dense"
-              {...register("genero", {
-                required: "Campo obrigatório",
-                minLength: 3,
-              })}
-              error={!!errors.genero}
-              helperText={errors.genero?.message}
-            />
+            <FormControlDiv margin="dense">
+              <Controller
+                name="genero"
+                control={control}
+                rules={{ required: "Campo obrigatório" }}
+                render={({ field }) => (
+                  <SelectInput
+                    fullWidth
+                    defaultValue="outro"
+                    focused={editando}
+                    select
+                    label="Gênero"
+                    {...register("genero", { required: "Selecione uma opcão" })}
+                    error={!!errors.genero}
+                    helperText={errors.genero?.message}
+                  >
+                    {opcoes.map((option) => (
+                      <MenuItem key={option.value} value={option.value}>
+                        {option.label}
+                      </MenuItem>
+                    ))}
+                  </SelectInput>
+                )}
+              />
+            </FormControlDiv>
           </ContainerTextFieldInput>
 
           <ContainerTextFieldInput>
@@ -156,7 +211,8 @@ function FormPerfilMarinheiro() {
               {...register("telefone", {
                 required: "Campo obrigatório",
                 pattern: {
-                  value: /^\(?\d{2}\)?\s?\d{5}-\d{4}$/,
+                  // value: /^\(?\d{2}\)?\s?\d{5}-\d{4}$/,
+                  value: /^[0-9]{11}$/,
                   message: "Telefone inválido",
                 },
               })}
@@ -182,7 +238,7 @@ function FormPerfilMarinheiro() {
               fullWidth
               focused={editando}
               label="Categoria"
-              disabled
+              // disabled
               variant="outlined"
               margin="dense"
               {...register("categoria", {
@@ -195,13 +251,10 @@ function FormPerfilMarinheiro() {
           </ContainerTextFieldInput>
 
           <div className="fingon">
-            <button type="submit" className="btn-marinheiro">Salvar</button>
-
+            <button disabled={cadastrado} type="submit" className="btn-marinheiro">
+              Salvar
+            </button>
           </div>
-
-
-
-
         </form>
       </div>
     </div>
