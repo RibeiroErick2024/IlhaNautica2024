@@ -21,7 +21,7 @@ import { useContextGlobal } from "../../contexts/GlobalContext.jsx";
 
 function CadastroEmbarcacoes() {
   const { idUsuario } = useAuth();
-  const { editando, setEditando } = useContextGlobal();
+  const { iconeCategoria, setIconeCategoria, editando, setEditando } = useContextGlobal();
   const [isDisabled, setIsDisabled] = useState(false);
   const [fotosSelecionadas, setFotosSelecionadas] = useState([]);
   const [idEmb, setIdEmb] = useState()
@@ -38,8 +38,6 @@ function CadastroEmbarcacoes() {
     control,
     formState: { errors },
   } = useForm();
-  // const onSubmit = async (data, event) => {
-
   const onError = (errors) => {
     console.log("Error no form", errors);
   };
@@ -70,7 +68,7 @@ function CadastroEmbarcacoes() {
       inscricao: data.inscricao,
       preco: data.preco,
       bandeira: data.bandeira,
-      categoria: "TESTE",
+      categoria: iconeCategoria,
       disponibilidade: true,
       regras: data.regras,
       descricao: data.descricao,

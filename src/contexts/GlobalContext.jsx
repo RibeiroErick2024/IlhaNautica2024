@@ -13,6 +13,7 @@ const [isStepValid, setIsStepValid] = useState([false, false, false, false]);
 const [activeStep, setActiveStep] = useState(0);
 const [gatilho, setGatilho]= useState(false)
 const [locador, setLocador] = useState(false)
+const [iconeCategoria, setIconeCategoria] = useState("Jet Ski")
 
  const definirValidadeEtapa = (indiceEtapa, statusValidacao) => {
     const etapasAtualizadas = [...isStepValid]; // Cria uma cópia do estado atual
@@ -25,7 +26,7 @@ const [locador, setLocador] = useState(false)
             setActiveStep,
             isStepValid,
             definirValidadeEtapa, gatilho, setGatilho,
-            locador, setLocador}}>
+            locador, setLocador, iconeCategoria, setIconeCategoria}}>
             {children}
         </GlobalContext.Provider>
     )
