@@ -14,23 +14,25 @@ html {
 
 .perfilMarinheiro {
     display: flex;
-    background-color: aquamarine;
+    /* background-color: aquamarine; */
     padding: 45px;
     
 }
 
 
-.icones-marinheiro {
+.icones-usuario {
     display: flex;
     flex-direction: column;
     /* Alinha os ícones verticalmente */
     gap: 40px;
+    /* padding: 55px; */
+    
     /* Espaçamento maior entre os ícones */
     justify-content: center;
     /* Centraliza os ícones verticalmente */
     align-items: center;
     /* Centraliza os ícones horizontalmente */
-    background-color: green;
+    /* background-color: green; */
     /* Fundo verde */
     border-radius: 15px;
     /* Bordas arredondadas */

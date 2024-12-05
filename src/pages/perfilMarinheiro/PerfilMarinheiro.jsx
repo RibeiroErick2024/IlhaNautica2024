@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import "./PerfilMarinheiro.css";
 import FormPerfilMarinheiro from "../../components/FormPerfilMarinheiro";
 import { useContextGlobal } from "../../contexts/GlobalContext";
+import HeaderPrincipal from "../../components/Header";
 
 function PerfilMarinheiro() {
   const {editando, setEditando} = useContextGlobal();
@@ -14,6 +15,9 @@ function PerfilMarinheiro() {
   }, [setEditando]);
  
   return (
+    <>
+    <HeaderPrincipal />
+    <div className="imgFundo">
     <div className="containerPerfil" >
       
       {/* Contêiner de Ícones */}
@@ -35,6 +39,8 @@ function PerfilMarinheiro() {
      
       </div> 
     </div>
+    </div>
+    </>
   );
 }
 
