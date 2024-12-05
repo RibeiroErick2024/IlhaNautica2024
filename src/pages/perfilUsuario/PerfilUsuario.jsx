@@ -30,7 +30,7 @@ console.log("Perfil usuario")
     try {
       const response = api.delete(`usuario/${idUsuario}`)
       alert("Tchau")
-logout  
+logout()
     } catch (error) {
       console.log("Error", error)
     }

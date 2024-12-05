@@ -54,3 +54,8 @@ html {
     cursor: pointer;
 
 }
+
+.imgFundo{
+background: transparent;
+/* opacity: 0.15; */
+}
