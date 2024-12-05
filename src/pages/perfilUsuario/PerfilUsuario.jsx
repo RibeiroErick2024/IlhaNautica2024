@@ -24,10 +24,11 @@ function PerfilUsuario() {
   return (
     <>
     <HeaderPrincipal />
+    <div className="imgFundo">
     <div className="containerPerfil" >
 
       {/* Contêiner de Ícones */}
-      <div className="icones-marinheiro">
+      <div className="icones-usuario">
         <button type="button" className="btn-icone">
           <img className="icon" src="./images/perfil.png" alt="Ícone Marinheiro" />
         </button>
@@ -44,10 +45,11 @@ function PerfilUsuario() {
 
       {/* <button type="submit" className="btn-salvar-marinheiro">Salvar</button> */}
       <div className="perfilMarinheiro">
-
+      <h1 className="titulo-embarcacao">Perfil Usuario</h1>
         <FormUsuario />
 
       </div>
+    </div>
     </div>
     </>
   );

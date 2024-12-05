@@ -14,7 +14,7 @@ html {
 
 .perfilMarinheiro {
     display: flex;
-    background-color: aquamarine;
+    /* background-color: aquamarine; */
     padding: 45px;
     
 }
@@ -30,7 +30,7 @@ html {
     /* Centraliza os ícones verticalmente */
     align-items: center;
     /* Centraliza os ícones horizontalmente */
-    background-color: green;
+    /* background-color: green; */
     /* Fundo verde */
     border-radius: 15px;
     /* Bordas arredondadas */
