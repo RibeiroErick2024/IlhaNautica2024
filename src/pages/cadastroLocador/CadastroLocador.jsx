@@ -68,7 +68,12 @@ function CadastroLocador({ titulo }) {
 
         <div className="forms-cadastro">
         <FormPerfilMarinheiro  />,
+        <br></br>
+        <br></br>
+        <br></br>
+        <hr className="linhaHr" />
         <CadastroEmbarcacoes />,
+        
          {/* <DescricaoEmbarcacao/>  */}
         {/* <CadastroEmbarcacaoContinua indiceEtapa={1} />,  */}
 
