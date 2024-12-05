@@ -7,7 +7,7 @@ const Card_barco = forwardRef(({ user }, ref) => {
   const {
     url,
     nome,
-    cidade,
+    // cidade,
     potencia,
     tamanho,
     capacidade,
@@ -27,7 +27,7 @@ const Card_barco = forwardRef(({ user }, ref) => {
 
       <div className="barco-info">
         <h3>{nome}</h3>
-        <p>Cidade: {cidade}</p>
+        {/* <p>Cidade: {cidade}</p> */}
         <p>Potência: {potencia} HP</p>
         <p>Tamanho: {tamanho} metros</p>
         <p>Capacidade: {capacidade} pessoas</p>

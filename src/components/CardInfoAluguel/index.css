@@ -1,15 +1,37 @@
-.Info-Aluguel-container {
+.info-aluguel-container {
     display: flex;
     flex-direction: column;
-    position: sticky; /* Fixa a div na rolagem */
-    top: 18%; /* Define a distância do topo quando rolar */
-    right: 1%; /* Ajusta a margem do lado direito */
-    width: 30%;
-    height: 400px;
-    padding: 18px;
-    background-color: rgb(255, 255, 255);
-    border-radius: 12px;
-    box-shadow: 0 0 10px 2px rgb(180, 180, 180);
-    margin: 0 auto; /* Centraliza horizontalmente */
-    transform: translateX(5%);
-}
+    align-items: flex-start;
+    gap: 16px;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #ffffff;
+    height: 350px;
+  }
+  
+  .inputs-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .resultado {
+    margin-top: 10px;
+    font-size: 16px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+  }
+  

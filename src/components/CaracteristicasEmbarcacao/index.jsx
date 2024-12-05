@@ -49,7 +49,7 @@ function CaracteristicasEmbarcacao({ Caracteristica }) {
         <h2>Regras de uso</h2>
         <div className="div-regras-uso-barco">
         {Caracteristica.regrasUso ? (
-          <p>{Caracteristica.regrasUso}</p>
+          <p>{Caracteristica.regrasUso} </p>
         ) : (
           <p>Carregando descrição...</p>
         )}

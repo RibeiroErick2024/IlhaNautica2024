@@ -46,7 +46,7 @@ function Embarcacao() {
         const dados = {
           id: resultCard.data.idEmbarcacao,
           nome: `${resultCard.data.fabricante} ${resultCard.data.nome} (${resultCard.data.anoFabricacao})`,
-          cidade: resultCard.data.endereco.cidade,
+          // cidade: resultCard.data.endereco.cidade,
           potencia: resultCard.data.potencia || "Não informado",
           tamanho: resultCard.data.tamanho || "não informado",
           capacidade: resultCard.data.capacidade || 20,
@@ -101,7 +101,8 @@ function Embarcacao() {
             regrasUso: dadosBarco.regras
           }}
         />
-        <InfoAluguel />
+        <InfoAluguel precoDiaria={dadosBarco.preco} />
+
       </div>
     </div>
   );
