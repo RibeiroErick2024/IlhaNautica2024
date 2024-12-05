@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const AuthContext = createContext();
 
@@ -6,6 +7,9 @@ export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [idUsuario, setIdUsuario] = useState(localStorage.getItem("idUsuario"));
   const [logado, setLogado] = useState(localStorage.getItem("logado"));
+  const navigate = useNavigate()
+
+
 
   const login = (jwtToken, id) => {
     setToken(jwtToken);
@@ -22,6 +26,7 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem("idUsuario");
     localStorage.removeItem("logado", false)
     // setLogado(false)
+    navigate("/")
   };
 
   const isAuthenticated = () => localStorage.getItem("logado") === "true";
