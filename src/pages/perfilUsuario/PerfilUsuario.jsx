@@ -38,7 +38,7 @@ logout()
   return (
     <>
     <HeaderPrincipal />
-    <div className="imgFundo">
+    {/* <div className="imgFundo"> */}
     <div className="containerPerfil" >
 
       {/* Contêiner de Ícones */}
@@ -68,7 +68,7 @@ logout()
 
       </div>
     </div>
-    </div>
+    {/* </div> */}
     </>
   );
 }

@@ -13,7 +13,7 @@ import api, { axiosapi } from "../../config/axios";
 function InfoAluguel({ precoDiaria, idEmbarcacao }) {
   const hoje = dayjs();
   const ontem = dayjs().subtract(1, "day");
-  const { idUsuario } = useAuth();
+  const { idUsuario, logado } = useAuth();
   const [checkin, setCheckin] = useState(hoje);
   const [checkout, setCheckout] = useState(hoje);
   const [precoTotal, setPrecoTotal] = useState(0);
@@ -164,7 +164,7 @@ function InfoAluguel({ precoDiaria, idEmbarcacao }) {
 
       <button
         type="submit"
-        //  disabled={!checkin || !checkout || precoTotal === 0}
+         disabled={!logado} onClick={() => alert("Logar")}
       >
         Confirmar Aluguel
       </button>

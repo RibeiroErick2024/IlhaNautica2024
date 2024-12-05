@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import {  useEffect,  } from "react";
 
 import "./PerfilMarinheiro.css";
 import FormPerfilMarinheiro from "../../components/FormPerfilMarinheiro";
@@ -6,10 +6,7 @@ import { useContextGlobal } from "../../contexts/GlobalContext";
 import HeaderPrincipal from "../../components/Header";
 
 function PerfilMarinheiro() {
-  const {editando, setEditando} = useContextGlobal();
-  const handleSubmit = (event) => {
-    event.preventDefault();
-  };
+  const {setEditando} = useContextGlobal();
   useEffect(() => {
     setEditando(true); 
   }, [setEditando]);
@@ -17,7 +14,7 @@ function PerfilMarinheiro() {
   return (
     <>
     <HeaderPrincipal />
-    <div className="imgFundo">
+    {/* <div className="imgFundo"> */}
     <div className="containerPerfil" >
       
       {/* Contêiner de Ícones */}
@@ -39,7 +36,7 @@ function PerfilMarinheiro() {
      
       </div> 
     </div>
-    </div>
+    {/* </div> */}
     </>
   );
 }
