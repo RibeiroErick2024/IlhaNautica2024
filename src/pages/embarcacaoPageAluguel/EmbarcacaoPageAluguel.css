@@ -1,0 +1,27 @@
+* {
+    color: black;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+
+.embarcacao-container {
+    width: 100%;
+    height: 1300px;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.infos-container {
+    display: flex; /* Utiliza grid para organizar as imagens pequenas */
+    width: 80%; /* Largura da área para as imagens pequenas */
+    height: 100%; 
+    gap: 5px; 
+   flex-direction: row;
+   
+    
+}
+
+

@@ -1,5 +1,5 @@
 import React from 'react'
-import './index.css'
+import './Embarcacao.css'
 import Header from '../../components/Header'
 import EmbarcacaoGaleria from '../../components/EmbarcacaoGaleria';
 import CaracteristicasEmbarcacao from '../../components/CaracteristicasEmbarcacao';
