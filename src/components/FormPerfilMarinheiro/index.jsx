@@ -5,30 +5,12 @@ import axios from "axios";
 
 import "./index.css";
 import {
-  Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  TextField,
-  Select,
-  MenuItem,
-  InputLabel,
-  FormControl,
-} from "@mui/material";
-import {
-  ColorButtonCancelar,
-  ColorButtonSalvar,
   ContainerTextFieldInput,
-  SelectInput,
   TextFieldInput,
-  Titulo,
-  ContainerModal,
-  FormControlDiv,
 } from "../FormCompletarCadastro/styles.jsx";
 import { useContextGlobal } from "../../contexts/GlobalContext.jsx";
-function FormPerfilMarinheiro({ indiceEtapa }) {
-  const { editando, setEditando, definirValidadeEtapa } = useContextGlobal()
+function FormPerfilMarinheiro() {
+  const { editando, setEditando, iconeCategoria } = useContextGlobal()
   const {
     register,
     handleSubmit,
@@ -81,7 +63,7 @@ function FormPerfilMarinheiro({ indiceEtapa }) {
         <form
           onSubmit={handleSubmit(onSubmit, onError)}
           className="form-section-marinheiro">
-        
+
           <ContainerTextFieldInput>
             <TextFieldInput
               fullWidth
@@ -196,9 +178,11 @@ function FormPerfilMarinheiro({ indiceEtapa }) {
               helperText={errors.disponibilidade?.message}
             />
             <TextFieldInput
+              value={iconeCategoria}
               fullWidth
               focused={editando}
               label="Categoria"
+              disabled
               variant="outlined"
               margin="dense"
               {...register("categoria", {
@@ -209,15 +193,15 @@ function FormPerfilMarinheiro({ indiceEtapa }) {
               helperText={errors.categoria?.message}
             />
           </ContainerTextFieldInput>
-           
-           <div className="fingon">
+
+          <div className="fingon">
             <button type="submit" className="btn-marinheiro">Salvar</button>
 
-           </div>
-         
+          </div>
 
 
-          
+
+
         </form>
       </div>
     </div>
