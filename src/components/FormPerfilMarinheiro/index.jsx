@@ -1,18 +1,18 @@
-import { useEffect, useState } from "react";
-import { useForm, Controller } from "react-hook-form";
 import axios from "axios";
+import { useEffect, useState } from "react";
+import { Controller, useForm } from "react-hook-form";
 
-import "./index.css";
+import { MenuItem } from "@mui/material";
+import api from "../../config/axios.jsx";
+import { useAuth } from "../../contexts/AuthContext.jsx";
+import { useContextGlobal } from "../../contexts/GlobalContext.jsx";
 import {
   ContainerTextFieldInput,
   FormControlDiv,
   SelectInput,
   TextFieldInput,
 } from "../FormCompletarCadastro/styles.jsx";
-import { useContextGlobal } from "../../contexts/GlobalContext.jsx";
-import { MenuItem } from "@mui/material";
-import api, { axiosapi } from "../../config/axios.jsx";
-import { useAuth } from "../../contexts/AuthContext.jsx";
+import "./index.css";
 function FormPerfilMarinheiro() {
   const { editando, setEditando, iconeCategoria } = useContextGlobal();
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -54,7 +54,7 @@ function FormPerfilMarinheiro() {
       nome: data.nome,
       categoria: data.categoria,
       registroMaritimo: data.registroMaritimo,
-      disponibilidade: true,
+      // disponibilidade: true,
       dataNascimento: data.dataNascimento,
       cpf: data.cpf,
       email: data.email,
@@ -223,15 +223,15 @@ function FormPerfilMarinheiro() {
             <TextFieldInput
               fullWidth
               focused={editando}
-              label="Disponibilidade"
+              label=" Registro Maritimo"
               variant="outlined"
               margin="dense"
-              {...register("disponibilidade", {
+              {...register("registroMaritimo", {
                 required: "Campo obrigatório",
                 minLength: 3,
               })}
-              error={!!errors.disponibilidade}
-              helperText={errors.disponibilidade?.message}
+              error={!!errors. registroMaritimo}
+              helperText={errors. registroMaritimo?.message}
             />
             <TextFieldInput
               value={iconeCategoria}

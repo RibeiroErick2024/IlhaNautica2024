@@ -3,15 +3,21 @@
   flex-direction: column;
   width: 200px;
   min-height: 700px;
-  background-color: rgb(255, 255, 255);
   margin-left: 20px;
+  padding-top: 60px;
   gap: 15px;
+  background-color: rgb(37, 37, 37);
+  
 }
+
+label{ color: rgb(255, 255, 255);}
+.div-inputs-pesquisa h3{color: rgb(255, 255, 255);}
 
 .div-inputs-pesquisa{
     display: flex;
     flex-direction: column;
     width: 100%;
+    
 }
 
 #input-pesquisa-cidade{
@@ -38,9 +44,11 @@ h3{
     align-items: center;
     margin-left: 20%;
     margin-bottom: 7px; /* Espaçamento entre cada checkbox e label */
+    
   }
   
   .checkbox-item input {
     margin-right: 8px; /* Espaçamento entre o checkbox e a label */
+    
   }
   
