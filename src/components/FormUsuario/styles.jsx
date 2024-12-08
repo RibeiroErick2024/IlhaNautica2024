@@ -116,7 +116,7 @@ export const SelectInput = styled(TextField)(({ theme }) => ({
   },
  "& .MuiInputBase-formControl": {
     "& fieldset": {
-      borderColor: "rgba(19,141,147,255)",
+      borderColor: "rgb(42, 157, 143)",
       borderRadius: 40,
     },
   },

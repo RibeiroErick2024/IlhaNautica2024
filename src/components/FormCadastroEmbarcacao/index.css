@@ -16,43 +16,45 @@ html {
   align-items: center;
   border-radius: 10px;
   justify-content: space-evenly;
-
-  height: auto; /* Ajustar altura para o conteúdo */
+  background-color: #f3f3f3;
+  height: auto;
+  padding-top: 30px;
+  margin-top: 35px;
 }
 
-.titulo-embarcacao {
-  text-align: center;
-  width: 100%;
-  font-size: 1.6rem;
-  color: black;
- 
-}
-.teste{
+
+
+.teste {
   display: flex;
-  margin: 0 16vw; 
+  margin: 0 16vw;
+  padding-top: 18px;
   width: 100%;
   left: 10%;
 }
 
 .form-section-embarcacoes {
   display: flex;
-  
+
   flex-wrap: wrap;
-  gap: 20px; /* Espaçamento entre as colunas */
- 
+  gap: 20px;
+  /* Espaçamento entre as colunas */
+
 }
 
-.coluna-um, .coluna-dois {
+.coluna-um,
+.coluna-dois {
   display: flex;
   flex-direction: column;
-  width: 48%; /* Ajusta a largura de cada coluna */
-  gap: 15px; /* Espaçamento entre os campos dentro da coluna */
+  width: 48%;
+  /* Ajusta a largura de cada coluna */
+  gap: 15px;
+  /* Espaçamento entre os campos dentro da coluna */
 }
 
 .input-field input {
   width: 100%;
-  
-  border: 1px solid rgba(19,141,147,255);
+
+  border: 1px solid rgba(19, 141, 147, 255);
   border-radius: 40px;
   font-size: 1rem;
   color: black;
@@ -100,26 +102,68 @@ html {
 }
 
 
-.inputContainer-regras{
- width: 100%;
- 
- margin: 0 3vw;
+.inputContainer-regras {
+  width: 100%;
+
+  margin: 0 3vw;
 }
 
-.fotosContainer{
+.fotosContainer {
   width: 100%;
   padding: 15px;
+
+}
+
+.btnSelecionar {
+
+
+  width: 50%; /* Faz o botão ocupar toda a largura do container */
+  
+  justify-content:center;
+  height: 40px;
+  background-color: #2a9d8f ;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.inputFotos {
+  width: 100%;
+  padding: 5px;
+
+
+}
+
+.imageSelecionada {
+  margin: 10px;
+}
+.h1embarcacao{
+top: 0px;
+
+ 
   
 }
-.btnSelecionar{
-  gap: 15px;padding: 15px;
-}
-.inputFotos{
-  width: 100%;
-
-
-}
-.btn-salvar-embarcacao{
+.btn-salvar-embarcacao {
   width: 100px;
   height: 50px;
+  color: white;
+  background-color: #2a9d8f;
+  margin: 25px;
+  
+  
+  justify-content:center;
+  height: 40px;
+   margin-left: 590px;
+  background-color: #2a9d8f ;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
 }

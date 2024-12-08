@@ -27,7 +27,7 @@ function CadastroLocador() {
 
 
   return (
-    <>
+    < div className="noob">
       <HeaderPrincipal />
       <div className="container-cadastro">
         <div className="titulo-cadastro">
@@ -65,6 +65,7 @@ function CadastroLocador() {
               className="icon-svg"
               src="./images/Sailboat.png"
               alt="Icone Veleiro"
+              
 
             />
           </button>
@@ -80,7 +81,8 @@ function CadastroLocador() {
 
         </div>
       </div>
-    </>
+      </div>
+    
   );
 }
 

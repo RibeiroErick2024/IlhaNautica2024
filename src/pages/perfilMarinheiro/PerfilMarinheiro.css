@@ -9,12 +9,13 @@ html {
     display: flex;
     gap: 25px;
     padding: 25px;
+    background-color: #f3f3f3;
 
 }
 
 .perfilMarinheiro {
     display: flex;
-    background-color: aquamarine;
+    background-color: #f3f3f3;
     padding: 45px;
     
 }
