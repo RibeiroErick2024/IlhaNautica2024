@@ -17,11 +17,26 @@ function Filtros() {
 
   return (
     <div className={`filtro-container ${isVisible ? 'visible' : 'hidden'}`}>
-      <img src={jet} alt="Jet Ski" />
-      <img src={lancha} alt="Lancha" />
-      <img src={all} alt="Todos" />
-      <img src={veleiro} alt="Veleiro" />
-      <img src={iate} alt="Iate" />
+      <button className="filtro-item">
+        <img src={jet} alt="Jet Ski" />
+        <span>Jet Ski</span>
+      </button>
+      <button className="filtro-item">
+        <img src={lancha} alt="Lancha" />
+        <span>Lancha</span>
+      </button>
+      <button className="filtro-item">
+        <img src={all} alt="Todos" />
+        <span>Todos</span>
+      </button>
+      <button className="filtro-item">
+        <img src={veleiro} alt="Veleiro" />
+        <span>Veleiro</span>
+      </button>
+      <button className="filtro-item">
+        <img src={iate} alt="Iate" />
+        <span>Iate</span>
+      </button>
     </div>
   );
 }

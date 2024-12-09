@@ -9,7 +9,7 @@ function CaracteristicasEmbarcacao({ Caracteristica }) {
   return (
     <div className='caract-container'>
       <div className='caracteristica'>
-        <h2>características</h2>
+        <h2>Características</h2>
         <div className="caracteristica">
           <div className="div-caracteristicas-barco">
             <div>
