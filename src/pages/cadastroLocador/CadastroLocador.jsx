@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import "./CadastroLocador.css";
 import CadastroEmbarcacoes from "../../components/FormCadastroEmbarcacao";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import FormPerfilMarinheiro from "../../components/FormPerfilMarinheiro";
 import { useContextGlobal } from "../../contexts/GlobalContext";
 import { useForm } from "react-hook-form";

@@ -29,7 +29,7 @@ function App() {
           <Route path="/cadastroLocador" element={<CadastroLocador />} />
           <Route path="/perfilMarinheiro" element={<PerfilMarinheiro />} />
           <Route path="/perfilUsuario" element={<PerfilUsuario />} />
-          <Route path="/cadastroEmbarcacoes" element={<CadastroEmbarcacoes />} />
+          {/* <Route path="/cadastroEmbarcacoes" element={<CadastroEmbarcacoes />} /> */}
            <Route element={<ProtectedRoute />}>
           </Route>
 
