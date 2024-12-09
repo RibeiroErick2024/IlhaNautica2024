@@ -1,11 +1,10 @@
 .filtro-container {
   display: flex;
-  flex-direction: row;
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
   width: 100vw;
-  min-height: 30px; /* Define o tamanho mínimo */
-  gap: 15px;
   background-color: #1f2366;
-  justify-content: center;
+  gap: 25px; /* Espaçamento entre os botões */
   padding: 10px;
   opacity: 0; /* Inicialmente invisível */
   transform: translateY(-50px); /* Inicialmente fora da tela */
@@ -14,14 +13,44 @@
   transition: opacity 0.5s ease-out, transform 0.5s ease-out, height 0.5s ease-out; /* Transição suave */
 }
 
-/* Quando o filtro estiver visível */
 .filtro-container.visible {
   opacity: 1; /* Visível */
   transform: translateY(0); /* Volta à posição original */
-  height: 50px; /* Defina a altura desejada quando visível */
+  height: 70px; /* Reduz a altura do contêiner */
 }
 
-/* Caso a animação não funcione corretamente, a altura mínima pode ser configurada */
-.filtro-container.hidden {
-  height: 0; /* Mantém a altura em zero quando escondido */
+.filtro-item {
+  display: flex;
+  flex-direction: column; /* Ícone e texto em coluna */
+  align-items: center; /* Centraliza o conteúdo de cada botão */
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: white;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+}
+
+.filtro-item img {
+  width: 50px; /* Largura padrão para os ícones */
+  height: 50px; /* Altura padrão para os ícones */
+  margin-bottom: 5px; /* Espaço entre o ícone e o texto */
+  object-fit: contain; /* Ajusta o ícone para caber dentro do espaço sem distorção */
+}
+
+
+.filtro-item span {
+  text-align: center;
+  font-size: 13px; /* Um pouco maior para melhorar a visibilidade */
+  color: #fff; /* Cor do texto */
+}
+
+.filtro-item:hover img {
+  transform: scale(1.2); /* Aumenta o ícone ao passar o mouse */
+  transition: transform 0.3s ease;
+}
+
+.filtro-item:hover span {
+  color: #f0a500; /* Destaque no texto ao passar o mouse */
 }

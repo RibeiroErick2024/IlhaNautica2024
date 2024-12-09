@@ -100,7 +100,9 @@ function Embarcacao() {
             regrasUso: dadosBarco.regras
           }}
         />
-        <InfoAluguel precoDiaria={dadosBarco.preco} idEmbarcacao={barcoId}/>
+        <div className="info-aluguel-wrapper">
+          <InfoAluguel precoDiaria={dadosBarco.preco} idEmbarcacao={barcoId} />
+        </div>
 
       </div>
     </div>
