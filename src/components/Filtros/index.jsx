@@ -1,46 +1,29 @@
-import React from 'react'
-import './index.css'
+import React, { useState, useEffect } from 'react';
+import './index.css';
+
+import jet from '../../assets/jet.png';
+import lancha from '../../assets/speedboat.png';
+import veleiro from '../../assets/sailboat.png';
+import all from '../../assets/all.png';
+import iate from '../../assets/yatch.png';
 
 function Filtros() {
+  const [isVisible, setIsVisible] = useState(false);
+
+  // Controla a animação de entrada quando o componente é montado
+  useEffect(() => {
+    setIsVisible(true); // Habilita a animação
+  }, []);
+
   return (
-    <div className="filtro-container">
-      <div className="div-inputs-pesquisa">
-        <h3>Onde?</h3>
-        <input placeholder='Pesquisar por cidade' type="search" name="pesquisa" id="input-pesquisa-cidade" />
-      </div>
-
-      <div className="div-inputs-pesquisa">
-        <h3>Categoria</h3>
-
-        <div className="checkbox-container">
-          <div className="checkbox-item">
-            <input type="checkbox" id="checkbox1" defaultChecked />
-            <label htmlFor="checkbox1">Iate</label>
-          </div>
-
-          <div className="checkbox-item">
-            <input type="checkbox" id="checkbox2" defaultChecked/>
-            <label htmlFor="checkbox2">Jetski</label>
-          </div>
-
-          <div className="checkbox-item">
-            <input type="checkbox" id="checkbox3" defaultChecked/>
-            <label htmlFor="checkbox3">Lancha</label>
-          </div>
-
-          <div className="checkbox-item">
-            <input type="checkbox" id="checkbox4" defaultChecked/>
-            <label htmlFor="checkbox4">Veleiro</label>
-          </div>
-        </div>
-      </div>
-
-    
-
+    <div className={`filtro-container ${isVisible ? 'visible' : 'hidden'}`}>
+      <img src={jet} alt="Jet Ski" />
+      <img src={lancha} alt="Lancha" />
+      <img src={all} alt="Todos" />
+      <img src={veleiro} alt="Veleiro" />
+      <img src={iate} alt="Iate" />
     </div>
   );
 }
 
-
-
-                    export default Filtros
+export default Filtros;

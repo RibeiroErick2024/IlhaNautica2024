@@ -1,15 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react';
-import menuIcon from '../../assets/menu.svg'; // Certifique-se de que o caminho está correto
-import './index.css'; // Supondo que você tenha um arquivo CSS para estilos
-import { Navigate, useNavigate } from 'react-router-dom';
+import menuIcon from '../../assets/menu.svg';
+import './index.css';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
-import CompletarCadastro from '../FormCompletarCadastro';
-
-function HeaderPrincipal() {
+import { useLocation } from 'react-router-dom';
+import filterAzul from '../../assets/filter-azul.png';  // Filtro desativado
+import closeBranco from '../../assets/botao-fechar.png';  // Filtro ativado
+function HeaderPrincipal({ toggleFiltro }) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isFiltroAtivo, setIsFiltroAtivo] = useState(false);  // Estado para controlar o filtro ativado/desativado
     const menuRef = useRef(null);
-    const navigate = useNavigate("/embarcacao")
-    const { logout, logado } = useAuth()
+    const navigate = useNavigate("/embarcacao");
+    const { logout, logado } = useAuth();
 
     const handleMenuToggle = () => {
         setIsMenuOpen((prev) => !prev);
@@ -28,21 +30,43 @@ function HeaderPrincipal() {
         };
     }, []);
 
-    const verificar = () =>{
-        if(logado){
-            navigate("/cadastroLocador")
-        } else{
-            navigate("/login")
+    const verificar = () => {
+        if (logado) {
+            navigate("/cadastroLocador");
+        } else {
+            navigate("/login");
         }
-    }
+    };
+
+    const location = useLocation();  // Obter a localização da página atual
+
+    const handleFiltroClick = () => {
+        setIsFiltroAtivo(!isFiltroAtivo);  // Alternar o estado do filtro
+        toggleFiltro();  // Alternar a visibilidade do filtro
+    };
 
     return (
-        <header className='header-container'>
+        <header className='header-container' style={{  borderColor: isFiltroAtivo ? '#1f2366' : 'grey' }}>
             <div className="logo-container" onClick={() => navigate('/home')}>
                 <h1>Ilha Náutica</h1>
             </div>
 
             <div className="iconMenu-container" ref={menuRef}>
+                {/* Mostrar botão de filtro somente na página Home */}
+                {location.pathname === '/home' && (
+                    <button 
+                        className="home-button" 
+                        onClick={handleFiltroClick}
+                        style={{ backgroundColor: isFiltroAtivo ? '#1f2366' : 'transparent' }} // Alterando o background color
+                    >
+                        <img 
+                            className={`filtro-icon-${isFiltroAtivo ? 'visible' : 'hidden'}`}
+                            src={isFiltroAtivo ? closeBranco : filterAzul} 
+                            alt="Filtro" 
+                        />
+                    </button>
+                )}
+
                 <img
                     src={menuIcon}
                     alt="Menu"
@@ -51,15 +75,10 @@ function HeaderPrincipal() {
                 />
                 {isMenuOpen && (
                     <div className="dropdown-menu">
-
-                        {logado? <a href="/perfilUsuario">Perfil</a> :   <a href="/login" >Login | Cadastro</a>}
-                        {/* {logado && <a href="/perfilUsuario">Perfil</a>} */}
+                        {logado ? <a href="/perfilUsuario">Perfil</a> : <a href="/login">Login | Cadastro</a>}
                         <a onClick={verificar}>Anuncie seu barco</a>
                         <a href="/contact">Sobre nós</a>
-                        {logado &&
-
-                            <a href="/home" onClick={logout}>Logout</a>
-                        }
+                        {logado && <a href="/home" onClick={logout}>Logout</a>}
                     </div>
                 )}
             </div>

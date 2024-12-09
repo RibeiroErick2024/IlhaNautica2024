@@ -5,14 +5,16 @@
 }
 
 .header-container {
-    width: 100vw; 
-    height: 7vh;
+    width: 100vw;
+    height: 8vh;
     max-height: 10%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: relative;
-    background-color: #f3f3f3;
+    background-color: #ffffff;
+    border-bottom: 1px solid grey;
+    z-index: 10; /* Adicionado z-index para garantir que o cabeçalho fique acima de outros elementos */
 }
 
 h1 {
@@ -32,9 +34,10 @@ h1 {
     align-items: center;
 }
 
-.logo-container:hover{
+.logo-container:hover {
     cursor: pointer;
 }
+
 .iconMenu-container {
     position: relative;
     width: 5%;
@@ -44,6 +47,7 @@ h1 {
     align-items: center;
     margin-right: 10px;
     right: 20px;
+    z-index: 15; /* Garante que o ícone do menu seja interativo acima de outros elementos */
 }
 
 .iconMenu-container img {
@@ -62,7 +66,7 @@ h1 {
     background-color: #fff;
     border: 1px solid #ccc;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
+    z-index: 1000; /* Garantir que o menu dropdown apareça acima de outros elementos */
     display: flex;
     flex-direction: column;
     padding: 10px 0;
@@ -71,16 +75,41 @@ h1 {
 }
 
 .dropdown-menu a {
-    padding: 8px 16px; 
-    text-decoration: none !important; 
-    color: rgb(0, 0, 0); 
-    text-align: center; 
+    padding: 8px 16px;
+    text-decoration: none !important;
+    color: rgb(0, 0, 0);
+    text-align: center;
     font-family: var(--font-Titulo);
-    font-weight: normal; /* Garante que a fonte não seja bold */
-    border-radius: 0; /* Remove qualquer borda arredondada */
-    outline: none; /* Remove contornos ao focar */
+    font-weight: normal;
+    border-radius: 0;
+    outline: none;
 }
 
 .dropdown-menu a:hover {
-    background-color: #f0f0f0; 
+    background-color: #f0f0f0;
+}
+
+.home-button {
+    position: relative;
+    width: 80%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 10px;
+    border-radius: 7px 7px 0px 0px;
+    z-index: 20;
+    background: linear-gradient(to top, transparent 50%, #1f2366 50%);
+    background-size: 100% 200%;
+    background-position: 0 100%;
+    transition: background-position 3s ease;
+}
+
+.home-button.active {
+    background-position: 0 10; /* Move o gradiente para cima */
+}
+
+.home-button img{
+    height: 24px;
+    image-rendering: crisp-edges
 }

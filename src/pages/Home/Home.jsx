@@ -1,19 +1,29 @@
+import React, { useState } from 'react';
+import './Home.css'; // Seu CSS
+import HeaderPrincipal from '../../components/Header'; // Componente Header
+import Filtros from '../../components/Filtros'; // Componente Filtros
+import ListagemBarcos from '../../components/Listagem_barcos'; // Componente Listagem de Barcos
 
-import './Home.css'
-import Header from '../../components/Header'
-import Filtros from '../../components/Filtros'
-import ListagemBarcos from '../../components/Listagem_barcos'
-// import Card_barco from '../../components/Card_barco'
 function Home() {
+  const [isFiltroVisible, setIsFiltroVisible] = useState(false);
+
+  // Função para alternar a visibilidade do filtro
+  const toggleFiltro = () => {
+    setIsFiltroVisible(prev => !prev);
+  };
+
   return (
     <div className='home-container'>
-        <Header/>
+      <HeaderPrincipal toggleFiltro={toggleFiltro} />
       <div className='conteudo-container'>
-        <Filtros/>
-        <ListagemBarcos/>
+        {/* Filtro visível somente se o estado for verdadeiro */}
+        <div className={`filtro-container ${isFiltroVisible ? 'visible' : ''}`}>
+          <Filtros />
+        </div>
+        <ListagemBarcos />
       </div>
     </div>
-  )
+  );
 }
 
-export default Home
+export default Home;
