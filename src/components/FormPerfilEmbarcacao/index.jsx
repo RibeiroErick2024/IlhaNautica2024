@@ -25,13 +25,7 @@ import {
 } from "../FormCompletarCadastro/styles.jsx";
 
 function PerfilEmbarcacao() {
-  // const [nome, setNome] = useState("");
-  // const [modelo, setModelo] = useState("");
-  // const [ano, setAno] = useState("");
-  // const [capacidade, setCapacidade] = useState("");
-  // const [animaispermitidos, setAnimaisPermitidos] = useState("");
-  // const [localizacao, setLocallizacao] = useState("");
-  // const [roteiros, setRoteiros] = useState("");
+
   const {
     register,
     handleSubmit,

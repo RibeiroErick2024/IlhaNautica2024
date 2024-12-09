@@ -27,10 +27,10 @@ function App() {
             <Route path="/embarcacao" element={<Embarcacao />} />
           <Route path="/recuperacaoSenha" element={<RecuperacaoSenha />} />
           <Route path="/cadastroLocador" element={<CadastroLocador />} />
-           <Route element={<ProtectedRoute />}>
           <Route path="/perfilMarinheiro" element={<PerfilMarinheiro />} />
           <Route path="/perfilUsuario" element={<PerfilUsuario />} />
           <Route path="/cadastroEmbarcacoes" element={<CadastroEmbarcacoes />} />
+           <Route element={<ProtectedRoute />}>
           </Route>
 
 

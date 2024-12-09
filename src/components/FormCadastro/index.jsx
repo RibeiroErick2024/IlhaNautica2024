@@ -117,7 +117,7 @@ const FormCadastro = () => {
             onChange={() => handleInputChange("senha")}
           />
           <div
-            className="iconeSenha"
+            className="icon"
             onClick={() => setMostrarSenha(!mostrarSenha)}
           >
             {mostrarSenha ? <EyeOff size={22} /> : <Eye size={22} />}
@@ -141,7 +141,7 @@ const FormCadastro = () => {
             onChange={() => handleInputChange("confirmarSenha")}
           />
           <div
-            className="iconeSenha"
+            className="icon"
             onClick={() => setMostrarSenha(!mostrarSenha)}
           >
             {mostrarSenha ? <EyeOff size={22} /> : <Eye size={22} />}

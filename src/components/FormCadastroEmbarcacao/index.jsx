@@ -151,6 +151,7 @@ function CadastroEmbarcacoes() {
   return (
     <div className="container-cadastro-embarcacoes">
       
+     <h1 className='h1embarcacao'>Embarcação</h1>
       <form onSubmit={handleSubmit(onSubmit, onError)} className="form-section-embarcacoes">
         <div className='teste' >
           <ContainerTextFieldInput className='coluna-um'>

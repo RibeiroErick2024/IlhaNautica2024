@@ -23,6 +23,7 @@ html {
   padding: 5px;
 }
 
+
 .container-marinheira {
   display: flex;
 }
@@ -37,8 +38,8 @@ html {
   
   justify-content:center;
   height: 40px;
-   margin-left: 150px;
-  background-color: #007bff;
+   margin-left: 230px;
+  background-color: #2a9d8f ;
   color: white;
   border: none;
   border-radius: 8px;
@@ -48,16 +49,6 @@ html {
   align-items: center;
  
 
-}
-
-
-.titulo-marinheiro {
-  text-align: center;
-  justify-content: center;
-  width: 100%;
-  font-size: 1.6rem;
-  color: black;
-  height: 10%;
 }
 
 .form-section-marinheiro {
@@ -83,9 +74,6 @@ html {
   align-items: center;
 
 }
-
-
-
 .input-field input {
   width: 25vw;
   height: 7.5vh;
@@ -100,8 +88,6 @@ html {
 .input-field input::placeholder {
   color: black;
 }
-
-
 
 .container-cadastro-marinheiro .recall-forget {
   display: flex;

@@ -14,7 +14,6 @@ function PerfilMarinheiro() {
   return (
     <>
     <HeaderPrincipal />
-    {/* <div className="imgFundo"> */}
     <div className="containerPerfil" >
       
       {/* Contêiner de Ícones */}
@@ -36,7 +35,6 @@ function PerfilMarinheiro() {
      
       </div> 
     </div>
-    {/* </div> */}
     </>
   );
 }

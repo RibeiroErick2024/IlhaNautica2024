@@ -3,18 +3,20 @@ html {
     margin: 0;
     height: 100%;
     width: 100%;
+    background-color: #f3f3f3;
 }
 
 .containerPerfil {
     display: flex;
     gap: 25px;
     padding: 25px;
+    background-color: #f3f3f3;
 
 }
 
 .perfilMarinheiro {
     display: flex;
-    /* background-color: aquamarine; */
+    background-color: #f3f3f3;
     padding: 45px;
     
 }
@@ -32,7 +34,7 @@ html {
     /* Centraliza os ícones verticalmente */
     align-items: center;
     /* Centraliza os ícones horizontalmente */
-    /* background-color: green; */
+    background-color: #f3f3f3;
     /* Fundo verde */
     border-radius: 15px;
     /* Bordas arredondadas */

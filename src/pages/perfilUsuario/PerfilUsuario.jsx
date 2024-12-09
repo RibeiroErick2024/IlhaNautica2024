@@ -16,17 +16,15 @@ function PerfilUsuario() {
   const [embarcacoes, setEmbarcacoes] = useState([]);
   const fetchBarcos = async () => {
     try {
-      const response = await axiosapi.get(`/embarcacao/usuario/{idUsuario}${idUsuario}`, { responseType: "json" });
-      setEmbarcacoes(response.data)
+      const response = await axiosapi.get(`/embarcacao/usuario/${idUsuario}`, { responseType: "json" });
+      setEmbarcacoes(response.data);
     } catch (error) {
-      console.log("Erro ao tentar buscar imagens da embarcacao", error);
+      console.log("Erro ao tentar buscar embarcacões", error);
     }
-  };
-  const handleSubmit = (event) => {
-    event.preventDefault();
   };
   useEffect(() => {
     setEditando(true);
+    fetchBarcos();
   }, []);
 
   function paraLocador() {
@@ -71,21 +69,19 @@ function PerfilUsuario() {
 
         {/* <button type="submit" className="btn-salvar-marinheiro">Salvar</button> */}
         <div className="perfilMarinheiro">
-          <h1 className="titulo-embarcacao">Perfil Usuario</h1>
+          <h4 className="titulo-embarcacao">Perfil Usuario</h4>
           <FormUsuario />
           {embarcacoes.map((embarcacao) => (
             <div key={embarcacao.idEmbarcacao} style={{ marginBottom: "20px" }}>
               <p>
-                <strong>ID:</strong> {embarcacao.idEmbarcacao}
-              </p>
-              <p>
                 <strong>Nome:</strong> {embarcacao.nome}
               </p>
-             
               <p>
                 <strong>Categoria:</strong> {embarcacao.categoria}
               </p>
-              <button onClick={() => handleEdit(embarcacao.idEmbarcacao)}>Editar</button>
+              <button onClick={() => navigate("/cadastroLocador", { state: { id: embarcacao.idEmbarcacao } })}>
+                Editar
+              </button>
             </div>
           ))}
         </div>

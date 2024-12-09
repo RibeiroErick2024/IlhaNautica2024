@@ -12,8 +12,10 @@ import { useAuth } from "../../contexts/AuthContext";
 
 function CadastroLocador() {
   const navigate = useNavigate();
+  const location = useLocation(); // Obtém a localização atual da navegação
+  const barcoId = location.state?.id; 
   const { iconeCategoria, setIconeCategoria, setEditando, editando } = useContextGlobal();
-
+  
   const handleSubmit = (event) => {
     event.preventDefault();
   };
@@ -31,7 +33,7 @@ function CadastroLocador() {
 
 
   return (
-    <>
+    < div className="noob">
       <HeaderPrincipal />
       <div className="container-cadastro">
         <div className="titulo-cadastro">
@@ -69,6 +71,7 @@ function CadastroLocador() {
               className="icon-svg"
               src="./images/Sailboat.png"
               alt="Icone Veleiro"
+              
 
             />
           </button>
@@ -84,7 +87,8 @@ function CadastroLocador() {
 
         </div>
       </div>
-    </>
+      </div>
+    
   );
 }
 

@@ -100,7 +100,7 @@ const FormLogin = ({ onToggleForm }) => {
             {...register("senha", { required: "A senha é obrigatória." })}
             onChange={() => handleInputChange("senha")}
           />
-          <div className="iconeSenha" onClick={toggleSenhaVisibilidade}>
+          <div className="icon" onClick={toggleSenhaVisibilidade}>
             {mostrarSenha ? <EyeOff size={22} /> : <Eye size={22} />}
           </div>
           {tentativaLogin && errors.senha && (

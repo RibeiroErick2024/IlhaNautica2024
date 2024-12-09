@@ -66,7 +66,7 @@ function FormPerfilMarinheiro() {
     };
 
     try {
-      const response = await api.post(`marinheiro/cadastrar`, marinheiro);
+      const response = await api.post(`marinheiro/`, marinheiro);
       console.log("Marinheiro cadastrao com sucesso", response);
       setCadastrado(true)
       alert("Marinheiro cadastrado. Termine o restante do cadastros")
@@ -89,7 +89,7 @@ function FormPerfilMarinheiro() {
           const data = response.data;
           console.log(data);
           setValue("nome", data.nome);
-          setValue("categoria", data.categoria);
+          setValue("categoria", iconeCategoria);
           setValue("registroMaritimo", data.registroMaritimo);
           setValue("disponibilidade", data.disponibilidade);
           setValue("dataNascimento", data.dataNascimento);
@@ -105,8 +105,11 @@ function FormPerfilMarinheiro() {
   return (
     <div className="container-marinheira">
       <div className="container-cadastro-marinheiro">
-        <h1 className="titulo-embarcacao">Marinheiro</h1>
-        <form onSubmit={handleSubmit(onSubmit, onError)} className="form-section-marinheiro">
+      <h1 className="titulo-embarcacao">Marinheiro</h1>
+        <form
+          onSubmit={handleSubmit(onSubmit, onError)}
+          className="form-section-marinheiro">
+
           <ContainerTextFieldInput>
             <TextFieldInput
               fullWidth
@@ -115,6 +118,7 @@ function FormPerfilMarinheiro() {
               label="Nome Completo"
               variant="outlined"
               margin="dense"
+              className="dd"
               {...register("nome", {
                 required: "Campo obrigatório",
                 minLength: 3,
@@ -209,12 +213,11 @@ function FormPerfilMarinheiro() {
               variant="outlined"
               margin="dense"
               {...register("telefone", {
-                required: "Campo obrigatório",
-                pattern: {
-                  // value: /^\(?\d{2}\)?\s?\d{5}-\d{4}$/,
-                  value: /^[0-9]{11}$/,
-                  message: "Telefone inválido",
-                },
+                // required: "Campo obrigatório",
+                // pattern: {
+                //   value: /^\(?\d{2}\)?\s?\d{5}-\d{4}$/,
+                //   message: "Telefone inválido",
+                // },
               })}
               error={!!errors.telefone}
               helperText={errors.telefone?.message}
@@ -242,8 +245,8 @@ function FormPerfilMarinheiro() {
               variant="outlined"
               margin="dense"
               {...register("categoria", {
-                required: "Campo obrigatório",
-                minLength: 3,
+                // required: "Campo obrigatório",
+                // minLength: 3,
               })}
               error={!!errors.categoria}
               helperText={errors.categoria?.message}
