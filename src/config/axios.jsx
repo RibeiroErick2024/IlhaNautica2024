@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const url = 'http://localhost:8080/'
+const url = 'https://ilhanauticav2backend.onrender.com"/'
 export const instanceMultipart = axios.create({
   baseURL: `${url}`,
    headers: {
@@ -14,7 +14,7 @@ export const instanceMultipart = axios.create({
 });
 // baseURL: "https://ilhanauticav2backend.onrender.com", 
 export const axiosapi = axios.create({
-  baseURL: "http://localhost:8080/", 
+  baseURL: "https://ilhanauticav2backend.onrender.com/", 
   timeout: 1000000, 
   // headers: {
   //   "Content-Type": "application/json",
@@ -23,7 +23,7 @@ export const axiosapi = axios.create({
 });
 // baseURL: "http://localhost:8080/api",
 const api = axios.create({
-  baseURL: "http://localhost:8080/", 
+  baseURL: "https://ilhanauticav2backend.onrender.com/", 
   timeout: 100000, 
   headers: {
     "Content-Type": "application/json",

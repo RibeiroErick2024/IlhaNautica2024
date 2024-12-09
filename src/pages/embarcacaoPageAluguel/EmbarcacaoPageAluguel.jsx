@@ -61,7 +61,7 @@ function Embarcacao() {
           pet: resultCard.data.pet ? "Tem" : "Não tem",
           preco: resultCard.data.preco || "Não disponibilizado",
           imagensBase64, // Imagens em Base64
-          usuarioId: !resultCard.data.usuario.id?  resultCard.data.usuario.id : "usuarioInfo.data.id", // ID do usuário
+          // usuarioId: !resultCard.data.usuario.id?  resultCard.data.usuario.id : "usuarioInfo.data.id", // ID do usuário
           // usuarioNome: resultCard.data.usuario.nomeCompleto, // Nome completo do usuário
           regras: resultCard.data.regras,
           descricao: resultCard.data.descricao,
