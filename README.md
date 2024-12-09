@@ -24,10 +24,24 @@ O **Ilha NAUTICA**  é uma plataforma inovadora que automatiza o processo de alu
 ---
 ## Protótipos
 
-![landing page](https://raw.githubusercontent.com/Mateus-Santana18/sa-fut-agenda-front/refs/heads/main/prototipo-telas/Landing%20Page%20Dark.png)
-
+cadastro
 ![alt text](image.png)
-
+descrição
+![alt text](image-1.png)
+embarcação
+![alt text](image-2.png)
+login
+![alt text](image-3.png)
+marinheiro
+![alt text](image-4.png)
+modal
+![alt text](image-5.png)
+perfil
+![alt text](image-6.png)
+perfilUsuario
+![alt text](image-7.png)
+recuperaçãosenha
+![alt text](image-8.png)
 
 
 
