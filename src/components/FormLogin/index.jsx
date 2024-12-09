@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import api from "../../config/axios";
 import { useAuth } from "../../contexts/AuthContext";
+import axios from "axios";
 
 const FormLogin = ({ onToggleForm }) => {
   const {
@@ -29,8 +30,9 @@ const FormLogin = ({ onToggleForm }) => {
       senha: data.senha,
     };
     try {
-      const response = await api.post("/auth/login", loginData);
-
+      console.log(loginData)
+      const response = await api.post("auth/login", loginData);
+      
       console.log("Login realizado com sucesso:", response);
       login(response.data.token, response.data.idUsuario);
       navigate("/home");

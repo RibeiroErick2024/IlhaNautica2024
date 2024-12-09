@@ -2,6 +2,7 @@ import React, { useState, useEffect, Suspense } from 'react';
 import axios from 'axios';
 import './index.css';
 import { Navigate, useNavigate } from 'react-router-dom';
+import { axiosapi } from '../../config/axios';
 
 const CardBarco = React.lazy(() => import('../Card_barco'));
 
@@ -13,11 +14,11 @@ function ListagemBarcos() {
   useEffect(() => {
     const fetchBarcos = async () => {
       try {
-        const resultCard = await axios.get(`${url}embarcacao/`, { responseType: 'json' });
+        const resultCard = await axiosapi.get(`/embarcacao/`, { responseType: 'json' });
 
         // Função para transformar a imagem em Base64
         const transformarImagem = async (id) => {
-          const resultImage = await axios.get(`${url}imagem/${id}`, { responseType: 'arraybuffer' });
+          const resultImage = await axiosapi.get(`/imagem/${id}`, { responseType: 'arraybuffer' });
           const base64String = btoa(
             new Uint8Array(resultImage.data)
               .reduce((data, byte) => data + String.fromCharCode(byte), '')
@@ -28,9 +29,12 @@ function ListagemBarcos() {
 
         // Formatando os dados dos barcos
         const formattedData = await Promise.all(resultCard.data.map(async (barco) => {
-     
-              const idImagem = barco.imagem[0].id_imagem;  // Pegando o ID da primeira imagem do barco
-              const imagemUrl = await transformarImagem(idImagem);  // Carregando a imagem
+          let imagemUrl = './src/assets/barco.jpg'
+          if(barco.imagem[0]){
+            const idImagem = barco.imagem[0].id_imagem;  // Pegando o ID da primeira imagem do barco
+            imagemUrl = await transformarImagem(idImagem);  // Carregando a imagem
+
+          } 
 
             
           

@@ -58,7 +58,7 @@ export function FormUsuario() {
   useEffect(() => {
     axios
       .get(
-        `http://localhost:8080/usuario/${idUsuario}`
+        `http://localhost:8080/usuario/a/${idUsuario}`
       )
       .then((response) => {
         const data = response.data;

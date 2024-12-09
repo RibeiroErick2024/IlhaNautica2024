@@ -12,20 +12,22 @@ export const instanceMultipart = axios.create({
 //   password: 's00pers3cret'
 // },
 });
+// baseURL: "https://ilhanauticav2backend.onrender.com", 
 export const axiosapi = axios.create({
   baseURL: "http://localhost:8080/", 
-  timeout: 10000, 
-  headers: {
-    "Content-Type": "application/json",
-    // Accept: "application/json",
-  },
+  timeout: 1000000, 
+  // headers: {
+  //   "Content-Type": "application/json",
+  //   // Accept: "application/json",
+  // },
 });
+// baseURL: "http://localhost:8080/api",
 const api = axios.create({
   baseURL: "http://localhost:8080/", 
-  timeout: 10000, 
+  timeout: 100000, 
   headers: {
     "Content-Type": "application/json",
-    // Accept: "application/json",
+    Accept: "application/json",
   },
 });
 
@@ -59,6 +61,7 @@ api.interceptors.response.use(
     return Promise.reject(error);
   },
 );
+
 
 export default api;
 

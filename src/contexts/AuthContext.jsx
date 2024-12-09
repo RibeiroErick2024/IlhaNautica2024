@@ -6,8 +6,7 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [idUsuario, setIdUsuario] = useState(localStorage.getItem("idUsuario"));
-  const [logado, setLogado] = useState(localStorage.getItem("logado"));
-  const navigate = useNavigate()
+  const [logado, setLogado] = useState(false);
 
 
 
@@ -16,7 +15,6 @@ export const AuthProvider = ({ children }) => {
     setIdUsuario(id);
     localStorage.setItem("token", jwtToken);
     localStorage.setItem("idUsuario", id);
-    localStorage.setItem("logado", true)
     setLogado(true)
   };
 
@@ -24,12 +22,11 @@ export const AuthProvider = ({ children }) => {
     setToken(null);
     localStorage.removeItem("token");
     localStorage.removeItem("idUsuario");
-    localStorage.removeItem("logado", false)
-    // setLogado(false)
-    navigate("/")
+    setLogado(false)
+
   };
 
-  const isAuthenticated = () => localStorage.getItem("logado") === "true";
+  const isAuthenticated = () => !!token;
 
   return (
     <AuthContext.Provider value={{ token, login, logout, isAuthenticated, idUsuario, logado}}>

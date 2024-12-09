@@ -83,7 +83,7 @@ function CadastroEmbarcacoes() {
 
 
     try {
-      const response = await axiosapi.post(`embarcacao`, embarcacao);
+      const response = await axiosapi.post(`embarcacao/`, embarcacao);
       setIdEmb(response.data.idEmbarcacao);
       console.log("Embarcacao cadastrada com sucesso", response);
 
