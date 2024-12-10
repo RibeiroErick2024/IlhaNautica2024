@@ -8,14 +8,20 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
 import { axiosapi } from "../../config/axios";
+import { useNavigate } from "react-router-dom";
+import { Alert, Snackbar } from "@mui/material";
 
 function InfoAluguel({ precoDiaria, idEmbarcacao }) {
   const hoje = dayjs();
   const { idUsuario, logado, token } = useAuth();
   const [checkin, setCheckin] = useState(hoje);
   const [checkout, setCheckout] = useState(hoje);
-  const [precoTotal, setPrecoTotal] = useState(0);
-  const [diarias, setDiarias] = useState(0);
+  const [precoTotal, setPrecoTotal] = useState(precoDiaria);
+  const [diarias, setDiarias] = useState(1);
+  const[mensagem, setMensagem] =useState("Para alugar uma embarcação, faça login!")
+  const [severidade, setSeveridade] = useState("info")
+  const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -23,41 +29,61 @@ function InfoAluguel({ precoDiaria, idEmbarcacao }) {
     formState: { errors },
   } = useForm();
 
+  const checkLogin = () => {
+    if (!token) {
+      setSeveridade("warning")
+      setMensagem("Para alugar uma embarcação, faça login!")
+      setOpen(true);
+      return false;
+    }
+    return true;
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
   const onSubmit = async (data) => {
+    if (!checkLogin()) return;
+
     const agendamento = {
       datainicio: checkin.format("YYYY-MM-DD"),
       datafinal: checkout.format("YYYY-MM-DD"),
-      status: "Confirmado",
-      usuario: {
-        id: idUsuario,
-      },
-      embarcacao: {
+      status: "Confirmado", 
+        idUsuario: idUsuario,
         idEmbarcacao: idEmbarcacao,
-      },
+        idMarinheiro: "fc83bcb0-ea6c-4f7d-bf01-d8b23d4ff2c5"
     };
+
     try {
-      const response = await axiosapi.post("agendamento/criar", agendamento);
-      alert("Agendamento ok");
+      const response = await axiosapi.post("agendamento/", agendamento);
+      setSeveridade("success")
+      setMensagem(`Reserva confirmada!\nCheck-in: ${checkin.format("DD/MM/YYYY")}\nCheck-out: ${checkout.format(
+        "DD/MM/YYYY"
+      )}\nDiárias: ${diarias}\nTotal: R$ ${precoTotal.toFixed(2)}`)
+      setOpen(true);
     } catch (error) {
+      setSeveridade("error");
+      setMensagem("Erro ao agendar. Tente novamente mais tarde.");
+      setOpen(true);
       console.log("Erro ao enviar dados ao back", error.response);
     }
 
-    alert(
-      `Reserva confirmada!\nCheck-in: ${checkin.format(
-        "DD/MM/YYYY"
-      )}\nCheck-out: ${checkout.format("DD/MM/YYYY")}\nDiárias: ${diarias}\nTotal: R$ ${precoTotal.toFixed(2)}`
-    );
+    // // alert(
+    //   `Reserva confirmada!\nCheck-in: ${checkin.format("DD/MM/YYYY")}\nCheck-out: ${checkout.format(
+    //     "DD/MM/YYYY"
+    //   )}\nDiárias: ${diarias}\nTotal: R$ ${precoTotal.toFixed(2)}`
+    // );
   };
 
   const handleCheckoutChange = (novaData) => {
     setCheckout(novaData);
-    const diffTime = novaData.diff(checkin, "day"); // Diferença em dias
+    const diffTime = novaData.diff(checkin, "day");
     if (diffTime > 0) {
-      setPrecoTotal(diffTime * precoDiaria); // Calcula o preço total
-      setDiarias(diffTime); // Atualiza o número de diárias
+      setPrecoTotal(diffTime * precoDiaria);
+      setDiarias(diffTime);
     } else {
-      setPrecoTotal(0); // Se o checkout for anterior ao checkin
-      setDiarias(0);
+      setPrecoTotal(precoDiaria);
+      setDiarias(1);
     }
   };
 
@@ -68,6 +94,17 @@ function InfoAluguel({ precoDiaria, idEmbarcacao }) {
           <strong>R$</strong> {precoDiaria ? precoDiaria.toFixed(2) : "0.00"}
         </p>
       </div>
+      <Snackbar
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        open={open}
+        autoHideDuration={5000}
+        onClose={handleClose}
+        message="Para alugar uma embarcação, faça login!"
+      >
+        <Alert onClose={handleClose} severity={severidade}variant="filled" sx={{ width: "100%" }}>
+          {mensagem}
+        </Alert>
+      </Snackbar>
 
       <div className="inputs-container">
         <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -76,10 +113,10 @@ function InfoAluguel({ precoDiaria, idEmbarcacao }) {
               label="Check In"
               defaultValue={hoje}
               disablePast
-              views={["year", "month", "day"]} // Exibe ano, mês e dia
+              views={["year", "month", "day"]}
               value={checkin}
               onChange={(novaData) => setCheckin(novaData)}
-              format="DD/MM/YYYY" // Formato da data (dia/mês/ano)
+              format="DD/MM/YYYY"
             />
           </DemoItem>
           <DemoItem label="">
@@ -87,7 +124,7 @@ function InfoAluguel({ precoDiaria, idEmbarcacao }) {
               label="Check Out"
               defaultValue={hoje}
               disablePast
-              views={["year", "month", "day"]} // Exibe ano, mês e dia
+              views={["year", "month", "day"]}
               value={checkout}
               onChange={handleCheckoutChange}
               format="DD/MM/YYYY" // Formato da data (dia/mês/ano)
@@ -97,13 +134,16 @@ function InfoAluguel({ precoDiaria, idEmbarcacao }) {
       </div>
 
       <div className="resultado">
-        <p><strong>Diárias:</strong> {diarias}</p>
-        <p><strong>Total:</strong> R$ {precoTotal.toFixed(2)}</p>
+        <p>
+          <strong>Diárias:</strong> {diarias > 0 ? diarias : "0"}
+        </p>
+
+        <p>
+          <strong>Total:</strong> R$ {precoTotal > 0 ? precoTotal.toFixed(2) : "0.00"}
+        </p>
       </div>
 
-      <button type="submit" disabled={!token} onClick={() => alert("Logar")}>
-        Confirmar Aluguel
-      </button>
+      <button type="submit">Confirmar Aluguel</button>
     </form>
   );
 }

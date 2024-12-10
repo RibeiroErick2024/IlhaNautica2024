@@ -3,14 +3,19 @@ import axios from "axios";
 import "./index.css";
 import { Navigate, useNavigate } from "react-router-dom";
 import { axiosapi } from "../../config/axios";
+import { useContextGlobal } from "../../contexts/GlobalContext";
 
 const CardBarco = React.lazy(() => import("../Card_barco"));
 
 function ListagemBarcos() {
   const [barcos, setBarcos] = useState([]); // Lista de barcos
   const navigate = useNavigate("/embarcacao");
-  const url = "http://localhost:8080/";
-  const urlRender = "https://ilhanauticav2backend.onrender.com";
+  const {categoriaSelecionada, setCategoriaSelecionada} = useContextGlobal(); 
+
+
+  const barcosFiltrados = categoriaSelecionada
+  ? barcos.filter(barco => barco.categoria === categoriaSelecionada)
+  : barcos;
   useEffect(() => {
     const fetchBarcos = async () => {
       try {
@@ -83,19 +88,15 @@ function ListagemBarcos() {
     <div className="listagem-container">
       <Suspense fallback={<div>Carregando barcos...</div>}>
         {/* Renderiza os barcos, se houver */}
-        {barcos.length > 0 ? (
-          barcos.map((barco) => (
-            // Usando 'barco.id' como a chave única
-            <div onClick={() => navigate("/embarcacao", { state: { id: barco.id } })}>
-              <CardBarco key={barco.id} user={barco} />
+        {barcosFiltrados.length > 0 ? (
+          barcosFiltrados.map((barco) => (
+            <div onClick={() => navigate("/embarcacao", { state: { id: barco.id } })} key={barco.id}>
+              <CardBarco user={barco} />
             </div>
           ))
         ) : (
           <>
             <div className="carregando">Carregando dados...</div>
-            {/* <div className="circle">
-              <div className="wave"></div>
-            </div> */}
             <div className="ocean">
               <div className="wave2"></div>
               <div className="wave2"></div>

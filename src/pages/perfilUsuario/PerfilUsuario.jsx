@@ -7,6 +7,7 @@ import HeaderPrincipal from "../../components/Header";
 import { useNavigate } from "react-router-dom";
 import api, { axiosapi } from "../../config/axios";
 import { useAuth } from "../../contexts/AuthContext";
+import { Alert, Snackbar } from "@mui/material";
 
 function PerfilUsuario() {
   const navigate = useNavigate();
@@ -14,6 +15,7 @@ function PerfilUsuario() {
   const { idUsuario, logout } = useAuth();
   const [imagemBase64, setImagemBase64] = useState(null);
   const [embarcacoes, setEmbarcacoes] = useState([]);
+  const [open, setOpen] = useState(false);
   const fetchBarcos = async () => {
     try {
       const response = await axiosapi.get(`/embarcacao/usuario/${idUsuario}`, { responseType: "json" });
@@ -35,15 +37,29 @@ function PerfilUsuario() {
   async function deleteUsuario() {
     try {
       const response = axiosapi.delete(`usuario/${idUsuario}`);
-      alert("Tchau");
+      setOpen(true)
       logout();
     } catch (error) {
       console.log("Error", error);
     }
   }
+  const handleClose = () => {
+    setOpen(false);
+  };
   return (
     <>
       <HeaderPrincipal />
+      <Snackbar
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        open={open}
+        autoHideDuration={5000}
+        onClose={handleClose}
+        message=""
+      >
+        <Alert onClose={handleClose} severity="info" variant="filled" sx={{ width: "100%" }}>
+         Conta deletada. Adeus.
+        </Alert>
+      </Snackbar>
       {/* <div className="imgFundo"> */}
       <div className="containerPerfil">
         {/* Contêiner de Ícones */}
@@ -71,19 +87,7 @@ function PerfilUsuario() {
         <div className="perfilMarinheiro">
           <h4 className="titulo-embarcacao">Perfil Usuario</h4>
           <FormUsuario />
-          {embarcacoes.map((embarcacao) => (
-            <div key={embarcacao.idEmbarcacao} style={{ marginBottom: "20px" }}>
-              <p>
-                <strong>Nome:</strong> {embarcacao.nome}
-              </p>
-              <p>
-                <strong>Categoria:</strong> {embarcacao.categoria}
-              </p>
-              <button onClick={() => navigate("/cadastroLocador", { state: { id: embarcacao.idEmbarcacao } })}>
-                Editar
-              </button>
-            </div>
-          ))}
+          
         </div>
       </div>
       {/* </div> */}

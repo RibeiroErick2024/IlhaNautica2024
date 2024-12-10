@@ -6,6 +6,7 @@ import api, { axiosapi } from "../../config/axios";
 import { useAuth } from "../../contexts/AuthContext";
 import axios from "axios";
 import "./index.css";
+import { Alert, Snackbar } from "@mui/material";
 
 const FormCadastro = () => {
   const {
@@ -18,7 +19,13 @@ const FormCadastro = () => {
   } = useForm();
   const [mostrarSenha, setMostrarSenha] = useState(false);
   const navigate = useNavigate();
-
+  const[mensagem, setMensagem] =useState("")
+  const [severidade, setSeveridade] = useState("info")
+  const [open, setOpen] = useState(false);
+  
+  const handleClose = () => {
+    setOpen(false);
+  };
   const onSubmit = async (data) => {
     console.log("Formulário enviado com sucesso!", data);
     await handleCadastro(data);
@@ -31,8 +38,11 @@ const FormCadastro = () => {
       senha: data.senha
     }
     try {
-      console.log("Oi")
+
       const response = await axiosapi.post(`auth/cadastro`, usuario);
+      setSeveridade("success");
+      setMensagem("Cadastrado com sucesso.");
+      setOpen(true);
       console.log("Console", response);
       if(response){
         console.log("Ooooi")
@@ -40,6 +50,9 @@ const FormCadastro = () => {
       }
     } catch (error) {
       console.log("Console", error.response.data);
+      setSeveridade("error");
+      setMensagem("Ocorreu um erro ao cadastrar. Tente novamente mais tarde");
+      setOpen(true);
     }
   }
 
@@ -50,6 +63,17 @@ const FormCadastro = () => {
 
   return (
     <div className="imgFundo">
+       <Snackbar
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        open={open}
+        autoHideDuration={5000}
+        onClose={handleClose}
+        message=""
+      >
+        <Alert onClose={handleClose} severity={severidade}variant="filled" sx={{ width: "100%" }}>
+          {mensagem}
+        </Alert>
+      </Snackbar>
     <div className="container">
       <h1>CADASTRAR</h1>
       <form onSubmit={handleSubmit(onSubmit)}>

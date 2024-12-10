@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import api from "../../config/axios";
 import { useAuth } from "../../contexts/AuthContext";
 import axios from "axios";
+import { Alert, Snackbar } from "@mui/material";
 
 const FormLogin = ({ onToggleForm }) => {
   const {
@@ -19,7 +20,12 @@ const FormLogin = ({ onToggleForm }) => {
   const [tentativaLogin, setTentativaLogin] = useState(false);
   const navigate = useNavigate();
   const { login } = useAuth();
-
+  const [mensagem, setMensagem] = useState("");
+  const [severidade, setSeveridade] = useState("info");
+  const [open, setOpen] = useState(false);
+  const handleClose = () => {
+    setOpen(false);
+  };
   const onSubmit = async (data) => {
     setTentativaLogin(true);
     await handleLogin(data);
@@ -30,25 +36,30 @@ const FormLogin = ({ onToggleForm }) => {
       senha: data.senha,
     };
     try {
-      console.log(loginData)
+      console.log(loginData);
       const response = await api.post("auth/login", loginData);
-      
       console.log("Login realizado com sucesso:", response);
+      setSeveridade("success");
+      setMensagem("Logado.");
+      setOpen(true);
       login(response.data.token, response.data.idUsuario);
       navigate("/home");
     } catch (error) {
       console.log("Erro de login:", error.response.data);
+      setSeveridade("error");
+      setMensagem("Ocorreu um erro ao logar. Tente novamente mais tarde");
+      setOpen(true);
 
-        if (error.status === 401) {
-          console.log("OI")
-          if (error.response.data.includes("Email")) {
-            setError("email", { type: "manual", message: "Email inválido." });
-          } else if (error.response.data.includes("Senha")) {
-            setError("senha", { type: "manual", message: "Senha incorreta." });
-          }
-        } else {
-          console.error("Erro do servidor:", error);
-        } 
+      if (error.status === 401) {
+        console.log("OI");
+        if (error.response.data.includes("Email")) {
+          setError("email", { type: "manual", message: "Email inválido." });
+        } else if (error.response.data.includes("Senha")) {
+          setError("senha", { type: "manual", message: "Senha incorreta." });
+        }
+      } else {
+        console.error("Erro do servidor:", error);
+      }
     }
   }
 
@@ -59,7 +70,7 @@ const FormLogin = ({ onToggleForm }) => {
   const handleRegistrarClick = (event) => {
     event.preventDefault();
     // onToggleForm();
-    navigate("/cadastro")
+    navigate("/cadastro");
   };
 
   const handleRecuperacaoClick = (event) => {
@@ -74,10 +85,19 @@ const FormLogin = ({ onToggleForm }) => {
 
   return (
     <div className="container">
+      <Snackbar
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        open={open}
+        autoHideDuration={5000}
+        onClose={handleClose}
+        message=""
+      >
+        <Alert onClose={handleClose} severity={severidade} variant="filled" sx={{ width: "100%" }}>
+          {mensagem}
+        </Alert>
+      </Snackbar>
       <h1>Entrar</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
-        
-
         <div className="input-field">
           <input
             type="text"
@@ -87,9 +107,7 @@ const FormLogin = ({ onToggleForm }) => {
           />
           <Mail size={22} className="icon" />
           {tentativaLogin && errors.email && (
-            <p style={{ color: "red", marginLeft: "10px", marginTop: "10px" }}>
-              {errors.email.message}
-            </p>
+            <p style={{ color: "red", marginLeft: "10px", marginTop: "10px" }}>{errors.email.message}</p>
           )}
         </div>
 
@@ -104,9 +122,7 @@ const FormLogin = ({ onToggleForm }) => {
             {mostrarSenha ? <EyeOff size={22} /> : <Eye size={22} />}
           </div>
           {tentativaLogin && errors.senha && (
-            <p style={{ color: "red", marginLeft: "10px", marginTop: "10px" }}>
-              {errors.senha.message}
-            </p>
+            <p style={{ color: "red", marginLeft: "10px", marginTop: "10px" }}>{errors.senha.message}</p>
           )}
         </div>
 

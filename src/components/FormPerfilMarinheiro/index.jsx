@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 
-import { MenuItem } from "@mui/material";
+import { Alert, MenuItem, Snackbar } from "@mui/material";
 import api from "../../config/axios.jsx";
 import { useAuth } from "../../contexts/AuthContext.jsx";
 import { useContextGlobal } from "../../contexts/GlobalContext.jsx";
@@ -17,7 +17,10 @@ function FormPerfilMarinheiro() {
   const { editando, setEditando, iconeCategoria } = useContextGlobal();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [cadastrado, setCadastrado] = useState(false);
-  const{idUsuario} = useAuth()
+  const { idUsuario } = useAuth();
+  const [mensagem, setMensagem] = useState("");
+  const [severidade, setSeveridade] = useState("info");
+  const [open, setOpen] = useState(false);
 
   const opcoes = [
     { value: "empresa", label: "Não se aplica (Empresa)" },
@@ -39,12 +42,14 @@ function FormPerfilMarinheiro() {
     control,
     formState: { errors },
   } = useForm();
-
+  const handleClose = () => {
+    setOpen(false);
+  };
   const onSubmit = async (data, event) => {
     event.preventDefault();
-   
+
     if (isSubmitting) {
-      console.log("Enviandos dados... Espere pela resposta")
+      console.log("Enviandos dados... Espere pela resposta");
       return; // Impede o envio se já estiver em processo de envio
     }
 
@@ -68,10 +73,15 @@ function FormPerfilMarinheiro() {
     try {
       const response = await api.post(`marinheiro/`, marinheiro);
       console.log("Marinheiro cadastrao com sucesso", response);
-      setCadastrado(true)
-      alert("Marinheiro cadastrado. Termine o restante do cadastros")
+      setCadastrado(true);
+      setSeveridade("success");
+      setMensagem("Marinheiro cadastrado. Termine o restante do cadastros");
+      setOpen(true);
     } catch (error) {
-      setCadastrado(false)
+      setCadastrado(false);
+      setSeveridade("warning");
+      setMensagem("Ocorreu algum erro. Tente novamente mais tarde");
+      setOpen(true);
       console.log("Erro ao enviar dados ao back", error.response);
     } finally {
       setIsSubmitting(false); // Reabilita o botão após a operação
@@ -105,11 +115,19 @@ function FormPerfilMarinheiro() {
   return (
     <div className="container-marinheira">
       <div className="container-cadastro-marinheiro">
-      <h1 className="titulo-embarcacao">Marinheiro</h1>
-        <form
-          onSubmit={handleSubmit(onSubmit, onError)}
-          className="form-section-marinheiro">
-
+        <Snackbar
+          anchorOrigin={{ vertical: "top", horizontal: "center" }}
+          open={open}
+          autoHideDuration={5000}
+          onClose={handleClose}
+          message=""
+        >
+          <Alert onClose={handleClose} severity={severidade} variant="filled" sx={{ width: "100%" }}>
+            {mensagem}
+          </Alert>
+        </Snackbar>
+        <h1 className="titulo-embarcacao">Marinheiro</h1>
+        <form onSubmit={handleSubmit(onSubmit, onError)} className="form-section-marinheiro">
           <ContainerTextFieldInput>
             <TextFieldInput
               fullWidth
@@ -233,8 +251,8 @@ function FormPerfilMarinheiro() {
                 required: "Campo obrigatório",
                 minLength: 3,
               })}
-              error={!!errors. registroMaritimo}
-              helperText={errors. registroMaritimo?.message}
+              error={!!errors.registroMaritimo}
+              helperText={errors.registroMaritimo?.message}
             />
             <TextFieldInput
               value={iconeCategoria}

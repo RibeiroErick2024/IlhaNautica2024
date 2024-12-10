@@ -60,8 +60,6 @@ function Embarcacao() {
           imagensBase64, // Imagens em Base64
           usuarioId: resultCard.data.usuario.id, // ID do usuário
           usuarioNome: resultCard.data.usuario.nomeCompleto, // Nome completo do usuário
-          usuarioId: resultCard.data.usuario.id , // ID do usuário
-          usuarioNome: resultCard.data.usuario.nomeCompleto, // Nome completo do usuário
           regras: resultCard.data.regras,
           descricao: resultCard.data.descricao,
           ObjetoDados: 'sim'

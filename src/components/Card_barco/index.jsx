@@ -1,5 +1,6 @@
 import React, { forwardRef } from 'react';
 import './index.css';
+import { useContextGlobal } from '../../contexts/GlobalContext';
 
 const CardBarco = forwardRef(({ user }, ref) => {
   // Desestruturando as propriedades passadas pelo componente pai (ListagemBarcos)
@@ -16,7 +17,8 @@ const CardBarco = forwardRef(({ user }, ref) => {
     quantidadeCabines,
     quantidadeBanheiro,
   } = user;
-
+ const {categoriaSelecionada, setCategoriaSelecionada} = useContextGlobal()
+ 
   return (
     <div className='card-barco' ref={ref}>
       {/* Imagem do barco */}

@@ -11,7 +11,7 @@ function HeaderPrincipal({ toggleFiltro }) {
     const [isFiltroAtivo, setIsFiltroAtivo] = useState(false);  // Estado para controlar o filtro ativado/desativado
     const menuRef = useRef(null);
     const navigate = useNavigate("/embarcacao");
-    const { logout, logado } = useAuth();
+    const { logout, token } = useAuth();
 
     const handleMenuToggle = () => {
         setIsMenuOpen((prev) => !prev);
@@ -31,7 +31,7 @@ function HeaderPrincipal({ toggleFiltro }) {
     }, []);
 
     const verificar = () => {
-        if (logado) {
+        if (token) {
             navigate("/cadastroLocador");
         } else {
             navigate("/login");
@@ -75,10 +75,10 @@ function HeaderPrincipal({ toggleFiltro }) {
                 />
                 {isMenuOpen && (
                     <div className="dropdown-menu">
-                        {logado ? <a href="/perfilUsuario">Perfil</a> : <a href="/login">Login | Cadastro</a>}
+                        {token ? <a href="/perfilUsuario">Perfil</a> : <a href="/login">Login | Cadastro</a>}
                         <a onClick={verificar}>Anuncie seu barco</a>
                         <a href="/contact">Sobre nós</a>
-                        {logado && <a href="/home" onClick={logout}>Logout</a>}
+                        {token && <a href="/home" onClick={logout}>Logout</a>}
                     </div>
                 )}
             </div>

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const url = 'https://ilhanauticav2backend.onrender.com"/'
+const url = 'https://ilhanauticav2backend.onrender.com/'
 export const instanceMultipart = axios.create({
   baseURL: `${url}`,
    headers: {
