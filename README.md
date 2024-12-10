@@ -34,9 +34,10 @@ login
 ![alt text](image-3.png)
 marinheiro
 ![alt text](image-4.png)
-modal
-![alt text](image-5.png)
+
+![landing page]https://github.com/RibeiroErick2024/IlhaNauticaV2FrontEnd/blob/main/prototipo-telas/aluguel.png?raw=true
 perfil
+
 ![alt text](image-6.png)
 perfilUsuario
 ![alt text](image-7.png)
