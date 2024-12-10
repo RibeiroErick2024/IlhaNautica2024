@@ -1,8 +1,14 @@
 # ⛵ ILHA NAUTICA - Frontend 
+É um projeto acadêmico desenvolvido com foco em facilitar o aluguel de embarcações e proporcionar experiências, intuitiva para todos os usuários. Simplificando a experiência tanto para locadores quanto para donos de embarcações.
 
-O **Ilha NAUTICA**  é uma plataforma inovadora que automatiza o processo de aluguel de embarcações , proporcionando uma experiência prática e eficiente para locadores e locador. Este repositório contém o código-fonte do frontend, desenvolvido com **React.js** e integrado ao backend através de **Axios**.
+Este repositório contém o código-fonte do frontend, desenvolvido com **React.js** e integrado ao backend através de **Axios**.
 
-
+---
+## 👨‍💻 DESENVOLVEDORES  
+- Alexsandro Silva
+- Andrey Lopes
+- Erick Ribeiro
+- Gisele Mara
 ---
 ## ✨ Funcionalidades Principais  
 
@@ -154,14 +160,6 @@ Contribuições são sempre bem-vindas! Para colaborar:
    ```  
 4. Abra um Pull Request descrevendo suas alterações.  
 
----
-
-## 👨‍💻 Autor  
-Alexsandro Silva
-Andrey Lopes
-Erick Ribeiro
-Gisele Mara
-O frontend do **ILHA NAUTICA** é um projeto acadêmico feito para oferecer uma experiência eficiente na organização de alugueis de embarcação.  
 
 ---
 
