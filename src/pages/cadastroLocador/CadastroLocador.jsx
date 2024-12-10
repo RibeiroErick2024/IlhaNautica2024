@@ -44,7 +44,7 @@ function CadastroLocador() {
           <button type="button" className="btn-icone" onClick={() => setIconeCategoria("Jet Ski")}>
             <img
               className="icon-svg"
-              src="./images/Drag Boat.png"
+              src="./src/assets/jet.png"
               alt="Icone Jet-ski"
 
             />
@@ -52,7 +52,7 @@ function CadastroLocador() {
           <button className="btn-icone" onClick={() => setIconeCategoria("Iate")}>
             <img
               className="icon-svg"
-              src="./images/Yacht.png"
+              src="./src/assets/yatch.png"
               alt="Icone Iate"
 
             />
@@ -60,7 +60,7 @@ function CadastroLocador() {
           <button className="btn-icone" onClick={() => setIconeCategoria("Lancha")}>
             <img
               className="icon-svg"
-              src="./images/Boat Launch.png"
+              src="./src/assets/speedboat.png"
               alt="Icone Lancha"
 
 
@@ -69,7 +69,7 @@ function CadastroLocador() {
           <button className="btn-icone" onClick={() => setIconeCategoria("Veleiro")}>
             <img
               className="icon-svg"
-              src="./images/Sailboat.png"
+              src="./src/assets/sailboat.png"
               alt="Icone Veleiro"
               
 

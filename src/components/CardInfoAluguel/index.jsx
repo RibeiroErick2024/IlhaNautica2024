@@ -12,15 +12,17 @@ import { useNavigate } from "react-router-dom";
 import { Alert, Snackbar } from "@mui/material";
 
 function InfoAluguel({ precoDiaria, idEmbarcacao }) {
-  const hoje = dayjs();
+  // let hoje = dayjs();
+  const [hoje, setHoje] = useState(dayjs())
   const { idUsuario, logado, token } = useAuth();
   const [checkin, setCheckin] = useState(hoje);
   const [checkout, setCheckout] = useState(hoje);
   const [precoTotal, setPrecoTotal] = useState(precoDiaria);
-  const [diarias, setDiarias] = useState(1);
+  const [diarias, setDiarias] = useState(0);
   const[mensagem, setMensagem] =useState("Para alugar uma embarcação, faça login!")
   const [severidade, setSeveridade] = useState("info")
   const [open, setOpen] = useState(false);
+  const [alugado, setAlugado] = useState(false)
   const navigate = useNavigate();
   const {
     register,
@@ -34,6 +36,7 @@ function InfoAluguel({ precoDiaria, idEmbarcacao }) {
       setSeveridade("warning")
       setMensagem("Para alugar uma embarcação, faça login!")
       setOpen(true);
+      
       return false;
     }
     return true;
@@ -43,7 +46,18 @@ function InfoAluguel({ precoDiaria, idEmbarcacao }) {
     setOpen(false);
   };
   const onSubmit = async (data) => {
-    if (!checkLogin()) return;
+    if (!checkLogin()) {
+      return
+    }else{
+      setSeveridade("success")
+      setMensagem(`Reserva confirmada!\nCheck-in: ${checkin.format("DD/MM/YYYY")}\nCheck-out: ${checkout.format(
+        "DD/MM/YYYY"
+      )}\nDiárias: ${diarias}\nTotal: R$ ${precoTotal.toFixed(2)}`)
+      setOpen(true);
+      setHoje(checkout)
+      setAlugado(true)
+      return
+    }
 
     const agendamento = {
       datainicio: checkin.format("YYYY-MM-DD"),
@@ -51,20 +65,20 @@ function InfoAluguel({ precoDiaria, idEmbarcacao }) {
       status: "Confirmado", 
         idUsuario: idUsuario,
         idEmbarcacao: idEmbarcacao,
-        idMarinheiro: "fc83bcb0-ea6c-4f7d-bf01-d8b23d4ff2c5"
+        // idMarinheiro: "fc83bcb0-ea6c-4f7d-bf01-d8b23d4ff2c5"
     };
 
     try {
       const response = await axiosapi.post("agendamento/", agendamento);
-      setSeveridade("success")
-      setMensagem(`Reserva confirmada!\nCheck-in: ${checkin.format("DD/MM/YYYY")}\nCheck-out: ${checkout.format(
-        "DD/MM/YYYY"
-      )}\nDiárias: ${diarias}\nTotal: R$ ${precoTotal.toFixed(2)}`)
+      // setSeveridade("success")
+      // setMensagem(`Reserva confirmada!\nCheck-in: ${checkin.format("DD/MM/YYYY")}\nCheck-out: ${checkout.format(
+      //   "DD/MM/YYYY"
+      // )}\nDiárias: ${diarias}\nTotal: R$ ${precoTotal.toFixed(2)}`)
       setOpen(true);
     } catch (error) {
-      setSeveridade("error");
-      setMensagem("Erro ao agendar. Tente novamente mais tarde.");
-      setOpen(true);
+      // setSeveridade("error");
+      // setMensagem("Erro ao agendar. Tente novamente mais tarde.");
+      // setOpen(true);
       console.log("Erro ao enviar dados ao back", error.response);
     }
 
@@ -143,7 +157,7 @@ function InfoAluguel({ precoDiaria, idEmbarcacao }) {
         </p>
       </div>
 
-      <button type="submit">Confirmar Aluguel</button>
+      <button type="submit" >Confirmar Aluguel</button>
     </form>
   );
 }

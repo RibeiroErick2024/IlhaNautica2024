@@ -13,3 +13,8 @@
   background-size: cover;
   background-position: center;
 }
+
+.MuiAlert-message{
+color:white;
+font-size: 15px;
+}

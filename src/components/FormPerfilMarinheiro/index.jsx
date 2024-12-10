@@ -91,26 +91,26 @@ function FormPerfilMarinheiro() {
   const onError = (errors) => {
     console.log("Error no form", errors);
   };
-  useEffect(() => {
-    if (editando) {
-      axios
-        .get("http://localhost:8080/marinheiro/fc83bcb0-ea6c-4f7d-bf01-d8b23d4ff2c5")
-        .then((response) => {
-          const data = response.data;
-          console.log(data);
-          setValue("nome", data.nome);
-          setValue("categoria", iconeCategoria);
-          setValue("registroMaritimo", data.registroMaritimo);
-          setValue("disponibilidade", data.disponibilidade);
-          setValue("dataNascimento", data.dataNascimento);
-          setValue("cpf", data.cpf);
-          setValue("email", data.email);
-          setValue("telefone", data.telefone);
-          setValue("genero", data.genero);
-        })
-        .catch((error) => console.log(error));
-    }
-  }, [setValue]);
+  // useEffect(() => {
+  //   // if (editando) {
+  //   //   axios
+  //   //     .get("http://localhost:8080/marinheiro/fc83bcb0-ea6c-4f7d-bf01-d8b23d4ff2c5")
+  //   //     .then((response) => {
+  //   //       const data = response.data;
+  //   //       console.log(data);
+  //   //       setValue("nome", data.nome);
+  //   //       setValue("categoria", iconeCategoria);
+  //   //       setValue("registroMaritimo", data.registroMaritimo);
+  //   //       setValue("disponibilidade", data.disponibilidade);
+  //   //       setValue("dataNascimento", data.dataNascimento);
+  //   //       setValue("cpf", data.cpf);
+  //   //       setValue("email", data.email);
+  //   //       setValue("telefone", data.telefone);
+  //   //       setValue("genero", data.genero);
+  //   //     })
+  //   //     .catch((error) => console.log(error));
+  //   // }
+  // }, [setValue]);
 
   return (
     <div className="container-marinheira">

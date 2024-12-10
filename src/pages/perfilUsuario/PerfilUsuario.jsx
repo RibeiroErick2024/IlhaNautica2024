@@ -84,8 +84,8 @@ function PerfilUsuario() {
         {/* Contêiner de Inputs */}
 
         {/* <button type="submit" className="btn-salvar-marinheiro">Salvar</button> */}
+          {/* <h4 className="titulo-embarcacao">Perfil Usuario</h4> */}
         <div className="perfilMarinheiro">
-          <h4 className="titulo-embarcacao">Perfil Usuario</h4>
           <FormUsuario />
           
         </div>
