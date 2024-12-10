@@ -26,21 +26,28 @@ O **Ilha NAUTICA**  é uma plataforma inovadora que automatiza o processo de alu
 
 cadastro
 ![alt text](image.png)
+##
 descrição
 ![alt text](image-1.png)
+##
 embarcação
 ![alt text](image-2.png)
+##
 login
 ![alt text](image-3.png)
+##
 marinheiro
 ![alt text](image-4.png)
+##
 Aluguel
 ![alt text](image-9.png)
-perfil
 
+perfil
 ![alt text](image-6.png)
+##
 perfilUsuario
 ![alt text](image-7.png)
+##
 recuperaçãosenha
 ![alt text](image-8.png)
 
