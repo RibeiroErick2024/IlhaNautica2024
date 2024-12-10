@@ -19,7 +19,8 @@ O **Ilha NAUTICA**  é uma plataforma inovadora que automatiza o processo de alu
 - **Axios**: Para realizar requisições HTTP ao backend.  
 - **React Router**: Gerenciamento de rotas para navegação entre páginas.  
 - **PostgreSQL**: Banco de dados para persistência e gerenciamento de dados, integrado ao backend.  
-- **CSS Modules**: Para estilização modular e reutilizável.  
+- **CSS Modules**: Para estilização modular e reutilizável.
+- **Material UI**: Framework que fornece uma componentes para interface de usuário (UI) pronta para uso e altamente customizável.
 
 ---
 ## Protótipos
