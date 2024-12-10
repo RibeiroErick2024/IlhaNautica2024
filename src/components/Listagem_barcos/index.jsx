@@ -49,7 +49,7 @@ function ListagemBarcos() {
             categoria: barco.categoria || "Não foi possivel carregar...",
             quantidadeCabines: barco.quantidadeCabines || 5,
             quantidadeBanheiro: barco.quantidadeBanheiro || 2,
-            pet: barco.pet ? "Tem" : "Não tem",
+            pet: barco.pet ? "Sim" : "Não",
             preco: barco.preco || "Não disponibilizado",
             url: imagemUrl,
             id: barco.idEmbarcacao 

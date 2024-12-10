@@ -1,40 +1,110 @@
 .card-barco {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    height: 350px;
-    width: 270px;
-    padding: auto;
-    background-color: rgb(255, 255, 255);
-    color: white;
-    border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  height: auto;
+  width: 290px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  margin: 10%;
 }
 
 .card-barco:hover {
-    transform: scale(1.05);
+  transform: scale(1.05);
 }
 
-.imgBarco-container{
-    display: flex;
-    width: 100%;
-    height: 50%;
-    border-radius: 8px 8px 0 0 ;
-    transition: 500ms;
+.imgBarco-container {
+  width: 100%;
+  height: 55%;
 }
 
 .imgBarco-container img {
-    width: 100%; /* Para que a imagem se ajuste ao contêiner */
-    height: auto; /* Mantém a proporção da imagem */
-    object-fit: cover; /* Cobre todo o espaço disponível sem distorcer */
-    border-radius: 8px 8px 0 0 ;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-.barco-info{
-    display: flex;
-    flex-direction: column;
-    height: 50%;
-    font-size: 12px;
+.barco-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+
+}
+
+.barco-info h3 {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+}
+
+.barco-info .nome-barco {
+  font-size: 12px;
+  color: #555;
+}
+
+.barco-info .datas {
+  font-size: 12px;
+  color: #b3aeae;
+}
+
+.barco-info .preco {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.div-preco {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 15px;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+  font-size: 14px;
+  background-color: #d5e2ee;
+}
+
+
+.div-preco p {
+  font-weight: bold;
+  color: #000000;
+  text-shadow: none;
+  font-size: 16px;
+}
+
+.extra-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  margin-top: 10px;
+  justify-content: center;
+}
+
+.extra-info p {
+  margin: 0;
+  color: #555;
+  font-weight: 500;
+}
+.extra-info strong {
+  margin: 0;
+  color: #242424;
+  font-weight: bold;
+}
+
+.star-rating {
+  color: #FFD700; /* Ouro para as estrelas */
+  font-size: 14px;
+}
+
+p, h3{
+  text-shadow: none;
+}
+
+.infos-div{
+  padding: 7px;
 }

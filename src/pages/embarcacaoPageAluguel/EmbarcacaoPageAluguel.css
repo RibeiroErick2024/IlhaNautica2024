@@ -22,21 +22,17 @@
     min-height: 80vh; 
     gap: 5px; 
     flex-direction: row;
-    margin-bottom: 100px; 
-    background-color: aqua;   
+    margin-bottom: 100px;  
 }
 
 
 .info-aluguel-wrapper {
     display: flex;
     justify-content: center; /* Centraliza horizontalmente */
-    align-items: center; /* Centraliza verticalmente */
-    width: 100%; /* Define a largura total da área */
+    align-items: flex-start; /* Centraliza verticalmente */
+    width: 50%; /* Define a largura total da área */
     height: auto; /* Ajusta a altura de acordo com o conteúdo */
     margin-top: 20px; /* Espaçamento acima */
-    background-color: #f9f9f9; /* Cor de fundo opcional */
     padding: 20px; /* Adiciona espaçamento interno */
-    border-radius: 8px; /* Bordas arredondadas (opcional) */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para destaque */
   }
   

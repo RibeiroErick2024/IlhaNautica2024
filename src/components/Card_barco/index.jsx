@@ -1,44 +1,51 @@
-
 import React, { forwardRef } from 'react';
 import './index.css';
 
-const Card_barco = forwardRef(({ user }, ref) => {
+const CardBarco = forwardRef(({ user }, ref) => {
   // Desestruturando as propriedades passadas pelo componente pai (ListagemBarcos)
   const {
     url,
     nome,
-    // cidade,
-    potencia,
-    tamanho,
+    cidade,
+    avaliacao,
+    preco,
+    skipperOffered,
     capacidade,
+    tamanho,
     categoria,
     quantidadeCabines,
     quantidadeBanheiro,
-    preco,
-    pet
   } = user;
 
   return (
-    <div className='card-barco'  ref={ref}>
+    <div className='card-barco' ref={ref}>
+      {/* Imagem do barco */}
       <div className="imgBarco-container">
-        {/* Exibindo a imagem carregada */}
         {url && <img src={url} alt="Imagem do barco" />}
       </div>
 
+      {/* Informações do barco */}
       <div className="barco-info">
-        <h3>{nome}</h3>
-        {/* <p>Cidade: {cidade}</p> */}
-        <p>Potência: {potencia} HP</p>
-        <p>Tamanho: {tamanho} metros</p>
-        <p>Capacidade: {capacidade} pessoas</p>
-        <p>Categoria: {categoria}</p>
-        <p>Cabines: {quantidadeCabines}</p>
-        <p>Banheiros: {quantidadeBanheiro}</p>
-        <p>Preço: {preco} R$</p>
-        <p>Pet: {pet}</p>
+        <div className='infos-div'>
+          <h3>{nome}</h3>
+          <p className="nome-barco">{`${cidade}`}</p>
+          
+          <div className="extra-info">
+            
+          
+            <p>{capacidade} <strong>pessoas</strong> - {tamanho} <strong>metros</strong> - <strong>Cabines:</strong> {quantidadeCabines} </p>
+          </div>
+        </div>
+
+        {/* Preço */}
+        <div className="div-preco">
+          <p>{`R$ ${preco} / dia`}</p>
+        </div>
+
+        
       </div>
     </div>
   );
 });
 
-export default Card_barco;
+export default CardBarco;

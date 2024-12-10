@@ -1,22 +1,25 @@
 .info-aluguel-container {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 16px;
     border: 1px solid #ddd;
     padding: 20px;
     border-radius: 8px;
     background-color: #ffffff;
-    height: 350px;
+    height: auto;
   }
   
   .inputs-container {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 30px;
   }
   
   .resultado {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
     margin-top: 10px;
     font-size: 16px;
   }
@@ -35,3 +38,10 @@
     cursor: not-allowed;
   }
   
+  .div-diaria{
+    display: flex;
+    width: 100%;
+  }
+  .div-diaria p {
+    font-size: 24px;
+  }

@@ -1,9 +1,12 @@
 .listagem-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 2fr)); /* Colunas adaptáveis e mais largas */
-    gap: 16px; /* Ajuste o gap para ocupar menos espaço */
-    padding: 30px; /* Reduza o padding para garantir que não ultrapasse a largura */
-    
-    max-width: 100%; /* Limita o contêiner à largura da tela */
-    overflow-x: hidden; /* Esconde qualquer transbordamento horizontal */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); /* Colunas mais equilibradas */
+  gap: 15px; /* Ajustei o gap para 15px para garantir que não fiquem muito distantes */
+  padding-right: 30px;
+  width: 100vw; /* Garantindo que a largura do contêiner ocupe 100% */
+  overflow-x: hidden; /* Esconde transbordamento horizontal */
+}
+
+* {
+  box-sizing: border-box; /* Garante que o padding e as bordas sejam contados dentro das larguras dos elementos */
 }

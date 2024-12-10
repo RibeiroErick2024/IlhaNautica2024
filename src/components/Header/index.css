@@ -83,6 +83,7 @@ h1 {
     font-weight: normal;
     border-radius: 0;
     outline: none;
+    text-shadow: none;
 }
 
 .dropdown-menu a:hover {
