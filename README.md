@@ -157,8 +157,11 @@ Contribuições são sempre bem-vindas! Para colaborar:
 ---
 
 ## 👨‍💻 Autor  
-
-O frontend do **ILHA NAUTICA** foi projetado para oferecer uma experiência fluida e eficiente na organização de alugueis de embarcação.  
+Alexsandro Silva
+Andrey Lopes
+Erick Ribeiro
+Gisele Mara
+O frontend do **ILHA NAUTICA** é um projeto acadêmico feito para oferecer uma experiência eficiente na organização de alugueis de embarcação.  
 
 ---
 
