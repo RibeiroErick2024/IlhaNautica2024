@@ -133,9 +133,9 @@ src/
 A comunicação entre o frontend e o backend é feita via **Axios**, utilizando o endpoint configurado no `.env`. Exemplos de requisições incluem:  
 
 - **Login**: `POST /auth/login`  
-- **Cadastro**: `POST /usuarios`  
-- **Reservas**: `GET /reservas`  
-- **Cancelamento**: `DELETE /reservas/{id}`  
+- **Cadastro**: `POST auth/usuarios`  
+- **Embarcacao**: `GET /embarcacacao/`  
+- **Excluir conta**: `DELETE /usuario/{id}`  
 
 ---
 
