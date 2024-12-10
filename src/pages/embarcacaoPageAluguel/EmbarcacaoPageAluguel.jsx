@@ -33,6 +33,7 @@ function Embarcacao() {
   useEffect(() => {
     async function pegarInfo(id) {
       
+      
       try {
         // Realiza uma requisição para obter os dados da embarcação
         const resultCard = await axiosapi.get(`/embarcacao/${id}`, { responseType: 'json' });
@@ -57,6 +58,8 @@ function Embarcacao() {
           pet: resultCard.data.pet ? "Tem" : "Não tem",
           preco: resultCard.data.preco || "Não disponibilizado",
           imagensBase64, // Imagens em Base64
+          usuarioId: resultCard.data.usuario.id, // ID do usuário
+          usuarioNome: resultCard.data.usuario.nomeCompleto, // Nome completo do usuário
           usuarioId: resultCard.data.usuario.id , // ID do usuário
           usuarioNome: resultCard.data.usuario.nomeCompleto, // Nome completo do usuário
           regras: resultCard.data.regras,

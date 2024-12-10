@@ -8,5 +8,6 @@ const ProtectedRoute = () => {
   console.log("Rota protegida")
   return isAuthenticated() ? <Outlet /> : <Navigate to="/" />;
 };
+// opa
 
 export default ProtectedRoute;
